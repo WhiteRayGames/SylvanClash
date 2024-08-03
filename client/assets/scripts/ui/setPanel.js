@@ -136,9 +136,9 @@ cc.Class({
         this.spriteCoin.setMaterial(0, this.nomarlM);
 
         if (cc.Mgr.Config.isDebug) {
-            this.recoveryBtn.y = -22;
+            this.recoveryBtn.y = -100;
         } else {
-            this.recoveryBtn.y = -300;
+            this.recoveryBtn.y = -200;
         }
 
         this.recoveryBtn.active = false;

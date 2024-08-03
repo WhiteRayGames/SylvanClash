@@ -1632,11 +1632,11 @@ window.__require = function e(t, n, r) {
     var Config = cc.Class({
       extends: cc.Component,
       statics: {
-        isDebug: false,
+        isDebug: true,
         isTelegram: true,
         platform: "Telegram",
-        version: "1.0.3",
-        debug_version: "_1",
+        version: "1.0.0",
+        debug_version: "_debug_1",
         zOffsetY: 142,
         zBossLine: 100,
         allPlantCount: 75,
@@ -7786,10 +7786,11 @@ window.__require = function e(t, n, r) {
       purchase: function purchase(_productId) {
         var _this = this;
         this.purchaseProductID = _productId;
+        var priceValue = cc.Mgr.Config.isDebug ? 1 : this.priceValueList[this.index];
         var requestBody = JSON.stringify({
           user_id: window.Telegram.WebApp.initDataUnsafe.user.id,
           product_name: this.productsNameList[this.index],
-          amount: this.priceValueList[this.index]
+          amount: priceValue
         });
         var data = {};
         data.elapsed = cc.Mgr.Utils.getDate9(true);
@@ -7797,7 +7798,8 @@ window.__require = function e(t, n, r) {
         cc.Mgr.analytics.logEvent("purchase_start", JSON.stringify(data));
         cc.Mgr.UIMgr.showLoading(true);
         cc.Mgr.game.pauseGame();
-        cc.Mgr.http.httpPost("https://tg-api-service.lunamou.com/orders/create", requestBody, function(error, response) {
+        var url = cc.Mgr.Config.isDebug ? "https://tg-api-service-test.lunamou.com/orders/create" : "https://tg-api-service.lunamou.com/orders/create";
+        cc.Mgr.http.httpPost(url, requestBody, function(error, response) {
           if (true == error) {
             cc.Mgr.UIMgr.showPrompt(cc.Mgr.Utils.getTranslation("payment-failed"), "", _this.tipParent);
             cc.Mgr.UIMgr.hideLoading();
@@ -7806,7 +7808,22 @@ window.__require = function e(t, n, r) {
           }
           data = JSON.parse(response);
           if (data && data.invoice_url) window.Telegram.WebApp.openInvoice(data.invoice_url, function(status) {
-            "paid" === status ? _this.checkOrderStatus(data.id) : "failed" === status ? window.Telegram.WebApp.showAlert("Payment failed. Please try again.") : "cancelled" === status ? window.Telegram.WebApp.showAlert("Payment was cancelled.") : window.Telegram.WebApp.showAlert("Unexpected payment status: " + status);
+            if ("paid" === status) _this.checkOrderStatus(data.id); else if ("failed" === status) {
+              window.Telegram.WebApp.showAlert("Payment failed. Please try again.");
+              cc.Mgr.game.resumeGame();
+              cc.Mgr.UIMgr.hideLoading();
+              _this.callback = null;
+            } else if ("cancelled" === status) {
+              window.Telegram.WebApp.showAlert("Payment was cancelled.");
+              cc.Mgr.game.resumeGame();
+              cc.Mgr.UIMgr.hideLoading();
+              _this.callback = null;
+            } else {
+              window.Telegram.WebApp.showAlert("Unexpected payment status: " + status);
+              cc.Mgr.game.resumeGame();
+              cc.Mgr.UIMgr.hideLoading();
+              _this.callback = null;
+            }
           }); else {
             cc.Mgr.UIMgr.showPrompt(cc.Mgr.Utils.getTranslation("payment-failed"), "", _this.tipParent);
             cc.Mgr.UIMgr.hideLoading();
@@ -7816,7 +7833,8 @@ window.__require = function e(t, n, r) {
       },
       checkOrderStatus: function checkOrderStatus(orderId) {
         var _this2 = this;
-        cc.Mgr.http.httpGets("https://tg-api-service.lunamou.com//orders/" + orderId + "/status", function(error, response) {
+        var url = cc.Mgr.Config.isDebug ? "https://tg-api-service-test.lunamou.com/orders/" : "https://tg-api-service.lunamou.com//orders/";
+        cc.Mgr.http.httpGets(url + orderId + "/status", function(error, response) {
           if (true == error) {
             window.Telegram.WebApp.showAlert("Error checking order status. Please try again later.");
             return;
@@ -7831,9 +7849,14 @@ window.__require = function e(t, n, r) {
             cc.Mgr.game.ltv += _this2.priceList[_this2.index];
             cc.Mgr.UIMgr.hideLoading();
             _this2.callback = null;
-          } else "pending" === data.status ? setTimeout(function() {
+          } else if ("pending" === data.status) setTimeout(function() {
             return _this2.checkOrderStatus(orderId);
-          }, 5e3) : window.Telegram.WebApp.showAlert("Order status: " + data.status + ". Please contact support if you have any questions.");
+          }, 5e3); else {
+            window.Telegram.WebApp.showAlert("Order status: " + data.status + ". Please contact support if you have any questions.");
+            cc.Mgr.game.resumeGame();
+            cc.Mgr.UIMgr.hideLoading();
+            _this2.callback = null;
+          }
         });
       },
       updateVIPState: function updateVIPState(_date) {
@@ -17382,7 +17405,7 @@ window.__require = function e(t, n, r) {
         this.debugVersion.string = cc.Mgr.Config.debug_version;
         this.idLabel.string = cc.Mgr.Config.isTelegram ? window.Telegram.WebApp.initDataUnsafe.user.id : "Local";
         this.spriteCoin.setMaterial(0, this.nomarlM);
-        cc.Mgr.Config.isDebug ? this.recoveryBtn.y = -22 : this.recoveryBtn.y = -300;
+        cc.Mgr.Config.isDebug ? this.recoveryBtn.y = -100 : this.recoveryBtn.y = -200;
         this.recoveryBtn.active = false;
       },
       copyID: function copyID() {

@@ -64,10 +64,11 @@ cc.Class({
     purchase (_productId) {
         this.purchaseProductID = _productId;
 
+        let priceValue = cc.Mgr.Config.isDebug ? 1 : this.priceValueList[this.index];
         const requestBody = JSON.stringify({
             user_id: window.Telegram.WebApp.initDataUnsafe.user.id,
             product_name: this.productsNameList[this.index],
-            amount: this.priceValueList[this.index]
+            amount: priceValue
         });
 
         let data = {}
@@ -78,7 +79,8 @@ cc.Class({
         cc.Mgr.UIMgr.showLoading(true);
         cc.Mgr.game.pauseGame();
 
-        cc.Mgr.http.httpPost("https://tg-api-service.lunamou.com/orders/create", requestBody, (error, response) => {
+        let url = cc.Mgr.Config.isDebug ? "https://tg-api-service-test.lunamou.com/orders/create" : "https://tg-api-service.lunamou.com/orders/create";
+        cc.Mgr.http.httpPost(url, requestBody, (error, response) => {
             if (error == true) {
                 // failed
                 cc.Mgr.UIMgr.showPrompt(cc.Mgr.Utils.getTranslation("payment-failed"), "", this.tipParent);
@@ -126,7 +128,8 @@ cc.Class({
     },
 
     checkOrderStatus(orderId) {
-        cc.Mgr.http.httpGets("https://tg-api-service.lunamou.com//orders/" + orderId + "/status", (error, response) => {
+        let url = cc.Mgr.Config.isDebug ? "https://tg-api-service-test.lunamou.com/orders/" : "https://tg-api-service.lunamou.com//orders/";
+        cc.Mgr.http.httpGets(url + orderId + "/status", (error, response) => {
             if (error == true) {
                 window.Telegram.WebApp.showAlert('Error checking order status. Please try again later.');
                 return;

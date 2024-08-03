@@ -3,15 +3,15 @@ var Config = cc.Class({
   extends: cc.Component,
 
   statics: {
-    isDebug: false,
+    isDebug: true,
 
     isTelegram: true,
 
     platform: "Telegram", // Telegram Local
 
-    version: "1.0.3",
+    version: "1.0.0",
 
-    debug_version: "_1",
+    debug_version: "_debug_1",
 
     zOffsetY: 142,
 
