@@ -1,4 +1,4 @@
-name: Build and Deploy NSB Project
+name: Build and Deploy NSB TEST Project
 
 on:
   push:
