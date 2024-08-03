@@ -28937,7 +28937,7 @@
 
        case _mat["default"]:
         var res = new Array(17);
-        res[VALUETYPE_SETTER] = typeId;
+        res[0] = typeId;
         _mat["default"].toArray(res, obj, 1);
         return res;
 
@@ -29091,11 +29091,11 @@
       owner[key] = deserializeCustomCCObject(data, ctor, value[CUSTOM_OBJ_DATA_CONTENT]);
     }
     function parseValueTypeCreated(data, owner, key, value) {
-      BuiltinValueTypeSetters[value[0]](owner[key], value);
+      BuiltinValueTypeSetters[value[VALUETYPE_SETTER]](owner[key], value);
     }
     function parseValueType(data, owner, key, value) {
-      var val = new BuiltinValueTypes[value[0]]();
-      BuiltinValueTypeSetters[value[0]](val, value);
+      var val = new BuiltinValueTypes[value[VALUETYPE_SETTER]]();
+      BuiltinValueTypeSetters[value[VALUETYPE_SETTER]](val, value);
       owner[key] = val;
     }
     function parseTRS(data, owner, key, value) {
@@ -29103,9 +29103,9 @@
       typedArray.set(value);
     }
     function parseDict(data, owner, key, value) {
-      var dict = value[0];
+      var dict = value[DICT_JSON_LAYOUT];
       owner[key] = dict;
-      for (var i = 1; i < value.length; i += 3) {
+      for (var i = DICT_JSON_LAYOUT + 1; i < value.length; i += 3) {
         var _key3 = value[i];
         var _type2 = value[i + 1];
         var subValue = value[i + 2];
@@ -29114,7 +29114,7 @@
       }
     }
     function parseArray(data, owner, key, value) {
-      var array = value[0];
+      var array = value[ARRAY_ITEM_VALUES];
       owner[key] = array;
       for (var i = 0; i < array.length; ++i) {
         var subValue = array[i];

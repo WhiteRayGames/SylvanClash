@@ -65,7 +65,7 @@ cc.Class({
         this.purchaseProductID = _productId;
 
         const requestBody = JSON.stringify({
-            user_id: window.webapp.initDataUnsafe.user.id,
+            user_id: window.Telegram.WebApp.initDataUnsafe.user.id,
             product_name: this.productsNameList[this.index],
             amount: this.priceValueList[this.index]
         });
@@ -96,15 +96,15 @@ cc.Class({
 
             data = JSON.parse(response);
             if (data && data.invoice_url) {
-                window.webapp.openInvoice(data.invoice_url, (status) => {
+                window.Telegram.WebApp.openInvoice(data.invoice_url, (status) => {
                     if (status === 'paid') {
                         this.checkOrderStatus(data.id);
                     } else if (status === 'failed') {
-                        window.webapp.showAlert('Payment failed. Please try again.');
+                        window.Telegram.WebApp.showAlert('Payment failed. Please try again.');
                     } else if (status === 'cancelled') {
-                        window.webapp.showAlert('Payment was cancelled.');
+                        window.Telegram.WebApp.showAlert('Payment was cancelled.');
                     } else {
-                        window.webapp.showAlert(`Unexpected payment status: ${status}`);
+                        window.Telegram.WebApp.showAlert(`Unexpected payment status: ${status}`);
                     }
                 });
             } else {
@@ -119,7 +119,7 @@ cc.Class({
     checkOrderStatus(orderId) {
         cc.Mgr.http.httpGets("https://tg-api-service.lunamou.com//orders/" + orderId + "/status", (error, response) => {
             if (error == true) {
-                window.webapp.showAlert('Error checking order status. Please try again later.');
+                window.Telegram.WebApp.showAlert('Error checking order status. Please try again later.');
                 return;
             }
             let data = JSON.parse(response);
@@ -143,7 +143,7 @@ cc.Class({
             } else if (data.status === 'pending') {
                 setTimeout(() => this.checkOrderStatus(orderId), 5000);  // 5秒后再次检查
             } else {
-                window.webapp.showAlert(`Order status: ${data.status}. Please contact support if you have any questions.`);
+                window.Telegram.WebApp.showAlert(`Order status: ${data.status}. Please contact support if you have any questions.`);
             }
         })
     },

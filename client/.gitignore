@@ -66,16 +66,10 @@ quick_gen_project_*_autogen.sh.meta
 
 .vscode/
 
-#//////////////////////////
-# npm
-#//////////////////////////
-node_modules/
-
 #///////////////////////////
 # Cocos Creator 3D Project
 #///////////////////////////
 profiles/
-native
 
 localserver/
 
