@@ -1636,7 +1636,7 @@ window.__require = function e(t, n, r) {
         isTelegram: true,
         platform: "Telegram",
         version: "1.0.0",
-        debug_version: "_debug_2",
+        debug_version: "_debug_3",
         zOffsetY: 142,
         zBossLine: 100,
         allPlantCount: 75,
@@ -5641,11 +5641,9 @@ window.__require = function e(t, n, r) {
         var request = cc.loader.getXMLHttpRequest();
         console.log("Status: Send Get Request to " + url);
         request.open("GET", url, true);
+        xhr.setRequestHeader("Content-Type", "application/json");
         request.onreadystatechange = function() {
-          if (4 == request.readyState) if (request.status >= 200 && request.status <= 207) {
-            var httpStatus = request.statusText;
-            callback(false, request.responseText);
-          } else callback(true, request.responseText);
+          4 == request.readyState && (request.status >= 200 && request.status <= 207 ? callback(false, request.responseText) : callback(true, request.responseText));
         };
         request.send();
       },
@@ -7832,7 +7830,7 @@ window.__require = function e(t, n, r) {
       },
       checkOrderStatus: function checkOrderStatus(orderId) {
         var _this2 = this;
-        var url = cc.Mgr.Config.isDebug ? "https://tg-api-service-test.lunamou.com/orders/" : "https://tg-api-service.lunamou.com//orders/";
+        var url = cc.Mgr.Config.isDebug ? "https://tg-api-service-test.lunamou.com/orders/" : "https://tg-api-service.lunamou.com/orders/";
         cc.Mgr.http.httpGets(url + orderId + "/status", function(error, response) {
           if (true == error) {
             window.Telegram.WebApp.showAlert("Error checking order status. Please try again later.");

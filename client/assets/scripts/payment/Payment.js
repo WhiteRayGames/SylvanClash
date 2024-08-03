@@ -135,14 +135,14 @@ cc.Class({
     },
 
     checkOrderStatus(orderId) {
-        let url = cc.Mgr.Config.isDebug ? "https://tg-api-service-test.lunamou.com/orders/" : "https://tg-api-service.lunamou.com//orders/";
+        let url = cc.Mgr.Config.isDebug ? "https://tg-api-service-test.lunamou.com/orders/" : "https://tg-api-service.lunamou.com/orders/";
         cc.Mgr.http.httpGets(url + orderId + "/status", (error, response) => {
             if (error == true) {
                 window.Telegram.WebApp.showAlert('Error checking order status. Please try again later.');
                 return;
             }
             let data = JSON.parse(response);
-            if (data.status === 'paid') {
+            if (data.status && data.status === 'paid') {
                 webapp.showAlert('Payment successful! Thank you for your purchase.');
 
                 // success
@@ -159,10 +159,10 @@ cc.Class({
 
                 cc.Mgr.UIMgr.hideLoading();
                 this.callback = null;
-            } else if (data.status === 'pending') {
+            } else if (data.status && data.status === 'pending') {
                 setTimeout(() => this.checkOrderStatus(orderId), 5000);  // 5秒后再次检查
             } else {
-                window.Telegram.WebApp.showAlert('Order status: ' + data.status + '. Please contact support if you have any questions.');
+                window.Telegram.WebApp.showAlert(response + '   Please contact support if you have any questions.');
                 cc.Mgr.game.resumeGame();
                 cc.Mgr.UIMgr.hideLoading();
                 this.callback = null;
