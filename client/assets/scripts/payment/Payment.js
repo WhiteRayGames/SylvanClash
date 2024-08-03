@@ -101,10 +101,19 @@ cc.Class({
                         this.checkOrderStatus(data.id);
                     } else if (status === 'failed') {
                         window.Telegram.WebApp.showAlert('Payment failed. Please try again.');
+                        cc.Mgr.game.resumeGame();
+                        cc.Mgr.UIMgr.hideLoading();
+                        this.callback = null;
                     } else if (status === 'cancelled') {
                         window.Telegram.WebApp.showAlert('Payment was cancelled.');
+                        cc.Mgr.game.resumeGame();
+                        cc.Mgr.UIMgr.hideLoading();
+                        this.callback = null;
                     } else {
-                        window.Telegram.WebApp.showAlert(`Unexpected payment status: ${status}`);
+                        window.Telegram.WebApp.showAlert('Unexpected payment status: ' + status);
+                        cc.Mgr.game.resumeGame();
+                        cc.Mgr.UIMgr.hideLoading();
+                        this.callback = null;
                     }
                 });
             } else {
@@ -143,7 +152,10 @@ cc.Class({
             } else if (data.status === 'pending') {
                 setTimeout(() => this.checkOrderStatus(orderId), 5000);  // 5秒后再次检查
             } else {
-                window.Telegram.WebApp.showAlert(`Order status: ${data.status}. Please contact support if you have any questions.`);
+                window.Telegram.WebApp.showAlert('Order status: ' + data.status + '. Please contact support if you have any questions.');
+                cc.Mgr.game.resumeGame();
+                cc.Mgr.UIMgr.hideLoading();
+                this.callback = null;
             }
         })
     },
