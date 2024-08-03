@@ -54,6 +54,13 @@ cc.Class({
         let curProductID = this.productsIDList[_index];
         this.callback = _callback
 
+        // cc.Mgr.http.httpGets("https://tg-api-service-test.lunamou.com/health", (error, response) => {
+        //     if (error == true) {
+        //         window.Telegram.WebApp.showAlert('Error checking order status. Please try again later.');
+        //         return;
+        //     }
+        // })
+
         if (cc.Mgr.Config.isTelegram) {
             this.purchase(curProductID);
         } else {

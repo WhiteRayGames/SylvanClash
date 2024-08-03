@@ -28,13 +28,15 @@ var httpUtils = cc.Class({
     request.open('GET', url, true)
 
     request.onreadystatechange = function () {
-      if (request.readyState == 4 && (request.status >= 200 && request.status <= 207)) {
-        var httpStatus = request.statusText
-        // var response = request.responseText
-        console.log('Status: Got GET response! ' + httpStatus)
-        callback(false, request)
-      } else {
-        callback(true, request)
+      if (request.readyState == 4) {
+        if (request.status >= 200 && request.status <= 207) {
+          var httpStatus = request.statusText
+          // var response = request.responseText
+          // console.log('Status: Got GET response! ' + httpStatus)
+          callback(false, request.responseText)
+        } else {
+          callback(true, request.responseText)
+        }
       }
     }
     request.send()

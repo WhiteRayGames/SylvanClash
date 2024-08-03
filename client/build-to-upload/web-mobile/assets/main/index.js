@@ -1636,7 +1636,7 @@ window.__require = function e(t, n, r) {
         isTelegram: true,
         platform: "Telegram",
         version: "1.0.0",
-        debug_version: "_debug_1",
+        debug_version: "_debug_2",
         zOffsetY: 142,
         zBossLine: 100,
         allPlantCount: 75,
@@ -5642,11 +5642,10 @@ window.__require = function e(t, n, r) {
         console.log("Status: Send Get Request to " + url);
         request.open("GET", url, true);
         request.onreadystatechange = function() {
-          if (4 == request.readyState && request.status >= 200 && request.status <= 207) {
+          if (4 == request.readyState) if (request.status >= 200 && request.status <= 207) {
             var httpStatus = request.statusText;
-            console.log("Status: Got GET response! " + httpStatus);
-            callback(false, request);
-          } else callback(true, request);
+            callback(false, request.responseText);
+          } else callback(true, request.responseText);
         };
         request.send();
       },
