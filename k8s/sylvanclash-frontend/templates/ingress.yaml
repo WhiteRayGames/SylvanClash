@@ -1,0 +1,65 @@
+{{- $fullName := include "sylvanclash-frontend.fullname" . -}}
+{{- $servicePort := .Values.service.port | default 80 -}}
+
+{{- if .Values.ingress.private_endpoints -}}
+# Reuse block using Yaml definication https://yaml.org/type/merge.html
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ include "sylvanclash-frontend.fullname" . }}-private
+  labels: {{- include "sylvanclash-frontend.labels" . | nindent 4 }}
+  {{- with .Values.ingress.annotations }}
+  annotations: {{- toYaml . | nindent 4 }}
+  {{- end }}
+  {{- with .Values.ingress.kong_plugins }}
+    konghq.com/plugins: {{ . }}
+  {{- end }}
+spec:
+  {{- with .Values.ingress.tls }}
+  tls: {{- tpl (toYaml .) $ | nindent 4 }}
+  {{- end }}
+  rules:
+    {{- range .Values.ingress.rules }}
+    - host: {{ .host | quote }}
+      http:
+        paths:
+          {{- range .http.paths }}
+          - path: {{ .path }}
+            pathType: {{ .pathType }}
+            backend:
+              service:
+                name: {{ $fullName }}
+                port:
+                  number: {{ $servicePort }}
+          {{- end }}
+    {{- end }}
+{{- end }}
+---
+{{- if .Values.ingress.enabled -}}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ $fullName }}
+  {{- with .Values.ingress.annotations }}
+  annotations: {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  {{- with .Values.ingress.tls }}
+  tls: {{- tpl (toYaml .) $ | nindent 4 }}
+  {{- end }}
+  rules:
+    {{- range .Values.ingress.rules }}
+    - host: {{ .host | quote }}
+      http:
+        paths:
+          {{- range .http.paths }}
+          - path: {{ .path }}
+            pathType: {{ .pathType }}
+            backend:
+              service:
+                name: {{ $fullName }}
+                port:
+                  number: {{ $servicePort }}
+          {{- end }}
+    {{- end }}
+{{- end }}

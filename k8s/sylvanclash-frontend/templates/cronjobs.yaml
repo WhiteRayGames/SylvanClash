@@ -1,0 +1,47 @@
+# Reference: https://helm.sh/docs/chart_template_guide/variables/
+{{- range $key, $value := .Values.cronjobs }}
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: "{{ $.Chart.Name }}-cronjob-{{ $key | replace "_" "-" }}"
+spec:
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
+  schedule: {{ $value.schedule | quote }}
+  jobTemplate:
+    spec:
+      # ttlSecondsAfterFinished: 180
+      template:
+        spec:
+          containers:
+            - name: {{ $.Chart.Name }}
+              image: "{{ $.Values.image.repository }}:{{ required "A valid image.tag is required." $.Values.image.tag }}"
+              imagePullPolicy: {{ $.Values.image.pullPolicy }}
+              {{- with $value.command }}
+              command: {{- toYaml . | nindent 16 }}
+              {{- end }}
+              {{- with $value.args }}
+              args: {{- toYaml . | nindent 16 }}
+              {{- end }}
+              {{- with $.Values.app.secret_env }}
+              env: {{- toYaml . | nindent 16 }}
+              {{- end }}
+              {{- range $env_key, $env_value := $.Values.app.env }}
+                - name: {{ $env_key }}
+                  value: {{ $env_value | quote }}
+              {{- end }}
+              {{- with $value.env }}
+              {{- range $env_key, $env_value := $value.env }}
+              - name: {{ $env_key }}
+                value: {{ $env_value | quote }}
+              {{- end }}
+              {{- end }}
+              {{- with $value.resources }}
+              resources: {{- toYaml . | nindent 16 }}
+              {{- end }}
+          restartPolicy: {{ $value.restartPolicy }}
+          {{- with $.Values.imagePullSecrets }}
+          imagePullSecrets: {{- toYaml . | nindent 12 }}
+          {{- end }}
+---
+{{- end }}

@@ -1,4 +1,4 @@
-name: Build Cocos Creator Project
+name: Build and Deploy NSB Project
 
 on:
   push:
@@ -10,18 +10,79 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    outputs:
+      VERSION: ${{ steps.release_version.outputs.VERSION }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          lfs: true
 
-      - name: Archive build artifacts
-        uses: actions/upload-artifact@v4
+      - name: Pull LFS Files
+        run: git lfs checkout
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Cache Docker layers
+        uses: actions/cache@v2
         with:
-          name: web-mobile-build
-          path: client/build-to-upload/web-mobile
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_HUB_USER }}
+          password: ${{ secrets.DOCKER_HUB_TOKEN }}
+
+      - name: Get release version
+        id: release_version
+        run: |
+          echo "VERSION=$(date +'%Y.%m.%d')-${GITHUB_SHA::8}" >> $GITHUB_OUTPUT
+
+      - name: Build and push
+        id: docker_build
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: |
+            visionyuyu/sylvanclash-frontend:latest
+            visionyuyu/sylvanclash-frontend:${{ steps.release_version.outputs.VERSION }}
+          build-args: |
+            VERSION=${{ steps.release_version.outputs.VERSION }}
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache,mode=max
+
+      - name: Print image tag & digest
+        run: |
+          echo "digest : ${{ steps.docker_build.outputs.digest }}"
+          echo "tag    : ${{ steps.release_version.outputs.VERSION }}"
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Deploy-Frontend
+        uses: koslibpro/helm-eks-action@v1.5.0
+        env:
+          KUBE_CONFIG_DATA: ${{ secrets.KUBECONFIG_TENCENT_VISION_SG }}
+          CHART_NAME: sylvanclash-frontend
+        with:
+          command: |-
+            helm upgrade "${CHART_NAME}" \
+              --debug \
+              --atomic \
+              --install \
+              --values="k8s/${CHART_NAME}/values.yaml" \
+              --namespace=game \
+              --set image.tag="${{ needs.build.outputs.VERSION }}" \
+              "k8s/${CHART_NAME}"
