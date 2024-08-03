@@ -9,7 +9,7 @@ var Config = cc.Class({
 
     platform: "Telegram", // Telegram Local
 
-    version: "1.0.2",
+    version: "1.0.3",
 
     debug_version: "_1",
 
