@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "c70urKBltLG6Jhcc04pBBj"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "specialGrid",
+      "rect": [
+        34,
+        13,
+        131,
+        143
+      ],
+      "offset": [
+        1.5,
+        14
+      ],
+      "originalSize": [
+        196,
+        197
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

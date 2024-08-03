@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "01KPbTQ/pBBoKpzsms0ffv"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "gameBg_front",
+      "rect": [
+        0,
+        0,
+        661,
+        402
+      ],
+      "offset": [
+        0,
+        1
+      ],
+      "originalSize": [
+        661,
+        404
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

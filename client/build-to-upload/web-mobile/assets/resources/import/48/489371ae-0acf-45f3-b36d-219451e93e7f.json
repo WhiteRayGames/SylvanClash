@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "daNyi1XkdJoa5QfgJYCHrY"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "60_Grimlin_CrownViReis_tex",
+      "rect": [
+        1,
+        1,
+        123,
+        126
+      ],
+      "offset": [
+        -1.5,
+        0
+      ],
+      "originalSize": [
+        128,
+        128
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

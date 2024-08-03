@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "4957fd54-f9b2-436c-83f4-ad3f4cdabd99",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 128,
+  "height": 128,
+  "platformSettings": {},
+  "subMetas": {
+    "56_Grimlin_FeverHead_tex": {
+      "ver": "1.0.4",
+      "uuid": "49aec07b-eb7a-4acf-8123-e69c9cfd8ab3",
+      "rawTextureUuid": "4957fd54-f9b2-436c-83f4-ad3f4cdabd99",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 2.5,
+      "trimX": 1,
+      "trimY": 1,
+      "width": 126,
+      "height": 121,
+      "rawWidth": 128,
+      "rawHeight": 128,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

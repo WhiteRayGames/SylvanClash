@@ -1,0 +1,45 @@
+[
+  1,
+  [
+    "f4iaITTpNK4KuGYKFcjHM+"
+  ],
+  [
+    "_texture"
+  ],
+  [
+    [
+      "dragonBones.DragonBonesAtlasAsset",
+      [
+        "_name",
+        "_atlasJson"
+      ],
+      1
+    ]
+  ],
+  [
+    [
+      0,
+      0,
+      1,
+      3
+    ]
+  ],
+  [
+    [
+      0,
+      "attackRange_tex",
+      "{\"name\":\"attackRange\",\"height\":512,\"SubTexture\":[{\"name\":\"attack range/Round\",\"x\":390,\"height\":385,\"y\":1,\"width\":377},{\"name\":\"attack range/色彩平衡_1\",\"x\":1,\"height\":388,\"y\":1,\"width\":387}],\"imagePath\":\"attackRange_tex.png\",\"width\":1024}"
+    ]
+  ],
+  0,
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

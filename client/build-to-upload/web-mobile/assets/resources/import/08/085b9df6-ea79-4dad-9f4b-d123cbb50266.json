@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "bfBMPmVVJMwq8+BAK/hRTT"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "crit_tex",
+      "rect": [
+        1,
+        1,
+        16,
+        18
+      ],
+      "offset": [
+        -7,
+        6
+      ],
+      "originalSize": [
+        32,
+        32
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "1aBrw/WfBMUZe7puso7xjk"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "ice_tex",
+      "rect": [
+        1,
+        1,
+        163,
+        174
+      ],
+      "offset": [
+        -45.5,
+        40
+      ],
+      "originalSize": [
+        256,
+        256
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

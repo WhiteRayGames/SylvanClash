@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "1944bf6c-92a3-4252-8569-cf49d9a76833",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 128,
+  "height": 128,
+  "platformSettings": {},
+  "subMetas": {
+    "55_Grimlin_Spoticyte_tex": {
+      "ver": "1.0.4",
+      "uuid": "a566759d-b1cf-4c4b-81dd-9bccec73e096",
+      "rawTextureUuid": "1944bf6c-92a3-4252-8569-cf49d9a76833",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -0.5,
+      "offsetY": 0,
+      "trimX": 1,
+      "trimY": 1,
+      "width": 125,
+      "height": 126,
+      "rawWidth": 128,
+      "rawHeight": 128,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

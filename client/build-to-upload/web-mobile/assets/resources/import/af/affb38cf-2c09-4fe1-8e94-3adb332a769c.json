@@ -1,0 +1,52 @@
+[
+  1,
+  [
+    "1fbb3c150"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "success-light",
+      "rect": [
+        1055,
+        1590,
+        387,
+        375
+      ],
+      "offset": [
+        0.5,
+        0
+      ],
+      "originalSize": [
+        388,
+        375
+      ],
+      "rotated": 1,
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

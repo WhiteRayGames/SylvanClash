@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "31SYmtIIVJbJRqxOdDZZ5c"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "tips_success_tex",
+      "rect": [
+        1,
+        2,
+        492,
+        480
+      ],
+      "offset": [
+        -9,
+        14
+      ],
+      "originalSize": [
+        512,
+        512
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

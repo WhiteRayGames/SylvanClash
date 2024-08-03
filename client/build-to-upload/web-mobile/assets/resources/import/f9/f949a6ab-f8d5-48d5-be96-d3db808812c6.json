@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "11p0hsjO9Nl4MwILUnaJ1S"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "50_Grimlin_Viracyte_tex",
+      "rect": [
+        1,
+        1,
+        126,
+        188
+      ],
+      "offset": [
+        0,
+        33
+      ],
+      "originalSize": [
+        128,
+        256
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

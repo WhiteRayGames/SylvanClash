@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "2dtBME63BAsIGL6ozOecDl"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "52_Grimlin_Wormicyte_tex",
+      "rect": [
+        1,
+        1,
+        117,
+        148
+      ],
+      "offset": [
+        -4.5,
+        53
+      ],
+      "originalSize": [
+        128,
+        256
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

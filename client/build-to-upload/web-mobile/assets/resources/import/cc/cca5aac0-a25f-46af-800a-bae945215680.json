@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "d1RszppIFCqbvATVo2pHFo"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "Defeat_tex",
+      "rect": [
+        1,
+        1,
+        1022,
+        443
+      ],
+      "offset": [
+        0,
+        33.5
+      ],
+      "originalSize": [
+        1024,
+        512
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

@@ -1,0 +1,52 @@
+[
+  1,
+  [
+    "1fbb3c150"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "flame-icon1",
+      "rect": [
+        1319,
+        1542,
+        42,
+        51
+      ],
+      "offset": [
+        -0.5,
+        0
+      ],
+      "originalSize": [
+        55,
+        51
+      ],
+      "rotated": 1,
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

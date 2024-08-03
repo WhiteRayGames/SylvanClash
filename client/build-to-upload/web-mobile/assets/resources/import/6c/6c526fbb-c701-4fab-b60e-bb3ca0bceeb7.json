@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "302hZ5z3VP5ahZO6xwlFpB"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "VIPicon_tex",
+      "rect": [
+        2,
+        2,
+        287,
+        205
+      ],
+      "offset": [
+        -110.5,
+        23.5
+      ],
+      "originalSize": [
+        512,
+        256
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

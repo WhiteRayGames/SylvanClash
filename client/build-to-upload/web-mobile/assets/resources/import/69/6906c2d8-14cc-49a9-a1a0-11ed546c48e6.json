@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "483zpA+6BAsKhh5fOFIJ4i"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "59_Grimlin_Grappler_tex",
+      "rect": [
+        1,
+        1,
+        131,
+        123
+      ],
+      "offset": [
+        -61.5,
+        1.5
+      ],
+      "originalSize": [
+        256,
+        128
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

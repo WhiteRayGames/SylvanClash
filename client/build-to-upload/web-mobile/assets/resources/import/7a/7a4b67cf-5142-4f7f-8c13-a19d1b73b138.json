@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "63j80AJ69G/apw3c5l6VD4"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "check_tex",
+      "rect": [
+        1,
+        1,
+        202,
+        237
+      ],
+      "offset": [
+        -26,
+        8.5
+      ],
+      "originalSize": [
+        256,
+        256
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "1fbb3c150"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "backplane-reuse",
+      "rect": [
+        213,
+        821,
+        566,
+        764
+      ],
+      "offset": [
+        0,
+        0
+      ],
+      "originalSize": [
+        566,
+        764
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

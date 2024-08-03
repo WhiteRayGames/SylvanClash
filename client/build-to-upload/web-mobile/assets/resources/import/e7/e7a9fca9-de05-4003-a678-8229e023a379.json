@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "caVj0VgtNMWYrJMYi0zFrZ"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "Elf_tex",
+      "rect": [
+        1,
+        1,
+        123,
+        165
+      ],
+      "offset": [
+        -1.5,
+        44.5
+      ],
+      "originalSize": [
+        128,
+        256
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

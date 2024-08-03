@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "2db41304-eb70-40b0-818b-ea8cce79c0e5",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 128,
+  "height": 256,
+  "platformSettings": {},
+  "subMetas": {
+    "52_Grimlin_Wormicyte_tex": {
+      "ver": "1.0.4",
+      "uuid": "1245dc33-ee1d-4455-a5af-b9354fd80276",
+      "rawTextureUuid": "2db41304-eb70-40b0-818b-ea8cce79c0e5",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -4.5,
+      "offsetY": 53,
+      "trimX": 1,
+      "trimY": 1,
+      "width": 117,
+      "height": 148,
+      "rawWidth": 128,
+      "rawHeight": 256,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

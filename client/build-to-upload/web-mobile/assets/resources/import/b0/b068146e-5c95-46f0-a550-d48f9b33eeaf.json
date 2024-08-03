@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "4fqvK/v4BADKMrafhyK5lF"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "egg2_tex",
+      "rect": [
+        1,
+        1,
+        510,
+        503
+      ],
+      "offset": [
+        0,
+        3.5
+      ],
+      "originalSize": [
+        512,
+        512
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

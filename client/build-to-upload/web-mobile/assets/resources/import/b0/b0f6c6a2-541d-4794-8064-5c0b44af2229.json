@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "61K6DxMClGy5i79l4NcmN2"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "EnemyRig24_tex",
+      "rect": [
+        1,
+        1,
+        244,
+        172
+      ],
+      "offset": [
+        -5,
+        41
+      ],
+      "originalSize": [
+        256,
+        256
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

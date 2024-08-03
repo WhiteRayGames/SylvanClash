@@ -1,0 +1,52 @@
+[
+  1,
+  [
+    "19d548f06"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "rage_common",
+      "rect": [
+        692,
+        1815,
+        225,
+        224
+      ],
+      "offset": [
+        0,
+        0
+      ],
+      "originalSize": [
+        225,
+        224
+      ],
+      "rotated": 1,
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

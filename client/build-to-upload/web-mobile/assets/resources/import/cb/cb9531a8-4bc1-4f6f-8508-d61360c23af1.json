@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "e4NhUTI9dFhL/Ctuig999I"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "Grimlin_Soreling_tex",
+      "rect": [
+        1,
+        1,
+        224,
+        107
+      ],
+      "offset": [
+        -15,
+        9.5
+      ],
+      "originalSize": [
+        256,
+        128
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

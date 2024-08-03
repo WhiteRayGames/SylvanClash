@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "00XSzTK5pOuLuXAnTHeitt"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "light-big-reuse_tex",
+      "rect": [
+        1,
+        1,
+        989,
+        1930
+      ],
+      "offset": [
+        -16.5,
+        58
+      ],
+      "originalSize": [
+        1024,
+        2048
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

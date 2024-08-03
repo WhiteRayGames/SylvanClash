@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "9dZbX8YMtGO6eXfZ03yFII"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "Unlock2_tex",
+      "rect": [
+        2,
+        1,
+        404,
+        209
+      ],
+      "offset": [
+        -52,
+        22.5
+      ],
+      "originalSize": [
+        512,
+        256
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "da3728b5-5e47-49a1-ae50-7e0258087ad8",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 128,
+  "height": 128,
+  "platformSettings": {},
+  "subMetas": {
+    "60_Grimlin_CrownViReis_tex": {
+      "ver": "1.0.4",
+      "uuid": "489371ae-0acf-45f3-b36d-219451e93e7f",
+      "rawTextureUuid": "da3728b5-5e47-49a1-ae50-7e0258087ad8",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -1.5,
+      "offsetY": 0,
+      "trimX": 1,
+      "trimY": 1,
+      "width": 123,
+      "height": 126,
+      "rawWidth": 128,
+      "rawHeight": 128,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

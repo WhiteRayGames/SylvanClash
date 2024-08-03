@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "ce0eN1tjBANbWA55t+jL1P"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "task_tex",
+      "rect": [
+        3,
+        1,
+        251,
+        210
+      ],
+      "offset": [
+        0.5,
+        22
+      ],
+      "originalSize": [
+        256,
+        256
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

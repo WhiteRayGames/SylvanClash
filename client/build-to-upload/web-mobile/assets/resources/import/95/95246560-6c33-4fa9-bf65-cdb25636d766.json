@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "1eb6e95ac"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "button-yellow-3",
+      "rect": [
+        610,
+        1102,
+        218,
+        93
+      ],
+      "offset": [
+        0,
+        0
+      ],
+      "originalSize": [
+        218,
+        93
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "43pA/p571OM5Sd3gnbIljN"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "Grimlin_Viridaemon_tex",
+      "rect": [
+        1,
+        1,
+        161,
+        126
+      ],
+      "offset": [
+        -46.5,
+        0
+      ],
+      "originalSize": [
+        256,
+        128
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

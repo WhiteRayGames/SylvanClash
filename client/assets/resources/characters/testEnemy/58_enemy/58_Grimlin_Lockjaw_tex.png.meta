@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "82526220-233b-4ee7-ab14-5218d9b5bf89",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 256,
+  "height": 128,
+  "platformSettings": {},
+  "subMetas": {
+    "58_Grimlin_Lockjaw_tex": {
+      "ver": "1.0.4",
+      "uuid": "e8299015-463b-4cde-a737-dae4839179f6",
+      "rawTextureUuid": "82526220-233b-4ee7-ab14-5218d9b5bf89",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -57,
+      "offsetY": 0.5,
+      "trimX": 1,
+      "trimY": 1,
+      "width": 140,
+      "height": 125,
+      "rawWidth": 256,
+      "rawHeight": 128,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

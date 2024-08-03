@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "7ex2osGaNGApcu/GWhf2bm"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "30_evo_tex",
+      "rect": [
+        1,
+        1,
+        126,
+        159
+      ],
+      "offset": [
+        0,
+        47.5
+      ],
+      "originalSize": [
+        128,
+        256
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

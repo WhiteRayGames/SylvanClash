@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "df46zndLBMWJD5dsJbbkuW"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "Auto_tex",
+      "rect": [
+        1,
+        1,
+        225,
+        175
+      ],
+      "offset": [
+        -14.5,
+        39.5
+      ],
+      "originalSize": [
+        256,
+        256
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

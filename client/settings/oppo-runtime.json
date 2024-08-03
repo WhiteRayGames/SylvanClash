@@ -1,0 +1,18 @@
+{
+  "certificatePath": "/Users/talkweb/Documents/tools/oppoSign/certificate.pem",
+  "deviceOrientation": "portrait",
+  "disabledMode": "",
+  "icon": "/Users/talkweb/Documents/cocoscreater_pro/SoManyGames/SourceCode/ZombieVsPlant/NewB/assets/Imgs/icon_256.png",
+  "logLevel": "log",
+  "minPlatformVersion": "1050",
+  "name": "植物大战僵尸2",
+  "npmPath": "",
+  "package": "com.pvz2.net.nearme.gamecenter",
+  "privatePath": "/Users/talkweb/Documents/tools/oppoSign/private.pem",
+  "showNpmPath": false,
+  "tinyPackageMode": false,
+  "tinyPackageServer": "",
+  "useDebugKey": false,
+  "versionCode": "14",
+  "versionName": "2.2.1"
+}

@@ -1,0 +1,52 @@
+[
+  1,
+  [
+    "1fbb3c150"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "flower-fairy",
+      "rect": [
+        1328,
+        687,
+        124,
+        232
+      ],
+      "offset": [
+        0,
+        0
+      ],
+      "originalSize": [
+        124,
+        232
+      ],
+      "rotated": 1,
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

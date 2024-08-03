@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "49V/1U+bJDbIP0rT9M2r2Z"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "56_Grimlin_FeverHead_tex",
+      "rect": [
+        1,
+        1,
+        126,
+        121
+      ],
+      "offset": [
+        0,
+        2.5
+      ],
+      "originalSize": [
+        128,
+        128
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

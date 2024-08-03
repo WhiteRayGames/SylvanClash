@@ -1,0 +1,45 @@
+[
+  1,
+  [
+    "11BWAIR3ZJfJ4CAChiXJIW"
+  ],
+  [
+    "_texture"
+  ],
+  [
+    [
+      "dragonBones.DragonBonesAtlasAsset",
+      [
+        "_name",
+        "_atlasJson"
+      ],
+      1
+    ]
+  ],
+  [
+    [
+      0,
+      0,
+      1,
+      3
+    ]
+  ],
+  [
+    [
+      0,
+      "47_Grimlin_Graboid_tex",
+      "{\"name\":\"47_Grimlin_Graboid\",\"height\":128,\"SubTexture\":[{\"name\":\"47_Grimlin_Graboid/Tail\",\"x\":111,\"height\":49,\"y\":1,\"width\":52},{\"name\":\"47_Grimlin_Graboid/Right Arm_0\",\"x\":111,\"height\":73,\"y\":52,\"width\":33},{\"name\":\"47_Grimlin_Graboid/Body\",\"x\":1,\"height\":87,\"y\":1,\"width\":66},{\"name\":\"47_Grimlin_Graboid/Eyes\",\"x\":69,\"height\":20,\"y\":87,\"width\":28},{\"name\":\"47_Grimlin_Graboid/Right_Arm\",\"x\":69,\"height\":84,\"y\":1,\"width\":40}],\"imagePath\":\"47_Grimlin_Graboid_tex.png\",\"width\":256}"
+    ]
+  ],
+  0,
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "5ajHCRDd5GhL5pCLwE2GEZ"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "shareImage_3",
+      "rect": [
+        0,
+        0,
+        1200,
+        1200
+      ],
+      "offset": [
+        0,
+        0
+      ],
+      "originalSize": [
+        1200,
+        1200
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "0aDHbtQDFJ+r+GF6sdJ3cJ"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "star_tex",
+      "rect": [
+        6,
+        3,
+        988,
+        571
+      ],
+      "offset": [
+        -12,
+        223.5
+      ],
+      "originalSize": [
+        1024,
+        1024
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

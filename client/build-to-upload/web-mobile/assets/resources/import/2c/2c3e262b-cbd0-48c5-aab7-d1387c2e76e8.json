@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "e0O1p9BgVDqqhkBG9BWdFh"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "evo_72_tex",
+      "rect": [
+        1,
+        1,
+        125,
+        219
+      ],
+      "offset": [
+        -0.5,
+        17.5
+      ],
+      "originalSize": [
+        128,
+        256
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

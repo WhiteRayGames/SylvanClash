@@ -1,0 +1,45 @@
+[
+  1,
+  [
+    "0dCoXYf0ZCkImdxhN3YVVS"
+  ],
+  [
+    "_texture"
+  ],
+  [
+    [
+      "dragonBones.DragonBonesAtlasAsset",
+      [
+        "_name",
+        "_atlasJson"
+      ],
+      1
+    ]
+  ],
+  [
+    [
+      0,
+      0,
+      1,
+      3
+    ]
+  ],
+  [
+    [
+      0,
+      "starterbundles_tex",
+      "{\"width\":128,\"imagePath\":\"starterbundles_tex.png\",\"height\":128,\"name\":\"starterbundles\",\"SubTexture\":[{\"width\":88,\"y\":1,\"height\":89,\"name\":\"starter bundles/图层_0\",\"x\":1}]}"
+    ]
+  ],
+  0,
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

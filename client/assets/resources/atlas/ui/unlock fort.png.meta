@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "19f57831-0dd9-4df2-abf7-c0d9a8bb3bb1",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 222,
+  "height": 174,
+  "platformSettings": {},
+  "subMetas": {
+    "unlock fort": {
+      "ver": "1.0.4",
+      "uuid": "da81293e-ee4e-411d-bc4d-56f136b8d2e2",
+      "rawTextureUuid": "19f57831-0dd9-4df2-abf7-c0d9a8bb3bb1",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0.5,
+      "offsetY": 0.5,
+      "trimX": 1,
+      "trimY": 0,
+      "width": 221,
+      "height": 173,
+      "rawWidth": 222,
+      "rawHeight": 174,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "13P0gTjc9NmYm/6uFg0BNj"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "plantHead",
+      "rect": [
+        5,
+        2,
+        966,
+        970
+      ],
+      "offset": [
+        2,
+        -1
+      ],
+      "originalSize": [
+        972,
+        972
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

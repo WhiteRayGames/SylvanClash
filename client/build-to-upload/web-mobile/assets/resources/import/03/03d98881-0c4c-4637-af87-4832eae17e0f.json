@@ -1,0 +1,52 @@
+[
+  1,
+  [
+    "19d548f06"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "selected-day7",
+      "rect": [
+        1879,
+        1431,
+        369,
+        152
+      ],
+      "offset": [
+        0,
+        0
+      ],
+      "originalSize": [
+        369,
+        152
+      ],
+      "rotated": 1,
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "fdIhVz0fdNXr1aWWCR9Y1a"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "loding_tex",
+      "rect": [
+        1,
+        1,
+        126,
+        176
+      ],
+      "offset": [
+        0,
+        39
+      ],
+      "originalSize": [
+        128,
+        256
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

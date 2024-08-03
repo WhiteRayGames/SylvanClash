@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "feKJFWn/JFG5vnMt5SysnJ"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "selected-day7_tex",
+      "rect": [
+        1,
+        1,
+        369,
+        152
+      ],
+      "offset": [
+        -70.5,
+        51
+      ],
+      "originalSize": [
+        512,
+        256
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

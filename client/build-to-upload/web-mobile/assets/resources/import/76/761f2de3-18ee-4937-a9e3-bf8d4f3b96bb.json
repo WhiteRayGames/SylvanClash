@@ -1,0 +1,52 @@
+[
+  1,
+  [
+    "1eb6e95ac"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "defeat_wave",
+      "rect": [
+        570,
+        1036,
+        146,
+        34
+      ],
+      "offset": [
+        0,
+        0
+      ],
+      "originalSize": [
+        146,
+        34
+      ],
+      "rotated": 1,
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "03eButEapNaYqYgXy4M3YS"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "Roulette_tex",
+      "rect": [
+        3,
+        2,
+        90,
+        134
+      ],
+      "offset": [
+        -16,
+        59
+      ],
+      "originalSize": [
+        128,
+        256
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

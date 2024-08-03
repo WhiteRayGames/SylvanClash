@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "f4iaITTpNK4KuGYKFcjHM+"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "attackRange_tex",
+      "rect": [
+        1,
+        1,
+        766,
+        388
+      ],
+      "offset": [
+        -128,
+        61
+      ],
+      "originalSize": [
+        1024,
+        512
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

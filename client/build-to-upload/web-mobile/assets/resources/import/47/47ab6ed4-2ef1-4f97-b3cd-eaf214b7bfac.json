@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "7cfNJl+XhC+7o3KDs5wMW7"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "cloud_1",
+      "rect": [
+        0,
+        0,
+        280,
+        108
+      ],
+      "offset": [
+        0,
+        0
+      ],
+      "originalSize": [
+        280,
+        108
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

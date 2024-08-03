@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "78DiWNIA1GyJ5APFDM3Gst"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "specialGrid_unlock",
+      "rect": [
+        34,
+        34,
+        123,
+        124
+      ],
+      "offset": [
+        -2.5,
+        2.5
+      ],
+      "originalSize": [
+        196,
+        197
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

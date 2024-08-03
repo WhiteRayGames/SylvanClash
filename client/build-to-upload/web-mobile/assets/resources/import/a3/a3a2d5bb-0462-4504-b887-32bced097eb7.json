@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "88WmQS6TxHIocyIKn+XJyx"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "tree_2_tex",
+      "rect": [
+        1,
+        1,
+        253,
+        260
+      ],
+      "offset": [
+        -0.5,
+        125
+      ],
+      "originalSize": [
+        256,
+        512
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

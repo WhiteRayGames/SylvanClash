@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "94a8waVKRCA5bWRm8pWvHo"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "rage_tex",
+      "rect": [
+        1,
+        1,
+        156,
+        126
+      ],
+      "offset": [
+        -49,
+        0
+      ],
+      "originalSize": [
+        256,
+        128
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

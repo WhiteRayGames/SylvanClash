@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "569E73dmhJDIofoKWVejas"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "evo_75_tex",
+      "rect": [
+        1,
+        1,
+        120,
+        194
+      ],
+      "offset": [
+        -3,
+        30
+      ],
+      "originalSize": [
+        128,
+        256
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

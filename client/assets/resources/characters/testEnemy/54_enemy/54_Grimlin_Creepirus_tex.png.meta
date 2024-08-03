@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "071ec8c6-9079-4296-aed1-c97e58218442",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 128,
+  "height": 128,
+  "platformSettings": {},
+  "subMetas": {
+    "54_Grimlin_Creepirus_tex": {
+      "ver": "1.0.4",
+      "uuid": "880144f5-10fe-4a52-8d54-3795e8b296fd",
+      "rawTextureUuid": "071ec8c6-9079-4296-aed1-c97e58218442",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 1,
+      "trimY": 1,
+      "width": 126,
+      "height": 126,
+      "rawWidth": 128,
+      "rawHeight": 128,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

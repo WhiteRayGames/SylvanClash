@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "06f7T1A69CnLi9oRg+iBLg"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "57_Grimlin_PodWorm_tex",
+      "rect": [
+        1,
+        1,
+        126,
+        125
+      ],
+      "offset": [
+        0,
+        0.5
+      ],
+      "originalSize": [
+        128,
+        128
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

@@ -1,0 +1,90 @@
+
+special_gift.png
+size: 778,520
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+box_down
+  rotate: true
+  xy: 679, 46
+  size: 113, 97
+  orig: 113, 97
+  offset: 0, 0
+  index: -1
+box_up
+  rotate: true
+  xy: 597, 40
+  size: 119, 80
+  orig: 119, 80
+  offset: 0, 0
+  index: -1
+colored_ribbon
+  rotate: false
+  xy: 551, 161
+  size: 207, 96
+  orig: 207, 96
+  offset: 0, 0
+  index: -1
+egg1
+  rotate: false
+  xy: 492, 15
+  size: 103, 123
+  orig: 103, 123
+  offset: 0, 0
+  index: -1
+head
+  rotate: false
+  xy: 492, 140
+  size: 30, 30
+  orig: 30, 30
+  offset: 0, 0
+  index: -1
+light1
+  rotate: true
+  xy: 551, 259
+  size: 259, 211
+  orig: 259, 211
+  offset: 0, 0
+  index: -1
+light2
+  rotate: false
+  xy: 228, 24
+  size: 262, 213
+  orig: 262, 213
+  offset: 0, 0
+  index: -1
+light3
+  rotate: false
+  xy: 2, 239
+  size: 279, 279
+  orig: 279, 279
+  offset: 0, 0
+  index: -1
+light4
+  rotate: false
+  xy: 2, 12
+  size: 224, 225
+  orig: 224, 225
+  offset: 0, 0
+  index: -1
+light5
+  rotate: false
+  xy: 283, 251
+  size: 266, 267
+  orig: 266, 267
+  offset: 0, 0
+  index: -1
+star1
+  rotate: false
+  xy: 228, 2
+  size: 19, 20
+  orig: 19, 20
+  offset: 0, 0
+  index: -1
+tag
+  rotate: false
+  xy: 492, 172
+  size: 49, 77
+  orig: 49, 77
+  offset: 0, 0
+  index: -1

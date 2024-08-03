@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "19d548f06"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "title-board-reuse",
+      "rect": [
+        3,
+        1815,
+        618,
+        228
+      ],
+      "offset": [
+        0,
+        0
+      ],
+      "originalSize": [
+        618,
+        230
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

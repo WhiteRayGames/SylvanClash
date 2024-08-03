@@ -1,0 +1,52 @@
+[
+  1,
+  [
+    "1fbb3c150"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "defeat-light",
+      "rect": [
+        674,
+        1591,
+        388,
+        375
+      ],
+      "offset": [
+        0,
+        0
+      ],
+      "originalSize": [
+        388,
+        375
+      ],
+      "rotated": 1,
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

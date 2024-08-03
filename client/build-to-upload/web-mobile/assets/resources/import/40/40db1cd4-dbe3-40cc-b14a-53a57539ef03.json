@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "bdHP+trEJFxoYBTXK72MIF"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "雪花动画_tex",
+      "rect": [
+        1,
+        1,
+        301,
+        786
+      ],
+      "offset": [
+        -104.5,
+        118
+      ],
+      "originalSize": [
+        512,
+        1024
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

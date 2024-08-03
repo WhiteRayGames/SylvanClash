@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "05nqq3p39KA5Z00kbi2BW4"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "gameBg_house_2",
+      "rect": [
+        0,
+        36,
+        203,
+        374
+      ],
+      "offset": [
+        0,
+        -11
+      ],
+      "originalSize": [
+        203,
+        424
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

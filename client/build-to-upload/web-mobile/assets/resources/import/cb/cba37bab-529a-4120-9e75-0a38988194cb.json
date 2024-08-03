@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "33FW8YOVFIg4yxZpUIV/Vn"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "Grimlin_Pseudopod_tex",
+      "rect": [
+        1,
+        1,
+        158,
+        124
+      ],
+      "offset": [
+        -48,
+        1
+      ],
+      "originalSize": [
+        256,
+        128
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

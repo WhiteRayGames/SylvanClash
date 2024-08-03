@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "15EUIp8q1LL4vlyAUPGd2K"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "53_Grimlin_Spikicyte_tex",
+      "rect": [
+        1,
+        1,
+        181,
+        115
+      ],
+      "offset": [
+        -36.5,
+        5.5
+      ],
+      "originalSize": [
+        256,
+        128
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

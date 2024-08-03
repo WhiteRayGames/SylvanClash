@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "738Jq6N05F54HWBzm3k9lT"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "Plasticbag_tex",
+      "rect": [
+        1,
+        1,
+        117,
+        207
+      ],
+      "offset": [
+        -4.5,
+        23.5
+      ],
+      "originalSize": [
+        128,
+        256
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

@@ -1,0 +1,18 @@
+{
+  "certificatePath": "E:\\workspace\\TalkWeb\\HeJi\\HuaHuaReBuQi\\certificate.pem",
+  "deviceOrientation": "portrait",
+  "disabledMode": "",
+  "icon": "E:\\workspace\\TalkWeb\\HeJi\\HuaHuaReBuQi\\assets\\resources\\icon_new3_200.png",
+  "logLevel": "log",
+  "minPlatformVersion": "1041",
+  "name": "植物大战僵尸2",
+  "npmPath": "",
+  "package": "com.td.pvz2.vivominigame",
+  "privatePath": "E:\\workspace\\TalkWeb\\HeJi\\HuaHuaReBuQi\\private.pem",
+  "showNpmPath": false,
+  "tinyPackageMode": false,
+  "tinyPackageServer": "",
+  "useDebugKey": false,
+  "versionCode": "1",
+  "versionName": "1.0.0"
+}

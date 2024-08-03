@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "8elYaQZ11OIpprfDaCcyUH"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "Grimlin_Capilarus_tex",
+      "rect": [
+        1,
+        1,
+        123,
+        173
+      ],
+      "offset": [
+        -1.5,
+        40.5
+      ],
+      "originalSize": [
+        128,
+        256
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

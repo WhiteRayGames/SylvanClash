@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "0dCoXYf0ZCkImdxhN3YVVS"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "starterbundles_tex",
+      "rect": [
+        2,
+        2,
+        86,
+        87
+      ],
+      "offset": [
+        -19,
+        18.5
+      ],
+      "originalSize": [
+        128,
+        128
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

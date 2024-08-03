@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "8e958690-675d-4e22-9a6b-7c3682732507",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 128,
+  "height": 256,
+  "platformSettings": {},
+  "subMetas": {
+    "Grimlin_Capilarus_tex": {
+      "ver": "1.0.4",
+      "uuid": "9de9ae9f-94d6-489d-a932-e9913d839fc0",
+      "rawTextureUuid": "8e958690-675d-4e22-9a6b-7c3682732507",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -1.5,
+      "offsetY": 40.5,
+      "trimX": 1,
+      "trimY": 1,
+      "width": 123,
+      "height": 173,
+      "rawWidth": 128,
+      "rawHeight": 256,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

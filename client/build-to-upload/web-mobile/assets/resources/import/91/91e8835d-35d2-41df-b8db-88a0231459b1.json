@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "73tlzbL7dLoaZKdEYPZIWX"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "49_Grimlin_Digitalis_tex",
+      "rect": [
+        1,
+        1,
+        149,
+        223
+      ],
+      "offset": [
+        -52.5,
+        15.5
+      ],
+      "originalSize": [
+        256,
+        256
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

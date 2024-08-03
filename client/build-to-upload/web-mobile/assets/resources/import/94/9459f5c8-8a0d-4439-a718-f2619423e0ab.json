@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "f7HRoAV89EkoHusVnSEoqS"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "baozhadonghua_tex",
+      "rect": [
+        1,
+        1,
+        247,
+        151
+      ],
+      "offset": [
+        -3.5,
+        51.5
+      ],
+      "originalSize": [
+        256,
+        256
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

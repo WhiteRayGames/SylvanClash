@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "65J+tQeg9HE5u5HSsZ8MJQ"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "Grimlin_Palpipox_tex",
+      "rect": [
+        1,
+        1,
+        125,
+        122
+      ],
+      "offset": [
+        -0.5,
+        2
+      ],
+      "originalSize": [
+        128,
+        128
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "1fbb3c150"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "playerPhoto_frame",
+      "rect": [
+        1329,
+        1062,
+        97,
+        153
+      ],
+      "offset": [
+        0,
+        0
+      ],
+      "originalSize": [
+        97,
+        153
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

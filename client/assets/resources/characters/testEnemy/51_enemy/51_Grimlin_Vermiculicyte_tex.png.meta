@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "93346b10-4f34-4353-af8c-1d34eec38734",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 128,
+  "height": 128,
+  "platformSettings": {},
+  "subMetas": {
+    "51_Grimlin_Vermiculicyte_tex": {
+      "ver": "1.0.4",
+      "uuid": "0e913502-6ba7-49f9-afe4-58672addf25e",
+      "rawTextureUuid": "93346b10-4f34-4353-af8c-1d34eec38734",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -16.5,
+      "offsetY": 0.5,
+      "trimX": 1,
+      "trimY": 1,
+      "width": 93,
+      "height": 125,
+      "rawWidth": 128,
+      "rawHeight": 128,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

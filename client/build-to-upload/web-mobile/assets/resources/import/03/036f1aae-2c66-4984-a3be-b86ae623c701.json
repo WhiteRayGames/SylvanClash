@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "c4szl7ZSZB7q66KqRVAoV+"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "background-blur",
+      "rect": [
+        0,
+        0,
+        900,
+        1415
+      ],
+      "offset": [
+        0,
+        0
+      ],
+      "originalSize": [
+        900,
+        1415
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

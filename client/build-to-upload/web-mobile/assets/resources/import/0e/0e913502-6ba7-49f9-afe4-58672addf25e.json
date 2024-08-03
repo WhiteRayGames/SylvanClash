@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "93NGsQTzRDU6+MHTTuw4c0"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "51_Grimlin_Vermiculicyte_tex",
+      "rect": [
+        1,
+        1,
+        93,
+        125
+      ],
+      "offset": [
+        -16.5,
+        0.5
+      ],
+      "originalSize": [
+        128,
+        128
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

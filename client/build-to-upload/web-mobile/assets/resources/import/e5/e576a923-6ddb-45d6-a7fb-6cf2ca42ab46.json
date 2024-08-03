@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "94n2nJEaRF1rfi8/oReOwu"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "Grimlin_Flu_tex",
+      "rect": [
+        1,
+        1,
+        188,
+        111
+      ],
+      "offset": [
+        -33,
+        7.5
+      ],
+      "originalSize": [
+        256,
+        128
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

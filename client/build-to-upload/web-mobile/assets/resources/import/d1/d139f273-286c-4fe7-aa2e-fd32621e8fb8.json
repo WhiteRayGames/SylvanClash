@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "4cnbKlgY9MFrAUyNcFSY5I"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "VIP_tex",
+      "rect": [
+        2,
+        4,
+        202,
+        471
+      ],
+      "offset": [
+        -25,
+        16.5
+      ],
+      "originalSize": [
+        256,
+        512
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

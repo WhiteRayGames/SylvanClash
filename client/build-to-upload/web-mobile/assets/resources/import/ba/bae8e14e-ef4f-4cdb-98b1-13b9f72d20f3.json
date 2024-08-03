@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "3brjgmv+dGxIgD3Wz4SkaK"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "Congratulations_tex",
+      "rect": [
+        1,
+        1,
+        36,
+        49
+      ],
+      "offset": [
+        -13,
+        6.5
+      ],
+      "originalSize": [
+        64,
+        64
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

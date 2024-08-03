@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "0cYvC0h4tBtqNNg1Tt1kv7"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "goldcoin_tex",
+      "rect": [
+        1,
+        1,
+        27,
+        37
+      ],
+      "offset": [
+        -1.5,
+        12.5
+      ],
+      "originalSize": [
+        32,
+        64
+      ],
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]
