@@ -6,7 +6,7 @@ on:
       - main
     paths:
       - 'client/build-to-upload/web-mobile/**'
-      - "k8s\sylvanclash-frontend\Chart.yaml"
+      - "k8s/sylvanclash-frontend/Chart.yaml"
 
 jobs:
   build:
