@@ -41,7 +41,7 @@ cc.Class({
 
     getUserProperties () {
         this.userProperties = {};
-        let uuid = cc.Mgr.Config.isTelegram ? window.webapp.initDataUnsafe.user.id : "Local";
+        let uuid = cc.Mgr.Config.isTelegram ? window.Telegram.webapp.initDataUnsafe.user.id : "Local";
         this.userProperties.uuid = uuid;
 
         this.userProperties.internal_version = cc.Mgr.Config.version;

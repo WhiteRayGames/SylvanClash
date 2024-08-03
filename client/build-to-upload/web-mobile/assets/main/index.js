@@ -1635,7 +1635,7 @@ window.__require = function e(t, n, r) {
         isDebug: false,
         isTelegram: true,
         platform: "Telegram",
-        version: "1.0.1",
+        version: "1.0.2",
         debug_version: "_1",
         zOffsetY: 142,
         zBossLine: 100,

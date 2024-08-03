@@ -131,7 +131,7 @@ cc.Class({
         this.debugVersion.node.active = cc.Mgr.Config.isDebug;
         this.debugVersion.string = cc.Mgr.Config.debug_version;
 
-        this.idLabel.string = cc.Mgr.Config.isTelegram ? window.webapp.initDataUnsafe.user.id : "Local";
+        this.idLabel.string = cc.Mgr.Config.isTelegram ? window.Telegram.webapp.initDataUnsafe.user.id : "Local";
 
         this.spriteCoin.setMaterial(0, this.nomarlM);
 
