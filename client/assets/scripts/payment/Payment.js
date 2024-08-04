@@ -84,7 +84,6 @@ cc.Class({
         cc.Mgr.analytics.logEvent("purchase_start", JSON.stringify(data));
 
         cc.Mgr.UIMgr.showLoading(true);
-        cc.Mgr.game.pauseGame();
 
         let url = cc.Mgr.Config.isDebug ? "https://tg-api-service-test.lunamou.com/orders/create" : "https://tg-api-service.lunamou.com/orders/create";
         cc.Mgr.http.httpPost(url, requestBody, (error, response) => {
@@ -110,17 +109,14 @@ cc.Class({
                         this.checkOrderStatus(data.id);
                     } else if (status === 'failed') {
                         window.Telegram.WebApp.showAlert('Payment failed. Please try again.');
-                        cc.Mgr.game.resumeGame();
                         cc.Mgr.UIMgr.hideLoading();
                         this.callback = null;
                     } else if (status === 'cancelled') {
                         window.Telegram.WebApp.showAlert('Payment was cancelled.');
-                        cc.Mgr.game.resumeGame();
                         cc.Mgr.UIMgr.hideLoading();
                         this.callback = null;
                     } else {
                         window.Telegram.WebApp.showAlert('Unexpected payment status: ' + status);
-                        cc.Mgr.game.resumeGame();
                         cc.Mgr.UIMgr.hideLoading();
                         this.callback = null;
                     }
@@ -146,7 +142,6 @@ cc.Class({
                 webapp.showAlert('Payment successful! Thank you for your purchase.');
 
                 // success
-                cc.Mgr.game.resumeGame();
                 cc.Mgr.UIMgr.showPrompt(cc.Mgr.Utils.getTranslation("payment-successful"), "", this.tipParent);
                 this.callback(this.getGems[this.index]);
                 cc.Mgr.game.isPayingUser = true;
@@ -163,7 +158,6 @@ cc.Class({
                 setTimeout(() => this.checkOrderStatus(orderId), 5000);  // 5秒后再次检查
             } else {
                 window.Telegram.WebApp.showAlert(response + '   Please contact support if you have any questions.');
-                cc.Mgr.game.resumeGame();
                 cc.Mgr.UIMgr.hideLoading();
                 this.callback = null;
             }

@@ -1636,7 +1636,7 @@ window.__require = function e(t, n, r) {
         isTelegram: true,
         platform: "Telegram",
         version: "1.0.0",
-        debug_version: "_debug_3",
+        debug_version: "_debug_4",
         zOffsetY: 142,
         zBossLine: 100,
         allPlantCount: 75,
@@ -7794,7 +7794,6 @@ window.__require = function e(t, n, r) {
         data.productName = this.purchaseProductID;
         cc.Mgr.analytics.logEvent("purchase_start", JSON.stringify(data));
         cc.Mgr.UIMgr.showLoading(true);
-        cc.Mgr.game.pauseGame();
         var url = cc.Mgr.Config.isDebug ? "https://tg-api-service-test.lunamou.com/orders/create" : "https://tg-api-service.lunamou.com/orders/create";
         cc.Mgr.http.httpPost(url, requestBody, function(error, response) {
           if (true == error) {
@@ -7807,17 +7806,14 @@ window.__require = function e(t, n, r) {
           if (data && data.invoice_url) window.Telegram.WebApp.openInvoice(data.invoice_url, function(status) {
             if ("paid" === status) _this.checkOrderStatus(data.id); else if ("failed" === status) {
               window.Telegram.WebApp.showAlert("Payment failed. Please try again.");
-              cc.Mgr.game.resumeGame();
               cc.Mgr.UIMgr.hideLoading();
               _this.callback = null;
             } else if ("cancelled" === status) {
               window.Telegram.WebApp.showAlert("Payment was cancelled.");
-              cc.Mgr.game.resumeGame();
               cc.Mgr.UIMgr.hideLoading();
               _this.callback = null;
             } else {
               window.Telegram.WebApp.showAlert("Unexpected payment status: " + status);
-              cc.Mgr.game.resumeGame();
               cc.Mgr.UIMgr.hideLoading();
               _this.callback = null;
             }
@@ -7837,20 +7833,18 @@ window.__require = function e(t, n, r) {
             return;
           }
           var data = JSON.parse(response);
-          if ("paid" === data.status) {
+          if (data.status && "paid" === data.status) {
             webapp.showAlert("Payment successful! Thank you for your purchase.");
-            cc.Mgr.game.resumeGame();
             cc.Mgr.UIMgr.showPrompt(cc.Mgr.Utils.getTranslation("payment-successful"), "", _this2.tipParent);
             _this2.callback(_this2.getGems[_this2.index]);
             cc.Mgr.game.isPayingUser = true;
             cc.Mgr.game.ltv += _this2.priceList[_this2.index];
             cc.Mgr.UIMgr.hideLoading();
             _this2.callback = null;
-          } else if ("pending" === data.status) setTimeout(function() {
+          } else if (data.status && "pending" === data.status) setTimeout(function() {
             return _this2.checkOrderStatus(orderId);
           }, 5e3); else {
-            window.Telegram.WebApp.showAlert("Order status: " + data.status + ". Please contact support if you have any questions.");
-            cc.Mgr.game.resumeGame();
+            window.Telegram.WebApp.showAlert(response + "   Please contact support if you have any questions.");
             cc.Mgr.UIMgr.hideLoading();
             _this2.callback = null;
           }
