@@ -26,7 +26,7 @@ var httpUtils = cc.Class({
     var request = cc.loader.getXMLHttpRequest()
     console.log('Status: Send Get Request to ' + url)
     request.open('GET', url, true)
-    xhr.setRequestHeader('Content-Type', 'application/json');
+    request.setRequestHeader('Content-Type', 'application/json');
 
     request.onreadystatechange = function () {
       if (request.readyState == 4) {

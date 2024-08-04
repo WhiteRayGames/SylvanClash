@@ -1636,7 +1636,7 @@ window.__require = function e(t, n, r) {
         isTelegram: true,
         platform: "Telegram",
         version: "1.0.0",
-        debug_version: "_debug_4",
+        debug_version: "_debug_5",
         zOffsetY: 142,
         zBossLine: 100,
         allPlantCount: 75,
@@ -5641,7 +5641,7 @@ window.__require = function e(t, n, r) {
         var request = cc.loader.getXMLHttpRequest();
         console.log("Status: Send Get Request to " + url);
         request.open("GET", url, true);
-        xhr.setRequestHeader("Content-Type", "application/json");
+        request.setRequestHeader("Content-Type", "application/json");
         request.onreadystatechange = function() {
           4 == request.readyState && (request.status >= 200 && request.status <= 207 ? callback(false, request.responseText) : callback(true, request.responseText));
         };
@@ -7834,7 +7834,7 @@ window.__require = function e(t, n, r) {
           }
           var data = JSON.parse(response);
           if (data.status && "paid" === data.status) {
-            webapp.showAlert("Payment successful! Thank you for your purchase.");
+            window.Telegram.WebApp.showAlert("Payment successful! Thank you for your purchase.");
             cc.Mgr.UIMgr.showPrompt(cc.Mgr.Utils.getTranslation("payment-successful"), "", _this2.tipParent);
             _this2.callback(_this2.getGems[_this2.index]);
             cc.Mgr.game.isPayingUser = true;

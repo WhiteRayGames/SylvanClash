@@ -54,7 +54,9 @@ cc.Class({
         let curProductID = this.productsIDList[_index];
         this.callback = _callback
 
-        // cc.Mgr.http.httpGets("https://tg-api-service-test.lunamou.com/health", (error, response) => {
+        // let orderId = 13
+        // let url = cc.Mgr.Config.isDebug ? "https://tg-api-service-test.lunamou.com/orders/" : "https://tg-api-service.lunamou.com/orders/";
+        // cc.Mgr.http.httpGets(url + orderId + "/status", (error, response) => {
         //     if (error == true) {
         //         window.Telegram.WebApp.showAlert('Error checking order status. Please try again later.');
         //         return;
@@ -139,7 +141,7 @@ cc.Class({
             }
             let data = JSON.parse(response);
             if (data.status && data.status === 'paid') {
-                webapp.showAlert('Payment successful! Thank you for your purchase.');
+                window.Telegram.WebApp.showAlert('Payment successful! Thank you for your purchase.');
 
                 // success
                 cc.Mgr.UIMgr.showPrompt(cc.Mgr.Utils.getTranslation("payment-successful"), "", this.tipParent);
