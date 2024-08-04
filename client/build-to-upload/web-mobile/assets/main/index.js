@@ -1636,7 +1636,7 @@ window.__require = function e(t, n, r) {
         isTelegram: true,
         platform: "Telegram",
         version: "1.0.0",
-        debug_version: "_debug_8",
+        debug_version: "_debug_9",
         zOffsetY: 142,
         zBossLine: 100,
         allPlantCount: 75,
@@ -17400,8 +17400,8 @@ window.__require = function e(t, n, r) {
         this.spriteCoin.setMaterial(0, this.nomarlM);
         cc.Mgr.Config.isDebug ? this.recoveryBtn.y = -100 : this.recoveryBtn.y = -200;
         this.recoveryBtn.active = false;
-        this.playerId.string = "PlayerID: " + cc.Mgr.Config.isTelegram ? window.Telegram.WebApp.initDataUnsafe.user.id : "Local";
-        this.inviterId.string = "InviterID: " + window.startParam == "" ? "SOLO" : window.startParam;
+        this.playerId.string = "PlayerID: " + (cc.Mgr.Config.isTelegram ? window.Telegram.WebApp.initDataUnsafe.user.id : "Local");
+        this.inviterId.string = "InviterID: " + ("" == (null != window.startParam && window.startParam) ? "SOLO" : window.startParam);
       },
       copyID: function copyID() {
         cc.Mgr.Utils.copyID();
@@ -17487,7 +17487,7 @@ window.__require = function e(t, n, r) {
         if (false == this.limitClick.clickTime()) return;
         if (false == cc.Mgr.Config.isTelegram) return;
         var userId = window.Telegram.WebApp.initDataUnsafe.user.id;
-        var messageText = encodeURIComponent("\ud83d\udcb0Catizen: Unleash, Play, Earn - Where Every Game Leads to an Airdrop Adventure! \ud83c\udf81Let's play-to-earn airdrop right now!");
+        var messageText = encodeURIComponent("\ud83d\udcb0Catizen: Unleash, Play, Earn - Where Every Game Leads to an Airdrop Adventure! \n\ud83c\udf81Let's play-to-earn airdrop right now!");
         var gameUrl = encodeURIComponent("https://t.me/Vision_test_02_bot/paytest?startapp=" + userId);
         var telegramUrl = "https://t.me/share/url?url=" + gameUrl + "&text=" + messageText;
         window.open(telegramUrl, "_blank");

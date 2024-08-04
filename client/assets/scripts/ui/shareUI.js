@@ -50,7 +50,7 @@ var shareUI = cc.Class({
         if (cc.Mgr.Config.isTelegram == false) return;
 
         let userId = window.Telegram.WebApp.initDataUnsafe.user.id;
-        const messageText = encodeURIComponent("💰Catizen: Unleash, Play, Earn - Where Every Game Leads to an Airdrop Adventure! 🎁Let's play-to-earn airdrop right now!");
+        const messageText = encodeURIComponent("💰Catizen: Unleash, Play, Earn - Where Every Game Leads to an Airdrop Adventure! \n🎁Let's play-to-earn airdrop right now!");
         const gameUrl = encodeURIComponent("https://t.me/Vision_test_02_bot/paytest?startapp=" + userId);
         const telegramUrl = `https://t.me/share/url?url=${gameUrl}&text=${messageText}`;
         window.open(telegramUrl, '_blank');

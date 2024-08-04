@@ -146,8 +146,8 @@ cc.Class({
 
         this.recoveryBtn.active = false;
 
-        this.playerId.string = "PlayerID: " + cc.Mgr.Config.isTelegram ? window.Telegram.WebApp.initDataUnsafe.user.id : "Local";
-        this.inviterId.string = "InviterID: " + window.startParam == "" ? "SOLO" : window.startParam;
+        this.playerId.string = "PlayerID: " + (cc.Mgr.Config.isTelegram ? window.Telegram.WebApp.initDataUnsafe.user.id : "Local");
+        this.inviterId.string = "InviterID: " + ((window.startParam != null && window.startParam) == "" ? "SOLO" : window.startParam);
     },
 
     copyID() {
