@@ -104,23 +104,19 @@ cc.Class({
         let ratio = size.width / size.height;
         cc.log("ratio: " + ratio);
         cc.Mgr.game.ratioOffsetY = 0;
-        // if (ratio > 0.6) {
-        //     cc.Mgr.game.isPad = true;
-        //     cc.Mgr.game.ratioOffsetX = (ratio - 0.6) * 640;
-        //     // this.canvas.fitHeight = true;
-        //     // this.canvas.fitWidth = true;
-        // } else {
-        //     if (ratio < 0.56) {
-        //         cc.Mgr.game.ratioOffsetY = (0.56 - ratio) * 1136;
-        //     }
-        //     cc.Mgr.game.isPad = false;
-        //     // this.canvas.fitHeight = false;
-        //     // this.canvas.fitWidth = true;
-        // }
-        if (ratio < 0.56) {
-            cc.Mgr.game.ratioOffsetY = (0.56 - ratio) * 1136;
+        if (ratio > 0.6) {
+            cc.Mgr.game.isPad = true;
+            cc.Mgr.game.ratioOffsetX = (ratio - 0.6) * 640;
+            // this.canvas.fitHeight = true;
+            // this.canvas.fitWidth = true;
+        } else {
+            if (ratio < 0.56) {
+                cc.Mgr.game.ratioOffsetY = (0.56 - ratio) * 1136;
+            }
+            cc.Mgr.game.isPad = false;
+            // this.canvas.fitHeight = false;
+            // this.canvas.fitWidth = true;
         }
-        cc.Mgr.game.isPad = false;
     }
 
     /*
