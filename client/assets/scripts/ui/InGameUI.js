@@ -925,7 +925,7 @@ var InGameUI = cc.Class({
     openSetUI:function(){
         // jsb.reflection.callStaticMethod("AdmobManager", "preloadInterstitial_mopub");
         // cc.Mgr.admob.preloadInterstitial_mopub();
-        cc.Mgr.UIMgr.openSetting();
+        // cc.Mgr.UIMgr.openSetting();
 
         // if (cc.sys.os === cc.sys.OS_ANDROID) {
         //     jsb.reflection.callStaticMethod('org/cocos2dx/javascript/utils/Utils', 'showAchieve', '()V');
@@ -962,6 +962,8 @@ var InGameUI = cc.Class({
         
         // tempory code
         // cc.Mgr.UIMgr.openMaxLevelUI();
+
+        cc.Mgr.UIMgr.openShareUI();
     },
 
     onClickRank () {

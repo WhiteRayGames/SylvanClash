@@ -47,26 +47,30 @@ var shareUI = cc.Class({
             return
         }
 
-        cc.Mgr.UIMgr.showLoading();
+        const gameUrl = 'https://t.me/Vision_test_02_bot/paytest';
+        const telegramUrl = 'https://t.me/share/url?url=' + encodeURIComponent(gameUrl);
+        window.open(telegramUrl, '_blank');
 
-        let self = this;
-        cc.Mgr.Utils.getBase64Image("resources/tex/shareImage_5.png", (_data) => {
-            cc.Mgr.UIMgr.hideLoading();
-
-            cc.Mgr.game.updateMissionProgressById(MissionType.InviteCount);
-            cc.Mgr.game.updateAchieveProgressByType(AchieveType.Invite);
-            cc.Mgr.UIMgr.InGameUI.checkMissionAchieveTip();
-
-            self.getReward = true;
-
-            let data = {}
-            data.elapsed = cc.Mgr.Utils.getDate9(true)
-            data.stage = cc.Mgr.game.level
-            data.feature = "invite friends"
-            cc.Mgr.analytics.logEvent("share_message", JSON.stringify(data));
-
-            self.closeUI();
-        });
+        // cc.Mgr.UIMgr.showLoading();
+        //
+        // let self = this;
+        // cc.Mgr.Utils.getBase64Image("resources/tex/shareImage_5.png", (_data) => {
+        //     cc.Mgr.UIMgr.hideLoading();
+        //
+        //     cc.Mgr.game.updateMissionProgressById(MissionType.InviteCount);
+        //     cc.Mgr.game.updateAchieveProgressByType(AchieveType.Invite);
+        //     cc.Mgr.UIMgr.InGameUI.checkMissionAchieveTip();
+        //
+        //     self.getReward = true;
+        //
+        //     let data = {}
+        //     data.elapsed = cc.Mgr.Utils.getDate9(true)
+        //     data.stage = cc.Mgr.game.level
+        //     data.feature = "invite friends"
+        //     cc.Mgr.analytics.logEvent("share_message", JSON.stringify(data));
+        //
+        //     self.closeUI();
+        // });
     },
 
     showUI:function () {
