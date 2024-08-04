@@ -47,8 +47,9 @@ var shareUI = cc.Class({
             return
         }
 
-        const gameUrl = 'https://t.me/Vision_test_02_bot/paytest';
-        const telegramUrl = 'https://t.me/share/url?url=' + encodeURIComponent(gameUrl);
+        const messageText = encodeURIComponent("💰Catizen: Unleash, Play, Earn - Where Every Game Leads to an Airdrop Adventure! 🎁Let's play-to-earn airdrop right now!");
+        const gameUrl = encodeURIComponent("https://t.me/Vision_test_02_bot/paytest");
+        const telegramUrl = `https://t.me/share/url?url=${gameUrl}&text=${messageText}`;
         window.open(telegramUrl, '_blank');
 
         // cc.Mgr.UIMgr.showLoading();

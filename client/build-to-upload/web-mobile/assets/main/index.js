@@ -1636,7 +1636,7 @@ window.__require = function e(t, n, r) {
         isTelegram: true,
         platform: "Telegram",
         version: "1.0.0",
-        debug_version: "_debug_5",
+        debug_version: "_debug_7",
         zOffsetY: 142,
         zBossLine: 100,
         allPlantCount: 75,
@@ -17481,8 +17481,9 @@ window.__require = function e(t, n, r) {
       },
       onClickShare: function onClickShare() {
         if (false == this.limitClick.clickTime()) return;
-        var gameUrl = "https://t.me/your_game_link";
-        var telegramUrl = "https://t.me/share/url?url=" + encodeURIComponent(gameUrl);
+        var messageText = encodeURIComponent("\ud83d\udcb0Catizen: Unleash, Play, Earn - Where Every Game Leads to an Airdrop Adventure! \ud83c\udf81Let's play-to-earn airdrop right now!");
+        var gameUrl = encodeURIComponent("https://t.me/Vision_test_02_bot/paytest");
+        var telegramUrl = "https://t.me/share/url?url=" + gameUrl + "&text=" + messageText;
         window.open(telegramUrl, "_blank");
       },
       showUI: function showUI() {
