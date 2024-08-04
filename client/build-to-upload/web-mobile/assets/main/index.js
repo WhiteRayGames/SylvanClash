@@ -508,13 +508,8 @@ window.__require = function e(t, n, r) {
         var ratio = size.width / size.height;
         cc.log("ratio: " + ratio);
         cc.Mgr.game.ratioOffsetY = 0;
-        if (ratio > .6) {
-          cc.Mgr.game.isPad = true;
-          cc.Mgr.game.ratioOffsetX = 640 * (ratio - .6);
-        } else {
-          ratio < .56 && (cc.Mgr.game.ratioOffsetY = 1136 * (.56 - ratio));
-          cc.Mgr.game.isPad = false;
-        }
+        ratio < .56 && (cc.Mgr.game.ratioOffsetY = 1136 * (.56 - ratio));
+        cc.Mgr.game.isPad = false;
       }
     });
     cc._RF.pop();
@@ -1636,7 +1631,7 @@ window.__require = function e(t, n, r) {
         isTelegram: true,
         platform: "Telegram",
         version: "1.0.0",
-        debug_version: "_debug_9",
+        debug_version: "_debug_10",
         zOffsetY: 142,
         zBossLine: 100,
         allPlantCount: 75,
@@ -8101,7 +8096,7 @@ window.__require = function e(t, n, r) {
             _this.playerPhoto.node.width = _this.playerPhoto.node.height = 50;
           }
         });
-        this.isSelfNode.active = _data.player.id == Wortal.player.getID();
+        this.isSelfNode.active = 1 == _data.rank;
       }
     });
     cc._RF.pop();
@@ -8159,7 +8154,16 @@ window.__require = function e(t, n, r) {
           scale: 1
         }).start();
         "Japanese" === cc.Mgr.Config.language ? this.rankLabel.fontSize = this.iconLabel.fontSize = this.nameLabel.fontSize = this.topLabel.fontSize = 16 : "Russian" === cc.Mgr.Config.language && (this.rankLabel.fontSize = this.iconLabel.fontSize = this.nameLabel.fontSize = this.topLabel.fontSize = 13);
-        this.rankingData = cc.Mgr.Utils.rankingData;
+        this.rankingData = [];
+        for (var i = 0; i < 10; i++) {
+          var rankData = {};
+          rankData.rank = i + 1;
+          rankData.player = {};
+          rankData.player.name = "Tester_" + (i + 1);
+          rankData.formattedScore = 10 - i;
+          rankData.player.photo = "";
+          this.rankingData.push(rankData);
+        }
         this.rankingData && this._scrollViewComponent.setBaseInfo(this.rankingData.length, 5, 15, 85, this.setRankList.bind(this));
         this._scrollViewComponent.clear();
         this._scrollViewComponent.scrollTo(0);

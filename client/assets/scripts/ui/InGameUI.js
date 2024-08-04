@@ -962,8 +962,6 @@ var InGameUI = cc.Class({
         
         // tempory code
         // cc.Mgr.UIMgr.openMaxLevelUI();
-
-        // cc.Mgr.UIMgr.openShareUI();
     },
 
     onClickRank () {
