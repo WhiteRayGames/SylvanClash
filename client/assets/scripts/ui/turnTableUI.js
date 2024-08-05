@@ -164,21 +164,23 @@ var turnTableUI = cc.Class({
         this.lastPlantMaxLv = cc.Mgr.game.plantMaxLv;
         this.currentBuffList = [];
 
-        let checkAvailabelAds = cc.Mgr.admob.checkAvailableRewardedAd();
-        if (this.max_count - cc.Mgr.game.spinADResetTime > 0 && checkAvailabelAds == true)
-        {
-            this.timeNode.active = false;
-            this.inviteBtn.node.position = this.freeBtn.node.position = cc.v2(0, -415);
-            this.gemBtn.node.position = cc.v2(0, -415);
-            this.freetimeLbl.string = cc.Mgr.Utils.getTranslation("btn-get") + " ("+(this.max_count - cc.Mgr.game.spinADResetTime) + "/" + this.ads_count + ")";
-            this.gemLbl.string = this.costGem;
-        }
-        else
-        {
-            this.inviteBtn.node.active = this.freeBtn.node.active = false;
-            this.gemBtn.node.position = cc.v2(0, -415);
-            this.gemLbl.string = this.costGem;
-        }
+        this.freeBtn.node.active = cc.Mgr.game.freeFlag.TurnTable;
+
+        // let checkAvailabelAds = cc.Mgr.admob.checkAvailableRewardedAd();
+        // if (this.max_count - cc.Mgr.game.spinADResetTime > 0 && checkAvailabelAds == true)
+        // {
+        //     this.timeNode.active = false;
+        //     this.inviteBtn.node.position = this.freeBtn.node.position = cc.v2(0, -415);
+        //     this.gemBtn.node.position = cc.v2(0, -415);
+        //     this.freetimeLbl.string = cc.Mgr.Utils.getTranslation("btn-get") + " ("+(this.max_count - cc.Mgr.game.spinADResetTime) + "/" + this.ads_count + ")";
+        //     this.gemLbl.string = this.costGem;
+        // }
+        // else
+        // {
+        //     this.inviteBtn.node.active = this.freeBtn.node.active = false;
+        //     this.gemBtn.node.position = cc.v2(0, -415);
+        //     this.gemLbl.string = this.costGem;
+        // }
 
         var list = cc.Mgr.MapDataMgr.getDataListByDataType(DataType.TurnTableData);
         var chooseList = [];//最终选择出来的
@@ -399,30 +401,33 @@ var turnTableUI = cc.Class({
             this.adsIconNode.active = false;
             this.freeLabelNode.node.active = true;
             this.freetimeLbl.node.active = false;
+            this.freeBtn.node.active = true;
         }
         else
         {
             this.adsIconNode.active = true;
             this.freeLabelNode.node.active = false;
             this.freetimeLbl.node.active = true;
+            this.freeBtn.node.active = false;
         }
 
-        if(this.max_count - cc.Mgr.game.spinADResetTime > 0)
-        {
-            this.freeBtn.node.active = true;
-            this.timeNode.active = false;
-            this.inviteBtn.node.position = this.freeBtn.node.position = cc.v2(0, -415);
-            this.gemBtn.node.position = cc.v2(0, -415);
-            this.freetimeLbl.string = cc.Mgr.Utils.getTranslation("btn-get") + " ("+(this.max_count - cc.Mgr.game.spinADResetTime) + "/" + this.ads_count + ")";
-            this.gemLbl.string = this.costGem;
-            this.updateBtns();
-        }
-        else
-        {
-            this.inviteBtn.node.active = this.freeBtn.node.active = false;
-            this.gemBtn.node.position = cc.v2(0, -415);
-            this.gemLbl.string = this.costGem;
-        }
+        // temp code
+        // if(this.max_count - cc.Mgr.game.spinADResetTime > 0)
+        // {
+        //     this.freeBtn.node.active = true;
+        //     this.timeNode.active = false;
+        //     this.inviteBtn.node.position = this.freeBtn.node.position = cc.v2(0, -415);
+        //     this.gemBtn.node.position = cc.v2(0, -415);
+        //     this.freetimeLbl.string = cc.Mgr.Utils.getTranslation("btn-get") + " ("+(this.max_count - cc.Mgr.game.spinADResetTime) + "/" + this.ads_count + ")";
+        //     this.gemLbl.string = this.costGem;
+        //     this.updateBtns();
+        // }
+        // else
+        // {
+        //     this.inviteBtn.node.active = this.freeBtn.node.active = false;
+        //     this.gemBtn.node.position = cc.v2(0, -415);
+        //     this.gemLbl.string = this.costGem;
+        // }
         this.gemBtn.node.active = true;
         // this.okBtn.active = true;
 

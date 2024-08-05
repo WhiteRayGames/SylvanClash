@@ -35,7 +35,7 @@ cc.Class({
         cc.tween(this.gameFront).to(0.2, {position: cc.v2(248, 176)}).start();
 
         cc.tween(this.rubbishNode).to(0.2,{scale:0.83}).start();
-        let currentX = cc.Mgr.game.isPad ? (-30 - (cc.Mgr.game.ratioOffsetX * 0.83)) : -30;
+        let currentX = -30;
         cc.tween(this.rubbishNode).to(0.2, {position: cc.v2(currentX, -310)}).start();
     },
 
@@ -49,7 +49,7 @@ cc.Class({
         cc.tween(this.gameFront).to(0.2, {position: cc.v2(169, 154)}).start();
 
         cc.tween(this.rubbishNode).to(0.2,{scale:1}).start();
-        let currentX = cc.Mgr.game.isPad ? (10 - (cc.Mgr.game.ratioOffsetX * 0.83)) : 10;
+        let currentX = 10;
         cc.tween(this.rubbishNode).to(0.2, {position: cc.v2(currentX, -370)}).start();
     },
 
