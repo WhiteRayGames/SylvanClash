@@ -18,7 +18,7 @@ var UserDataMgr = cc.Class({
 		if (cc.Mgr.Config.isTelegram) {
 			window.Telegram.WebApp.CloudStorage.getItem(this.jsName, function (err, data) {
 				if (err == null) {
-					let jsonData = JSON.parse(JSON.stringify(data));
+					let jsonData = data == null || data == "" ? {} : JSON.parse(JSON.stringify(data));
 					this.initDataCallback(jsonData);
 					this.callback && this.callback();
 				} else {

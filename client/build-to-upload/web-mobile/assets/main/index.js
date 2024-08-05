@@ -1640,7 +1640,7 @@ window.__require = function e(t, n, r) {
         isTelegram: true,
         platform: "Telegram",
         version: "1.0.0",
-        debug_version: "_debug_13",
+        debug_version: "_debug_14",
         zOffsetY: 142,
         zBossLine: 100,
         allPlantCount: 75,
@@ -10417,7 +10417,7 @@ window.__require = function e(t, n, r) {
         this.callback = _callback;
         if (cc.Mgr.Config.isTelegram) window.Telegram.WebApp.CloudStorage.getItem(this.jsName, function(err, data) {
           if (null == err) {
-            var jsonData = JSON.parse(JSON.stringify(data));
+            var jsonData = null == data || "" == data ? {} : JSON.parse(JSON.stringify(data));
             this.initDataCallback(jsonData);
             this.callback && this.callback();
           } else {
