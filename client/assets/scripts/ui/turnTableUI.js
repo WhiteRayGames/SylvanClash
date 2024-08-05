@@ -44,14 +44,14 @@ var turnTableUI = cc.Class({
         content: cc.Node,
         blurBg: cc.Node,
 
-        dbListNode: cc.Node,
-        titleLabel: cc.Label,
+        // dbListNode: cc.Node,
+        // titleLabel: cc.Label,
         okLabel: cc.Label,
         okBtn: cc.Node,
 
-        spriteCoin: cc.Sprite,
-        nomarlM: cc.Material,
-        grayM: cc.Material
+        // spriteCoin: cc.Sprite,
+        // nomarlM: cc.Material,
+        // grayM: cc.Material
     },
 
     onLoad () {
@@ -67,7 +67,7 @@ var turnTableUI = cc.Class({
         this.freetimeTipLbl.string = cc.Mgr.Utils.getTranslation("roulette-timeTip");
         this.startLabel.string = cc.Mgr.Utils.getTranslation("roulette-start");
         this.freeLabelNode.string = cc.Mgr.Utils.getTranslation("btn-free");
-        this.titleLabel.string = cc.Mgr.Utils.getTranslation("roulette-title");
+        // this.titleLabel.string = cc.Mgr.Utils.getTranslation("roulette-title");
         this.okLabel.string = cc.Mgr.Utils.getTranslation("btn-ok");
 
         this.limitClick = this.node.getComponent('LimitClick');
@@ -146,7 +146,7 @@ var turnTableUI = cc.Class({
     },
 
     playTurnAnimation:function(){
-        this.dbListNode.active = false;
+        // this.dbListNode.active = false;
         this.count = 0;
         this.callback = function () {
             if (this.count == 30) {
@@ -160,7 +160,7 @@ var turnTableUI = cc.Class({
     },
 
     refreshPanel:function(){
-        this.dbListNode.active = true;
+        // this.dbListNode.active = true;
         this.lastPlantMaxLv = cc.Mgr.game.plantMaxLv;
         this.currentBuffList = [];
 
