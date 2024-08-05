@@ -15,10 +15,25 @@ var UserDataMgr = cc.Class({
 		cc.Mgr.initData = false;
 
 		this.callback = _callback;
-		var storageData = cc.sys.localStorage.getItem(this.jsName);
-		storageData = storageData == null || storageData == "" ? {} : JSON.parse(storageData);
-		this.initDataCallback(storageData)
-		this.callback && this.callback();
+		if (cc.Mgr.Config.isTelegram) {
+			window.Telegram.WebApp.CloudStorage.getItem(this.jsName, function (err, data) {
+				if (err == null) {
+					let jsonData = JSON.parse(JSON.stringify(data));
+					this.initDataCallback(jsonData);
+					this.callback && this.callback();
+				} else {
+					var storageData = cc.sys.localStorage.getItem(this.jsName);
+					storageData = storageData == null || storageData == "" ? {} : JSON.parse(storageData);
+					this.initDataCallback(storageData)
+					this.callback && this.callback();
+				}
+			})
+		} else {
+			var storageData = cc.sys.localStorage.getItem(this.jsName);
+			storageData = storageData == null || storageData == "" ? {} : JSON.parse(storageData);
+			this.initDataCallback(storageData)
+			this.callback && this.callback();
+		}
 	},
 
 	initDataCallback: function (storageData) {
@@ -28,7 +43,11 @@ var UserDataMgr = cc.Class({
 		cc.Mgr.game.needGuide = storageData.needGuide = storageData.needGuide == undefined ? true : storageData.needGuide;
 		cc.Mgr.game.curGuide = storageData.curGuide = storageData.curGuide == undefined ? 0 : storageData.curGuide;
 		if (cc.Mgr.game.curGuide <= 1) {
-			cc.sys.localStorage.clear();
+			if (cc.Mgr.Config.isTelegram) {
+				window.Telegram.WebApp.CloudStorage.removeItem(this.jsName);
+			} else {
+				cc.sys.localStorage.clear();
+			}
 			
 			cc.Mgr.game.needGuide = storageData.needGuide = storageData.needGuide == undefined ? true : storageData.needGuide; 
 			cc.Mgr.game.curGuide = storageData.curGuide = storageData.curGuide == undefined ? 0 : storageData.curGuide;
@@ -397,6 +416,9 @@ var UserDataMgr = cc.Class({
 		cc.Mgr.game.unlockGridFirst = storageData.unlockGridFirst = storageData.unlockGridFirst == undefined ? false : storageData.unlockGridFirst;
 		cc.Mgr.game.openEggCount = 0
 
+		if(cc.Mgr.Config.isTelegram) {
+			window.Telegram.WebApp.CloudStorage.setItem(this.jsName, JSON.stringify(storageData));
+		}
 		cc.sys.localStorage.setItem(this.jsName,JSON.stringify(storageData));
 
 		cc.Mgr.initData = true;
@@ -405,6 +427,9 @@ var UserDataMgr = cc.Class({
 	//保存本地数据
 	SaveUserData:function(_recoveryData){
 		if (_recoveryData) {
+			if(cc.Mgr.Config.isTelegram) {
+				window.Telegram.WebApp.CloudStorage.setItem(this.jsName, JSON.stringify(_recoveryData));
+			}
 			cc.sys.localStorage.setItem(this.jsName,JSON.stringify(_recoveryData));
 			return;
 		}
@@ -527,6 +552,9 @@ var UserDataMgr = cc.Class({
 
 		userdata.unlockGridFirst = cc.Mgr.game.unlockGridFirst;
 
+		if(cc.Mgr.Config.isTelegram) {
+			window.Telegram.WebApp.CloudStorage.setItem(this.jsName, JSON.stringify(userdata));
+		}
 		cc.sys.localStorage.setItem(this.jsName,JSON.stringify(userdata));
 	},
 });
