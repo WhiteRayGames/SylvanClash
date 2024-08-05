@@ -13,12 +13,14 @@ var UserDataMgr = cc.Class({
 
 	// 压缩字符串
 	compressString: function (str) {
-		return window.LZString.compress(str);
+		let compressedStr = window.LZString.compress(str);
+		return compressedStr;
 	},
 
 	// 解压缩字符串
 	decompressString: function (compressedStr) {
-		return window.LZString.decompress(compressedStr);
+		let decompressedStr = window.LZString.decompress(compressedStr);
+		return decompressedStr;
 	},
 	
 	initData:function (_callback) {
@@ -28,7 +30,7 @@ var UserDataMgr = cc.Class({
 		if (cc.Mgr.Config.isTelegram) {
 			window.Telegram.WebApp.CloudStorage.getItem(this.jsName, function (err, data) {
 				if (err == null) {
-					let jsonData = data == null || data == "" ? {} : JSON.parse(JSON.stringify(data));
+					let jsonData = data == null || data == "" ? {} : JSON.parse(this.decompressString(data));
 					this.initDataCallback(jsonData);
 					this.callback && this.callback();
 				} else {

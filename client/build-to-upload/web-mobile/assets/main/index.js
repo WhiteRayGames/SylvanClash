@@ -1640,7 +1640,7 @@ window.__require = function e(t, n, r) {
         isTelegram: true,
         platform: "Telegram",
         version: "1.0.0",
-        debug_version: "_debug_16",
+        debug_version: "_debug_17",
         zOffsetY: 142,
         zBossLine: 100,
         allPlantCount: 75,
@@ -10413,17 +10413,19 @@ window.__require = function e(t, n, r) {
         jsName: "userdata"
       },
       compressString: function compressString(str) {
-        return window.LZString.compress(str);
+        var compressedStr = window.LZString.compress(str);
+        return compressedStr;
       },
       decompressString: function decompressString(compressedStr) {
-        return window.LZString.decompress(compressedStr);
+        var decompressedStr = window.LZString.decompress(compressedStr);
+        return decompressedStr;
       },
       initData: function initData(_callback) {
         cc.Mgr.initData = false;
         this.callback = _callback;
         if (cc.Mgr.Config.isTelegram) window.Telegram.WebApp.CloudStorage.getItem(this.jsName, function(err, data) {
           if (null == err) {
-            var jsonData = null == data || "" == data ? {} : JSON.parse(JSON.stringify(data));
+            var jsonData = null == data || "" == data ? {} : JSON.parse(this.decompressString(data));
             this.initDataCallback(jsonData);
             this.callback && this.callback();
           } else {
