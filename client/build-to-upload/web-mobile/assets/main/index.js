@@ -1640,7 +1640,7 @@ window.__require = function e(t, n, r) {
         isTelegram: true,
         platform: "Telegram",
         version: "1.0.0",
-        debug_version: "_debug_17",
+        debug_version: "_debug_18",
         zOffsetY: 142,
         zBossLine: 100,
         allPlantCount: 75,
@@ -10413,11 +10413,11 @@ window.__require = function e(t, n, r) {
         jsName: "userdata"
       },
       compressString: function compressString(str) {
-        var compressedStr = window.LZString.compress(str);
+        var compressedStr = window.LZString.compressToBase64(str);
         return compressedStr;
       },
       decompressString: function decompressString(compressedStr) {
-        var decompressedStr = window.LZString.decompress(compressedStr);
+        var decompressedStr = window.LZString.decompressFromBase64(compressedStr);
         return decompressedStr;
       },
       initData: function initData(_callback) {

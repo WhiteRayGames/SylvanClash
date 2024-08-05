@@ -13,13 +13,13 @@ var UserDataMgr = cc.Class({
 
 	// 压缩字符串
 	compressString: function (str) {
-		let compressedStr = window.LZString.compress(str);
+		let compressedStr = window.LZString.compressToBase64(str);
 		return compressedStr;
 	},
 
 	// 解压缩字符串
 	decompressString: function (compressedStr) {
-		let decompressedStr = window.LZString.decompress(compressedStr);
+		let decompressedStr = window.LZString.decompressFromBase64(compressedStr);
 		return decompressedStr;
 	},
 	
