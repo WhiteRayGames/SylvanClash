@@ -13021,7 +13021,7 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        -163,
+        -245,
         0,
         0,
         0,
@@ -14016,7 +14016,7 @@
         "__id__": 381
       }
     ],
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 390
@@ -14047,7 +14047,7 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        -310,
+        0,
         0,
         0,
         0,
@@ -14682,7 +14682,7 @@
         "__id__": 403
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 412
@@ -14713,7 +14713,7 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        0,
+        245,
         0,
         0,
         0,
@@ -15534,7 +15534,7 @@
       "ctor": "Float64Array",
       "array": [
         0,
-        -185,
+        -277.5,
         0,
         0,
         0,
@@ -22483,7 +22483,9 @@
     "blurBg": {
       "__id__": 2
     },
-    "vipDailyBonusBtn": null,
+    "vipDailyBonusBtn": {
+      "__id__": 386
+    },
     "spriteBtn": null,
     "nomarlM": {
       "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
