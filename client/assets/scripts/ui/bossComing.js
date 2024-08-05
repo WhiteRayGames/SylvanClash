@@ -8,8 +8,10 @@ var bossComing = cc.Class({
     },
 
     start(){
-        this.box.width = cc.Mgr.Config.winSize.width;
-        this.box.height = cc.Mgr.Config.winSize.height;
+        // this.box.width = cc.Mgr.Config.winSize.width;
+        // this.box.height = cc.Mgr.Config.winSize.height;
+        this.box.width = window.winSize.width;
+        this.box.height = window.winSize.height;
         
         this.dragon.on(dragonBones.EventObject.COMPLETE,this.onAnimComplete, this);
     },
