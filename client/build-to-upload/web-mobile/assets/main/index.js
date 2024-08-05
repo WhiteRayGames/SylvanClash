@@ -1640,7 +1640,7 @@ window.__require = function e(t, n, r) {
         isTelegram: true,
         platform: "Telegram",
         version: "1.0.0",
-        debug_version: "_debug_15",
+        debug_version: "_debug_16",
         zOffsetY: 142,
         zBossLine: 100,
         allPlantCount: 75,
@@ -10412,6 +10412,12 @@ window.__require = function e(t, n, r) {
       properties: {
         jsName: "userdata"
       },
+      compressString: function compressString(str) {
+        return window.LZString.compress(str);
+      },
+      decompressString: function decompressString(compressedStr) {
+        return window.LZString.decompress(compressedStr);
+      },
       initData: function initData(_callback) {
         cc.Mgr.initData = false;
         this.callback = _callback;
@@ -10688,7 +10694,7 @@ window.__require = function e(t, n, r) {
         cc.Mgr.game.vipdiscount = true;
         cc.Mgr.game.unlockGridFirst = storageData.unlockGridFirst = void 0 != storageData.unlockGridFirst && storageData.unlockGridFirst;
         cc.Mgr.game.openEggCount = 0;
-        cc.Mgr.Config.isTelegram && window.Telegram.WebApp.CloudStorage.setItem(this.jsName, JSON.stringify(storageData), function(err, data) {
+        cc.Mgr.Config.isTelegram && window.Telegram.WebApp.CloudStorage.setItem(this.jsName, this.compressString(JSON.stringify(storageData)), function(err, data) {
           null == err && console.log("saved!");
         }.bind(this));
         cc.sys.localStorage.setItem(this.jsName, JSON.stringify(storageData));
@@ -10696,7 +10702,7 @@ window.__require = function e(t, n, r) {
       },
       SaveUserData: function SaveUserData(_recoveryData) {
         if (_recoveryData) {
-          cc.Mgr.Config.isTelegram && window.Telegram.WebApp.CloudStorage.setItem(this.jsName, JSON.stringify(_recoveryData), function(err, data) {
+          cc.Mgr.Config.isTelegram && window.Telegram.WebApp.CloudStorage.setItem(this.jsName, this.compressString(JSON.stringify(_recoveryData)), function(err, data) {
             null == err && console.log("saved!");
           }.bind(this));
           cc.sys.localStorage.setItem(this.jsName, JSON.stringify(_recoveryData));
@@ -10783,7 +10789,7 @@ window.__require = function e(t, n, r) {
         userdata.needUpdateMoneyInGame = cc.Mgr.game.needUpdateMoneyInGame;
         userdata.vipdiscount = cc.Mgr.game.vipdiscount;
         userdata.unlockGridFirst = cc.Mgr.game.unlockGridFirst;
-        cc.Mgr.Config.isTelegram && window.Telegram.WebApp.CloudStorage.setItem(this.jsName, JSON.stringify(userdata), function(err, data) {
+        cc.Mgr.Config.isTelegram && window.Telegram.WebApp.CloudStorage.setItem(this.jsName, this.compressString(JSON.stringify(userdata)), function(err, data) {
           null == err && console.log("saved!");
         }.bind(this));
         cc.sys.localStorage.setItem(this.jsName, JSON.stringify(userdata));

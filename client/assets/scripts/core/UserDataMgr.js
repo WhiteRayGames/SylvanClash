@@ -10,6 +10,16 @@ var UserDataMgr = cc.Class({
 		
 		jsName:"userdata",
 	},
+
+	// 压缩字符串
+	compressString: function (str) {
+		return window.LZString.compress(str);
+	},
+
+	// 解压缩字符串
+	decompressString: function (compressedStr) {
+		return window.LZString.decompress(compressedStr);
+	},
 	
 	initData:function (_callback) {
 		cc.Mgr.initData = false;
@@ -421,7 +431,7 @@ var UserDataMgr = cc.Class({
 		cc.Mgr.game.openEggCount = 0
 
 		if(cc.Mgr.Config.isTelegram) {
-			window.Telegram.WebApp.CloudStorage.setItem(this.jsName, JSON.stringify(storageData), function(err, data) {
+			window.Telegram.WebApp.CloudStorage.setItem(this.jsName, this.compressString(JSON.stringify(storageData)), function(err, data) {
 				if (err == null) {
 					console.log("saved!")
 				}
@@ -436,7 +446,7 @@ var UserDataMgr = cc.Class({
 	SaveUserData:function(_recoveryData){
 		if (_recoveryData) {
 			if(cc.Mgr.Config.isTelegram) {
-				window.Telegram.WebApp.CloudStorage.setItem(this.jsName, JSON.stringify(_recoveryData), function(err, data) {
+				window.Telegram.WebApp.CloudStorage.setItem(this.jsName, this.compressString(JSON.stringify(_recoveryData)), function(err, data) {
 					if (err == null) {
 						console.log("saved!")
 					}
@@ -565,7 +575,7 @@ var UserDataMgr = cc.Class({
 		userdata.unlockGridFirst = cc.Mgr.game.unlockGridFirst;
 
 		if(cc.Mgr.Config.isTelegram) {
-			window.Telegram.WebApp.CloudStorage.setItem(this.jsName, JSON.stringify(userdata), function(err, data) {
+			window.Telegram.WebApp.CloudStorage.setItem(this.jsName, this.compressString(JSON.stringify(userdata)), function(err, data) {
 				if (err == null) {
 					console.log("saved!")
 				}
