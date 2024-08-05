@@ -25,9 +25,9 @@ var bigResult = cc.Class({
         content: cc.Node,
         blurBg: cc.Node,
 
-        winDb: dragonBones.ArmatureDisplay,
-        failedDb: dragonBones.ArmatureDisplay,
-
+        // winDb: dragonBones.ArmatureDisplay,
+        // failedDb: dragonBones.ArmatureDisplay,
+    
         checkboxNode: cc.Node,
         vipNode: cc.Node,
         failedCheckboxNode: cc.Node,
@@ -165,7 +165,8 @@ var bigResult = cc.Class({
         if(suc)
         {
             cc.Mgr.AudioMgr.playSFX(MyEnum.AudioType.success1);
-            this.winDb.playAnimation("win", 1);
+            // this.winDb.playAnimation("win", 1);'
+            
             // let data = {}
             // data.elapsed = Date.now()
             // data.waveStage = cc.Mgr.game.level
@@ -177,7 +178,8 @@ var bigResult = cc.Class({
         else
         {
             cc.Mgr.AudioMgr.playSFX(MyEnum.AudioType.fail);
-            this.failedDb.playAnimation("Defeat", 1);
+            // this.failedDb.playAnimation("Defeat", 1);
+
             // let data = {}
             // data.elapsed = Date.now()
             // data.waveStage = cc.Mgr.game.level
