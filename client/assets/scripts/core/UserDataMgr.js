@@ -27,7 +27,7 @@ var UserDataMgr = cc.Class({
 					this.initDataCallback(storageData)
 					this.callback && this.callback();
 				}
-			})
+			}.bind(this))
 		} else {
 			var storageData = cc.sys.localStorage.getItem(this.jsName);
 			storageData = storageData == null || storageData == "" ? {} : JSON.parse(storageData);
@@ -44,7 +44,11 @@ var UserDataMgr = cc.Class({
 		cc.Mgr.game.curGuide = storageData.curGuide = storageData.curGuide == undefined ? 0 : storageData.curGuide;
 		if (cc.Mgr.game.curGuide <= 1) {
 			if (cc.Mgr.Config.isTelegram) {
-				window.Telegram.WebApp.CloudStorage.removeItem(this.jsName);
+				window.Telegram.WebApp.CloudStorage.removeItem(this.jsName, function (err, data) {
+					if (err == null) {
+						console.log("removed!")
+					}
+				}.bind(this));
 			} else {
 				cc.sys.localStorage.clear();
 			}
@@ -417,7 +421,11 @@ var UserDataMgr = cc.Class({
 		cc.Mgr.game.openEggCount = 0
 
 		if(cc.Mgr.Config.isTelegram) {
-			window.Telegram.WebApp.CloudStorage.setItem(this.jsName, JSON.stringify(storageData));
+			window.Telegram.WebApp.CloudStorage.setItem(this.jsName, JSON.stringify(storageData), function(err, data) {
+				if (err == null) {
+					console.log("saved!")
+				}
+			}.bind(this));
 		}
 		cc.sys.localStorage.setItem(this.jsName,JSON.stringify(storageData));
 
@@ -428,7 +436,11 @@ var UserDataMgr = cc.Class({
 	SaveUserData:function(_recoveryData){
 		if (_recoveryData) {
 			if(cc.Mgr.Config.isTelegram) {
-				window.Telegram.WebApp.CloudStorage.setItem(this.jsName, JSON.stringify(_recoveryData));
+				window.Telegram.WebApp.CloudStorage.setItem(this.jsName, JSON.stringify(_recoveryData), function(err, data) {
+					if (err == null) {
+						console.log("saved!")
+					}
+				}.bind(this));
 			}
 			cc.sys.localStorage.setItem(this.jsName,JSON.stringify(_recoveryData));
 			return;
@@ -553,7 +565,11 @@ var UserDataMgr = cc.Class({
 		userdata.unlockGridFirst = cc.Mgr.game.unlockGridFirst;
 
 		if(cc.Mgr.Config.isTelegram) {
-			window.Telegram.WebApp.CloudStorage.setItem(this.jsName, JSON.stringify(userdata));
+			window.Telegram.WebApp.CloudStorage.setItem(this.jsName, JSON.stringify(userdata), function(err, data) {
+				if (err == null) {
+					console.log("saved!")
+				}
+			}.bind(this));
 		}
 		cc.sys.localStorage.setItem(this.jsName,JSON.stringify(userdata));
 	},

@@ -1640,7 +1640,7 @@ window.__require = function e(t, n, r) {
         isTelegram: true,
         platform: "Telegram",
         version: "1.0.0",
-        debug_version: "_debug_14",
+        debug_version: "_debug_15",
         zOffsetY: 142,
         zBossLine: 100,
         allPlantCount: 75,
@@ -10426,7 +10426,7 @@ window.__require = function e(t, n, r) {
             this.initDataCallback(storageData);
             this.callback && this.callback();
           }
-        }); else {
+        }.bind(this)); else {
           var storageData = cc.sys.localStorage.getItem(this.jsName);
           storageData = null == storageData || "" == storageData ? {} : JSON.parse(storageData);
           this.initDataCallback(storageData);
@@ -10439,7 +10439,9 @@ window.__require = function e(t, n, r) {
         cc.Mgr.game.needGuide = storageData.needGuide = void 0 == storageData.needGuide || storageData.needGuide;
         cc.Mgr.game.curGuide = storageData.curGuide = void 0 == storageData.curGuide ? 0 : storageData.curGuide;
         if (cc.Mgr.game.curGuide <= 1) {
-          cc.Mgr.Config.isTelegram ? window.Telegram.WebApp.CloudStorage.removeItem(this.jsName) : cc.sys.localStorage.clear();
+          cc.Mgr.Config.isTelegram ? window.Telegram.WebApp.CloudStorage.removeItem(this.jsName, function(err, data) {
+            null == err && console.log("removed!");
+          }.bind(this)) : cc.sys.localStorage.clear();
           cc.Mgr.game.needGuide = storageData.needGuide = void 0 == storageData.needGuide || storageData.needGuide;
           cc.Mgr.game.curGuide = storageData.curGuide = void 0 == storageData.curGuide ? 0 : storageData.curGuide;
         } else 3 == cc.Mgr.game.curGuide && (cc.Mgr.game.needGuide = false);
@@ -10686,13 +10688,17 @@ window.__require = function e(t, n, r) {
         cc.Mgr.game.vipdiscount = true;
         cc.Mgr.game.unlockGridFirst = storageData.unlockGridFirst = void 0 != storageData.unlockGridFirst && storageData.unlockGridFirst;
         cc.Mgr.game.openEggCount = 0;
-        cc.Mgr.Config.isTelegram && window.Telegram.WebApp.CloudStorage.setItem(this.jsName, JSON.stringify(storageData));
+        cc.Mgr.Config.isTelegram && window.Telegram.WebApp.CloudStorage.setItem(this.jsName, JSON.stringify(storageData), function(err, data) {
+          null == err && console.log("saved!");
+        }.bind(this));
         cc.sys.localStorage.setItem(this.jsName, JSON.stringify(storageData));
         cc.Mgr.initData = true;
       },
       SaveUserData: function SaveUserData(_recoveryData) {
         if (_recoveryData) {
-          cc.Mgr.Config.isTelegram && window.Telegram.WebApp.CloudStorage.setItem(this.jsName, JSON.stringify(_recoveryData));
+          cc.Mgr.Config.isTelegram && window.Telegram.WebApp.CloudStorage.setItem(this.jsName, JSON.stringify(_recoveryData), function(err, data) {
+            null == err && console.log("saved!");
+          }.bind(this));
           cc.sys.localStorage.setItem(this.jsName, JSON.stringify(_recoveryData));
           return;
         }
@@ -10777,7 +10783,9 @@ window.__require = function e(t, n, r) {
         userdata.needUpdateMoneyInGame = cc.Mgr.game.needUpdateMoneyInGame;
         userdata.vipdiscount = cc.Mgr.game.vipdiscount;
         userdata.unlockGridFirst = cc.Mgr.game.unlockGridFirst;
-        cc.Mgr.Config.isTelegram && window.Telegram.WebApp.CloudStorage.setItem(this.jsName, JSON.stringify(userdata));
+        cc.Mgr.Config.isTelegram && window.Telegram.WebApp.CloudStorage.setItem(this.jsName, JSON.stringify(userdata), function(err, data) {
+          null == err && console.log("saved!");
+        }.bind(this));
         cc.sys.localStorage.setItem(this.jsName, JSON.stringify(userdata));
       }
     });
