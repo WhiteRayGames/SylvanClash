@@ -91,7 +91,7 @@ cc.Class({
                 this.playerPhoto.node.width = this.playerPhoto.node.height = 50;
             }
         });
-        this.isSelfNode.active = _data.player.id == Wortal.player.getID();
+        this.isSelfNode.active = _data.rank == 1;
     }
 
     // update (dt) {},

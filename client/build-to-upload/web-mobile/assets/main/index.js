@@ -494,7 +494,11 @@ window.__require = function e(t, n, r) {
         window.onResizeScreen = this.onResizeScreenCallback.bind(this);
         cc.game.setFrameRate(55);
       },
-      onChangeScreenCallback: function onChangeScreenCallback() {},
+      onChangeScreenCallback: function onChangeScreenCallback() {
+        cc.Mgr.AudioMgr.stopAll();
+        cc.game.restart();
+        window.onChangeScreen = null;
+      },
       onResizeScreenCallback: function onResizeScreenCallback() {
         cc.Mgr.AudioMgr.stopAll();
         cc.game.restart();
@@ -1632,11 +1636,11 @@ window.__require = function e(t, n, r) {
     var Config = cc.Class({
       extends: cc.Component,
       statics: {
-        isDebug: false,
+        isDebug: true,
         isTelegram: true,
         platform: "Telegram",
-        version: "1.0.3",
-        debug_version: "_1",
+        version: "1.0.0",
+        debug_version: "_debug_12",
         zOffsetY: 142,
         zBossLine: 100,
         allPlantCount: 75,
@@ -5111,15 +5115,12 @@ window.__require = function e(t, n, r) {
         cc.tween(this.gameFront).to(.2, {
           position: cc.v2(248, 176)
         }).start();
-        var targetY;
-        targetY = false === cc.Mgr.UIMgr.InGameUI.doubleCoinNode.active ? -230 : -150;
         cc.tween(this.rubbishNode).to(.2, {
           scale: .83
         }).start();
-        var currentX = cc.Mgr.game.isPad ? -253 - .83 * cc.Mgr.game.ratioOffsetX : -253;
-        currentX < -340 && (currentX = -340);
+        var currentX = -30;
         cc.tween(this.rubbishNode).to(.2, {
-          position: cc.v2(currentX, targetY)
+          position: cc.v2(currentX, -310)
         }).start();
       },
       zoomOut: function zoomOut() {
@@ -5142,15 +5143,12 @@ window.__require = function e(t, n, r) {
         cc.tween(this.gameFront).to(.2, {
           position: cc.v2(169, 154)
         }).start();
-        var targetY;
-        targetY = false === cc.Mgr.UIMgr.InGameUI.doubleCoinNode.active ? -270 : -180;
         cc.tween(this.rubbishNode).to(.2, {
           scale: 1
         }).start();
-        var currentX = cc.Mgr.game.isPad ? -268 - .83 * cc.Mgr.game.ratioOffsetX : -253;
-        currentX < -360 && (currentX = -360);
+        var currentX = 10;
         cc.tween(this.rubbishNode).to(.2, {
-          position: cc.v2(currentX, targetY)
+          position: cc.v2(currentX, -370)
         }).start();
       },
       setLanguage: function setLanguage() {
@@ -5209,6 +5207,7 @@ window.__require = function e(t, n, r) {
         }, 300);
         cc.Mgr.game.vip = cc.Mgr.game.isVIP ? "active" : "inactive";
         this.checkTimer = 0;
+        this.rubbishNode.active = false;
       },
       defense: function defense(data) {
         cc.Mgr.plantMgr.hideTipAttackNode();
@@ -5641,12 +5640,9 @@ window.__require = function e(t, n, r) {
         var request = cc.loader.getXMLHttpRequest();
         console.log("Status: Send Get Request to " + url);
         request.open("GET", url, true);
+        request.setRequestHeader("Content-Type", "application/json");
         request.onreadystatechange = function() {
-          if (4 == request.readyState && request.status >= 200 && request.status <= 207) {
-            var httpStatus = request.statusText;
-            console.log("Status: Got GET response! " + httpStatus);
-            callback(false, request);
-          } else callback(true, request);
+          4 == request.readyState && (request.status >= 200 && request.status <= 207 ? callback(false, request.responseText) : callback(true, request.responseText));
         };
         request.send();
       },
@@ -5697,7 +5693,7 @@ window.__require = function e(t, n, r) {
         doubleCoinNode: cc.Node,
         doubleCoinLabel: cc.Node,
         uav: uav,
-        buyButtonScprit: cc.Button,
+        buyButtonNode: cc.Node,
         missionTip: cc.Node,
         turntableTip: cc.Node,
         signTip: cc.Node,
@@ -5762,7 +5758,8 @@ window.__require = function e(t, n, r) {
         buffBtn: cc.Node,
         shopBtn: cc.Node,
         gemBtn: cc.Node,
-        gemBtn_2: cc.Node
+        gemBtn_2: cc.Node,
+        coinsNGemsNode: cc.Node
       },
       showBtnTip: function showBtnTip() {
         var index = cc.Mgr.game.btnTipList.indexOf(0);
@@ -5869,12 +5866,13 @@ window.__require = function e(t, n, r) {
           this.doubleCoinNode.x < -350 && (this.doubleCoinNode.x = -350);
           this.coinBonusNode.x = 370 + cc.Mgr.game.ratioOffsetX;
           this.coinBonusNode.x > 500 && (this.coinBonusNode.x = 500);
+          this.coinsNGemsNode.x = 350 + cc.Mgr.game.ratioOffsetX;
+          this.coinsNGemsNode.x > 500 && (this.coinsNGemsNode.x = 500);
           this.pauseBtnNode.x = 370 + cc.Mgr.game.ratioOffsetX;
           this.pauseBtnNode.x > 500 && (this.pauseBtnNode.x = 500);
-          this.buffBtn.x = -223 - cc.Mgr.game.ratioOffsetX;
-          this.buffBtn.x < -350 && (this.buffBtn.x = -350);
-          this.shopBtn.x = 217 + cc.Mgr.game.ratioOffsetX;
-          this.shopBtn.x > 350 && (this.shopBtn.x = 350);
+          this.shopBtn.removeComponent(cc.Widget);
+          this.shopBtn.x = cc.view.getVisibleSizeInPixel().width;
+          this.shopBtn.x >= 425 && (this.shopBtn.x = 425);
         }
         true === cc.Mgr.GameCenterCtrl.isIphoneX && (this.topNode.getComponent(cc.Widget).top -= 30);
         this.whiteColor = new cc.Color(255, 255, 255);
@@ -6031,19 +6029,6 @@ window.__require = function e(t, n, r) {
           cc.Mgr.game.localPoint_doubleCoinNode = cc.Mgr.plantMgr.rubbishNode.convertToNodeSpaceAR(worldPoint_doubleCoinNode);
           this.hasSetPos = true;
         }
-        toShow ? true === cc.Mgr.game.zoomIn ? cc.Mgr.plantMgr.rubbishNode.y = -150 : cc.Mgr.plantMgr.rubbishNode.y = -185 : true === cc.Mgr.game.zoomIn ? cc.Mgr.plantMgr.rubbishNode.y = -280 : cc.Mgr.plantMgr.rubbishNode.y = -335;
-        var currentX;
-        if (true === cc.Mgr.game.zoomIn) {
-          currentX = cc.Mgr.game.isPad ? -238 - .83 * cc.Mgr.game.ratioOffsetX : -253;
-          currentX < -340 && (currentX = -340);
-          cc.Mgr.plantMgr.rubbishNode.x = currentX;
-        } else {
-          currentX = cc.Mgr.game.isPad ? -268 - .83 * cc.Mgr.game.ratioOffsetX : -253;
-          currentX < -360 && (currentX = -360);
-          cc.Mgr.plantMgr.rubbishNode.x = currentX;
-        }
-        currentX < -360 && (currentX = -160);
-        cc.Mgr.plantMgr.rubbishNode.x = currentX;
       },
       onClickPause: function onClickPause() {
         cc.Mgr.UIMgr.openPauseUI();
@@ -7786,18 +7771,19 @@ window.__require = function e(t, n, r) {
       purchase: function purchase(_productId) {
         var _this = this;
         this.purchaseProductID = _productId;
+        var priceValue = cc.Mgr.Config.isDebug ? 1 : this.priceValueList[this.index];
         var requestBody = JSON.stringify({
           user_id: window.Telegram.WebApp.initDataUnsafe.user.id,
           product_name: this.productsNameList[this.index],
-          amount: this.priceValueList[this.index]
+          amount: priceValue
         });
         var data = {};
         data.elapsed = cc.Mgr.Utils.getDate9(true);
         data.productName = this.purchaseProductID;
         cc.Mgr.analytics.logEvent("purchase_start", JSON.stringify(data));
         cc.Mgr.UIMgr.showLoading(true);
-        cc.Mgr.game.pauseGame();
-        cc.Mgr.http.httpPost("https://tg-api-service.lunamou.com/orders/create", requestBody, function(error, response) {
+        var url = cc.Mgr.Config.isDebug ? "https://tg-api-service-test.lunamou.com/orders/create" : "https://tg-api-service.lunamou.com/orders/create";
+        cc.Mgr.http.httpPost(url, requestBody, function(error, response) {
           if (true == error) {
             cc.Mgr.UIMgr.showPrompt(cc.Mgr.Utils.getTranslation("payment-failed"), "", _this.tipParent);
             cc.Mgr.UIMgr.hideLoading();
@@ -7806,7 +7792,19 @@ window.__require = function e(t, n, r) {
           }
           data = JSON.parse(response);
           if (data && data.invoice_url) window.Telegram.WebApp.openInvoice(data.invoice_url, function(status) {
-            "paid" === status ? _this.checkOrderStatus(data.id) : "failed" === status ? window.Telegram.WebApp.showAlert("Payment failed. Please try again.") : "cancelled" === status ? window.Telegram.WebApp.showAlert("Payment was cancelled.") : window.Telegram.WebApp.showAlert("Unexpected payment status: " + status);
+            if ("paid" === status) _this.checkOrderStatus(data.id); else if ("failed" === status) {
+              window.Telegram.WebApp.showAlert("Payment failed. Please try again.");
+              cc.Mgr.UIMgr.hideLoading();
+              _this.callback = null;
+            } else if ("cancelled" === status) {
+              window.Telegram.WebApp.showAlert("Payment was cancelled.");
+              cc.Mgr.UIMgr.hideLoading();
+              _this.callback = null;
+            } else {
+              window.Telegram.WebApp.showAlert("Unexpected payment status: " + status);
+              cc.Mgr.UIMgr.hideLoading();
+              _this.callback = null;
+            }
           }); else {
             cc.Mgr.UIMgr.showPrompt(cc.Mgr.Utils.getTranslation("payment-failed"), "", _this.tipParent);
             cc.Mgr.UIMgr.hideLoading();
@@ -7816,24 +7814,28 @@ window.__require = function e(t, n, r) {
       },
       checkOrderStatus: function checkOrderStatus(orderId) {
         var _this2 = this;
-        cc.Mgr.http.httpGets("https://tg-api-service.lunamou.com//orders/" + orderId + "/status", function(error, response) {
+        var url = cc.Mgr.Config.isDebug ? "https://tg-api-service-test.lunamou.com/orders/" : "https://tg-api-service.lunamou.com/orders/";
+        cc.Mgr.http.httpGets(url + orderId + "/status", function(error, response) {
           if (true == error) {
             window.Telegram.WebApp.showAlert("Error checking order status. Please try again later.");
             return;
           }
           var data = JSON.parse(response);
-          if ("paid" === data.status) {
-            webapp.showAlert("Payment successful! Thank you for your purchase.");
-            cc.Mgr.game.resumeGame();
+          if (data.status && "paid" === data.status) {
+            window.Telegram.WebApp.showAlert("Payment successful! Thank you for your purchase.");
             cc.Mgr.UIMgr.showPrompt(cc.Mgr.Utils.getTranslation("payment-successful"), "", _this2.tipParent);
             _this2.callback(_this2.getGems[_this2.index]);
             cc.Mgr.game.isPayingUser = true;
             cc.Mgr.game.ltv += _this2.priceList[_this2.index];
             cc.Mgr.UIMgr.hideLoading();
             _this2.callback = null;
-          } else "pending" === data.status ? setTimeout(function() {
+          } else if (data.status && "pending" === data.status) setTimeout(function() {
             return _this2.checkOrderStatus(orderId);
-          }, 5e3) : window.Telegram.WebApp.showAlert("Order status: " + data.status + ". Please contact support if you have any questions.");
+          }, 5e3); else {
+            window.Telegram.WebApp.showAlert(response + "   Please contact support if you have any questions.");
+            cc.Mgr.UIMgr.hideLoading();
+            _this2.callback = null;
+          }
         });
       },
       updateVIPState: function updateVIPState(_date) {
@@ -8087,7 +8089,7 @@ window.__require = function e(t, n, r) {
             _this.playerPhoto.node.width = _this.playerPhoto.node.height = 50;
           }
         });
-        this.isSelfNode.active = _data.player.id == Wortal.player.getID();
+        this.isSelfNode.active = 1 == _data.rank;
       }
     });
     cc._RF.pop();
@@ -8145,7 +8147,16 @@ window.__require = function e(t, n, r) {
           scale: 1
         }).start();
         "Japanese" === cc.Mgr.Config.language ? this.rankLabel.fontSize = this.iconLabel.fontSize = this.nameLabel.fontSize = this.topLabel.fontSize = 16 : "Russian" === cc.Mgr.Config.language && (this.rankLabel.fontSize = this.iconLabel.fontSize = this.nameLabel.fontSize = this.topLabel.fontSize = 13);
-        this.rankingData = cc.Mgr.Utils.rankingData;
+        this.rankingData = [];
+        for (var i = 0; i < 10; i++) {
+          var rankData = {};
+          rankData.rank = i + 1;
+          rankData.player = {};
+          rankData.player.name = "Tester_" + (i + 1);
+          rankData.formattedScore = 10 - i;
+          rankData.player.photo = "";
+          this.rankingData.push(rankData);
+        }
         this.rankingData && this._scrollViewComponent.setBaseInfo(this.rankingData.length, 5, 15, 85, this.setRankList.bind(this));
         this._scrollViewComponent.clear();
         this._scrollViewComponent.scrollTo(0);
@@ -12746,8 +12757,13 @@ window.__require = function e(t, n, r) {
         monsterContainer: cc.Node
       },
       start: function start() {
-        this.box.width = cc.Mgr.Config.winSize.width;
-        this.box.height = cc.Mgr.Config.winSize.height;
+        if (window.winSize) {
+          this.box.width = window.winSize.width;
+          this.box.height = window.winSize.height;
+        } else {
+          this.box.width = window.innerWidth;
+          this.box.height = window.innerHeight;
+        }
         this.dragon.on(dragonBones.EventObject.COMPLETE, this.onAnimComplete, this);
       },
       onAnimComplete: function onAnimComplete() {
@@ -16128,14 +16144,6 @@ window.__require = function e(t, n, r) {
         var tem = this.refrain(levelList);
         tem.indexOf(lastLevel) >= 0 && (result = false);
         true === this.checkHasMergeItem() && (result = false);
-        if (true === result) {
-          var startPos = cc.v2(this.plantPos[this.targetIdx].x, this.plantPos[this.targetIdx].y);
-          var endPos = cc.v2(this.rubbishNode.x, this.rubbishNode.y);
-          this.showTrashGuide(startPos, endPos);
-        } else {
-          cc.Mgr.UIMgr.showTipToTrash(false);
-          this.hideTrashGuide();
-        }
       },
       showTrashGuide: function showTrashGuide(startPos, endPos) {
         if (this.unlockTip && this.unlockTip.active) return;
@@ -16607,7 +16615,10 @@ window.__require = function e(t, n, r) {
         obj.y = this.node.y;
         obj.x = this.node.x;
         var self = this;
-        obj.getComponent("dieSmoke").playAnimation(function() {});
+        obj.getComponent("dieSmoke").playAnimation(function() {
+          cc.Mgr.UIMgr.GameInUINode.getComponent("InGameUI").buyButtonNode.active = true;
+          cc.Mgr.GameCenterCtrl.rubbishNode.active = false;
+        });
       }
       var backMoney = cc.Mgr.MapDataMgr.getDataByDataTypeAndKey(DataType.PlantData, this.grids[index].content.level).price;
       var money = backMoney / BigInt(2);
@@ -16687,7 +16698,11 @@ window.__require = function e(t, n, r) {
         var disY = Math.abs(_plant.node.position.y - this.rubbishNode.position.y);
         disX < 100 && disY < 100 && (resultIndex = this.plantPos.length);
       }
-      null != resultIndex ? this.touchEndHandle(resultIndex, _plant) : _plant.setPosition(this.plantPos[_plant.index]);
+      if (null != resultIndex) this.touchEndHandle(resultIndex, _plant); else {
+        _plant.setPosition(this.plantPos[_plant.index]);
+        cc.Mgr.UIMgr.GameInUINode.getComponent("InGameUI").buyButtonNode.active = true;
+        cc.Mgr.GameCenterCtrl.rubbishNode.active = false;
+      }
       cc.tween(this.rubbishNode).to(.2, {
         scale: cc.Mgr.game.zoomIn ? .83 : 1
       }).start();
@@ -16697,6 +16712,8 @@ window.__require = function e(t, n, r) {
         if (_plant.level == cc.Mgr.game.plantMaxLv) {
           cc.Mgr.UIMgr.showPrompt(cc.Mgr.Utils.getTranslation("max-level-cannt-recovery"), "", cc.Mgr.UIMgr.uiRoot);
           _plant.setPosition(this.plantPos[_plant.index]);
+          cc.Mgr.UIMgr.GameInUINode.getComponent("InGameUI").buyButtonNode.active = true;
+          cc.Mgr.GameCenterCtrl.rubbishNode.active = false;
         } else {
           this.plantPutRubbish(_plant.index);
           this.checkTrash();
@@ -16704,6 +16721,8 @@ window.__require = function e(t, n, r) {
         }
         return;
       }
+      cc.Mgr.UIMgr.GameInUINode.getComponent("InGameUI").buyButtonNode.active = true;
+      cc.Mgr.GameCenterCtrl.rubbishNode.active = false;
       var currentGrid = this.grids[_index];
       if (this.autoMergeData && _plant.index != this.autoMergeData.startIndex && currentGrid.type == MyEnum.GridState.plant && (currentGrid.content.index == this.autoMergeData.startIndex || currentGrid.content.index == this.autoMergeData.targetIndex)) {
         _plant.setPosition(this.plantPos[_plant.index]);
@@ -16973,6 +16992,8 @@ window.__require = function e(t, n, r) {
           cc.Mgr.plantMgr.hideTipAttackNode();
           cc.Mgr.plantMgr.showAttackRange(this.node);
           this.TouchStart(event);
+          cc.Mgr.UIMgr.GameInUINode.getComponent("InGameUI").buyButtonNode.active = false;
+          cc.Mgr.GameCenterCtrl.rubbishNode.active = true;
         }, this);
         this.node.on(cc.Node.EventType.TOUCH_MOVE, function(event) {
           if (cc.Mgr.plantMgr.autoMergeData && (cc.Mgr.plantMgr.autoMergeData.startIndex == this.index || cc.Mgr.plantMgr.autoMergeData.targetIndex == this.index)) return;
@@ -16983,6 +17004,8 @@ window.__require = function e(t, n, r) {
           cc.Mgr.plantMgr.hideTipAttackNode();
           cc.Mgr.plantMgr.hideAttackRange();
           this.TouchEnd(event);
+          cc.Mgr.UIMgr.GameInUINode.getComponent("InGameUI").buyButtonNode.active = true;
+          cc.Mgr.GameCenterCtrl.rubbishNode.active = false;
         }, this);
         this.node.on(cc.Node.EventType.TOUCH_UP, function(event) {
           if (cc.Mgr.plantMgr.autoMergeData && (cc.Mgr.plantMgr.autoMergeData.startIndex == this.index || cc.Mgr.plantMgr.autoMergeData.targetIndex == this.index)) return;
@@ -17334,7 +17357,9 @@ window.__require = function e(t, n, r) {
         title_zh: cc.Node,
         title_ja: cc.Node,
         title_ru: cc.Node,
-        debugVersion: cc.Label
+        debugVersion: cc.Label,
+        playerId: cc.Label,
+        inviterId: cc.Label
       },
       start: function start() {
         this.bgmON = 1 === cc.Mgr.AudioMgr.bgmVolume;
@@ -17382,8 +17407,10 @@ window.__require = function e(t, n, r) {
         this.debugVersion.string = cc.Mgr.Config.debug_version;
         this.idLabel.string = cc.Mgr.Config.isTelegram ? window.Telegram.WebApp.initDataUnsafe.user.id : "Local";
         this.spriteCoin.setMaterial(0, this.nomarlM);
-        cc.Mgr.Config.isDebug ? this.recoveryBtn.y = -22 : this.recoveryBtn.y = -300;
+        cc.Mgr.Config.isDebug ? this.recoveryBtn.y = -100 : this.recoveryBtn.y = -200;
         this.recoveryBtn.active = false;
+        this.playerId.string = "PlayerID: " + (cc.Mgr.Config.isTelegram ? window.Telegram.WebApp.initDataUnsafe.user.id : "Local");
+        this.inviterId.string = "InviterID: " + ("" == (null != window.startParam && window.startParam) ? "SOLO" : window.startParam);
       },
       copyID: function copyID() {
         cc.Mgr.Utils.copyID();
@@ -17467,21 +17494,12 @@ window.__require = function e(t, n, r) {
       },
       onClickShare: function onClickShare() {
         if (false == this.limitClick.clickTime()) return;
-        cc.Mgr.UIMgr.showLoading();
-        var self = this;
-        cc.Mgr.Utils.getBase64Image("resources/tex/shareImage_5.png", function(_data) {
-          cc.Mgr.UIMgr.hideLoading();
-          cc.Mgr.game.updateMissionProgressById(MissionType.InviteCount);
-          cc.Mgr.game.updateAchieveProgressByType(AchieveType.Invite);
-          cc.Mgr.UIMgr.InGameUI.checkMissionAchieveTip();
-          self.getReward = true;
-          var data = {};
-          data.elapsed = cc.Mgr.Utils.getDate9(true);
-          data.stage = cc.Mgr.game.level;
-          data.feature = "invite friends";
-          cc.Mgr.analytics.logEvent("share_message", JSON.stringify(data));
-          self.closeUI();
-        });
+        if (false == cc.Mgr.Config.isTelegram) return;
+        var userId = window.Telegram.WebApp.initDataUnsafe.user.id;
+        var messageText = encodeURIComponent("\ud83d\udcb0Catizen: Unleash, Play, Earn - Where Every Game Leads to an Airdrop Adventure! \n\ud83c\udf81Let's play-to-earn airdrop right now!");
+        var gameUrl = encodeURIComponent("https://t.me/Vision_test_02_bot/paytest?startapp=" + userId);
+        var telegramUrl = "https://t.me/share/url?url=" + gameUrl + "&text=" + messageText;
+        window.open(telegramUrl, "_blank");
       },
       showUI: function showUI() {
         this.node.width = cc.Mgr.Config.winSize.width;
@@ -18215,18 +18233,7 @@ window.__require = function e(t, n, r) {
         this.dbListNode.active = true;
         this.lastPlantMaxLv = cc.Mgr.game.plantMaxLv;
         this.currentBuffList = [];
-        var checkAvailabelAds = cc.Mgr.admob.checkAvailableRewardedAd();
-        if (this.max_count - cc.Mgr.game.spinADResetTime > 0 && true == checkAvailabelAds) {
-          this.timeNode.active = false;
-          this.inviteBtn.node.position = this.freeBtn.node.position = cc.v2(0, -415);
-          this.gemBtn.node.position = cc.v2(0, -415);
-          this.freetimeLbl.string = cc.Mgr.Utils.getTranslation("btn-get") + " (" + (this.max_count - cc.Mgr.game.spinADResetTime) + "/" + this.ads_count + ")";
-          this.gemLbl.string = this.costGem;
-        } else {
-          this.inviteBtn.node.active = this.freeBtn.node.active = false;
-          this.gemBtn.node.position = cc.v2(0, -415);
-          this.gemLbl.string = this.costGem;
-        }
+        this.freeBtn.node.active = cc.Mgr.game.freeFlag.TurnTable;
         var list = cc.Mgr.MapDataMgr.getDataListByDataType(DataType.TurnTableData);
         var chooseList = [];
         this.disc.rotate = 0;
@@ -18403,23 +18410,12 @@ window.__require = function e(t, n, r) {
           this.adsIconNode.active = false;
           this.freeLabelNode.node.active = true;
           this.freetimeLbl.node.active = false;
+          this.freeBtn.node.active = true;
         } else {
           this.adsIconNode.active = true;
           this.freeLabelNode.node.active = false;
           this.freetimeLbl.node.active = true;
-        }
-        if (this.max_count - cc.Mgr.game.spinADResetTime > 0) {
-          this.freeBtn.node.active = true;
-          this.timeNode.active = false;
-          this.inviteBtn.node.position = this.freeBtn.node.position = cc.v2(0, -415);
-          this.gemBtn.node.position = cc.v2(0, -415);
-          this.freetimeLbl.string = cc.Mgr.Utils.getTranslation("btn-get") + " (" + (this.max_count - cc.Mgr.game.spinADResetTime) + "/" + this.ads_count + ")";
-          this.gemLbl.string = this.costGem;
-          this.updateBtns();
-        } else {
-          this.inviteBtn.node.active = this.freeBtn.node.active = false;
-          this.gemBtn.node.position = cc.v2(0, -415);
-          this.gemLbl.string = this.costGem;
+          this.freeBtn.node.active = false;
         }
         this.gemBtn.node.active = true;
         this.updateAdsBtnState();

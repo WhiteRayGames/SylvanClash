@@ -87,8 +87,19 @@ cc.Class({
             this.rankLabel.fontSize = this.iconLabel.fontSize = this.nameLabel.fontSize = this.topLabel.fontSize = 13;
         }
 
-        this.rankingData = cc.Mgr.Utils.rankingData;
-        
+        // this.rankingData = cc.Mgr.Utils.rankingData;
+        this.rankingData = [];
+        // temp code
+        for (let i = 0; i < 10; i++) {
+            let rankData = {};
+            rankData.rank = i + 1;
+            rankData.player = {};
+            rankData.player.name = "Tester_" + (i + 1);
+            rankData.formattedScore = 10 - i;
+            rankData.player.photo = "";
+            this.rankingData.push(rankData);
+        }
+
         // this.rankingData = [{ranking: 1, playerName: "我是一个男子汉，哈哈哈", plantLevel: 69, isSelf: "YES"},{ranking: 2, playerName: "haha_1", plantLevel: 68, isSelf: "NO"},{ranking: 3, playerName: "haha_1", plantLevel: 67, isSelf: "NO"},{ranking: 4, playerName: "haha_1", plantLevel: 66, isSelf: "NO"},{ranking: 5, playerName: "haha_1", plantLevel: 65, isSelf: "NO"},{ranking: 6, playerName: "haha_1", plantLevel: 64, isSelf: "NO"},{ranking: 7, playerName: "haha_1", plantLevel: 63, isSelf: "NO"},{ranking: 8, playerName: "haha_1", plantLevel: 62, isSelf: "NO"},{ranking: 9, playerName: "haha_1", plantLevel: 61, isSelf: "NO"},{ranking: 10, playerName: "haha_1", plantLevel: 60, isSelf: "NO"},{ranking: 11, playerName: "haha_1", plantLevel: 59, isSelf: "NO"},{ranking: 12, playerName: "haha_1", plantLevel: 58, isSelf: "NO"},{ranking: 13, playerName: "haha_1", plantLevel: 57, isSelf: "NO"},{ranking: 14, playerName: "haha_1", plantLevel: 56, isSelf: "NO"},{ranking: 15, playerName: "haha_1", plantLevel: 55, isSelf: "NO"},{ranking: 16, playerName: "haha_1", plantLevel: 54, isSelf: "NO"},{ranking: 17, playerName: "haha_1", plantLevel: 53, isSelf: "NO"},{ranking: 18, playerName: "haha_1", plantLevel: 52, isSelf: "NO"}];
         if (this.rankingData) this._scrollViewComponent.setBaseInfo(this.rankingData.length, 5, 15, 85, this.setRankList.bind(this));
         

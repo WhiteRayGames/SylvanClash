@@ -34,7 +34,7 @@ var InGameUI = cc.Class({
 
         uav:uav,
 
-        buyButtonScprit:cc.Button,
+        buyButtonNode:cc.Node,
 
         missionTip:cc.Node,
 
@@ -118,7 +118,9 @@ var InGameUI = cc.Class({
         shopBtn: cc.Node,
 
         gemBtn: cc.Node,
-        gemBtn_2: cc.Node
+        gemBtn_2: cc.Node,
+
+        coinsNGemsNode: cc.Node
     },
 
     showBtnTip () {
@@ -243,13 +245,16 @@ var InGameUI = cc.Class({
             if (this.doubleCoinNode.x < -350) this.doubleCoinNode.x = -350;
             this.coinBonusNode.x = 370 + cc.Mgr.game.ratioOffsetX;
             if (this.coinBonusNode.x > 500) this.coinBonusNode.x = 500;
+            this.coinsNGemsNode.x = 350 + cc.Mgr.game.ratioOffsetX;
+            if (this.coinsNGemsNode.x > 500) this.coinsNGemsNode.x = 500;
             this.pauseBtnNode.x = 370 + cc.Mgr.game.ratioOffsetX;
             if (this.pauseBtnNode.x > 500) this.pauseBtnNode.x = 500;
+            this.shopBtn.removeComponent(cc.Widget);
+            this.shopBtn.x = cc.view.getVisibleSizeInPixel().width;
+            if (this.shopBtn.x >= 425) this.shopBtn.x = 425;
 
-            this.buffBtn.x = -223 - cc.Mgr.game.ratioOffsetX;
-            if (this.buffBtn.x < -350) this.buffBtn.x = -350;
-            this.shopBtn.x = 217 + cc.Mgr.game.ratioOffsetX;
-            if (this.shopBtn.x > 350) this.shopBtn.x = 350;
+            // this.buffBtn.x = -223 - cc.Mgr.game.ratioOffsetX;
+            // if (this.buffBtn.x < -350) this.buffBtn.x = -350;
          }
 
          if (cc.Mgr.GameCenterCtrl.isIphoneX === true) {
@@ -461,33 +466,34 @@ var InGameUI = cc.Class({
             this.hasSetPos = true;
         }
 
-        if (toShow) {
-            if (cc.Mgr.game.zoomIn === true) {
-                cc.Mgr.plantMgr.rubbishNode.y = -150;
-            } else {
-                cc.Mgr.plantMgr.rubbishNode.y = -185
-            }
-        } else {
-            if (cc.Mgr.game.zoomIn === true) {
-                cc.Mgr.plantMgr.rubbishNode.y = -280;
-            } else {
-                cc.Mgr.plantMgr.rubbishNode.y = -335;
-            }
-        }
+        // temp code 垃圾桶位置改变
+        // if (toShow) {
+        //     if (cc.Mgr.game.zoomIn === true) {
+        //         cc.Mgr.plantMgr.rubbishNode.y = -150;
+        //     } else {
+        //         cc.Mgr.plantMgr.rubbishNode.y = -185
+        //     }
+        // } else {
+        //     if (cc.Mgr.game.zoomIn === true) {
+        //         cc.Mgr.plantMgr.rubbishNode.y = -280;
+        //     } else {
+        //         cc.Mgr.plantMgr.rubbishNode.y = -335;
+        //     }
+        // }
 
-        let currentX;
-        if (cc.Mgr.game.zoomIn === true) {
-            currentX = cc.Mgr.game.isPad ? (-238 - (cc.Mgr.game.ratioOffsetX * 0.83)) : -253;
-            if (currentX < -340) currentX = -340;
-            cc.Mgr.plantMgr.rubbishNode.x = currentX;
-        } else {
-            currentX = cc.Mgr.game.isPad ? (-268 - (cc.Mgr.game.ratioOffsetX * 0.83)) : -253;
-            if (currentX < -360) currentX = -360;
-            cc.Mgr.plantMgr.rubbishNode.x = currentX;
-        }
-        
-        if (currentX < -360) currentX = -160;
-        cc.Mgr.plantMgr.rubbishNode.x = currentX;
+        // let currentX;
+        // if (cc.Mgr.game.zoomIn === true) {
+        //     currentX = cc.Mgr.game.isPad ? (-238 - (cc.Mgr.game.ratioOffsetX * 0.83)) : -253;
+        //     if (currentX < -340) currentX = -340;
+        //     cc.Mgr.plantMgr.rubbishNode.x = currentX;
+        // } else {
+        //     currentX = cc.Mgr.game.isPad ? (-268 - (cc.Mgr.game.ratioOffsetX * 0.83)) : -253;
+        //     if (currentX < -360) currentX = -360;
+        //     cc.Mgr.plantMgr.rubbishNode.x = currentX;
+        // }
+        //
+        // if (currentX < -360) currentX = -160;
+        // cc.Mgr.plantMgr.rubbishNode.x = currentX;
     },
 
     onClickPause () {

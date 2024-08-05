@@ -66,7 +66,10 @@ cc.Class({
         title_ja: cc.Node,
         title_ru: cc.Node,
 
-        debugVersion: cc.Label
+        debugVersion: cc.Label,
+
+        playerId: cc.Label,
+        inviterId: cc.Label
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -136,12 +139,15 @@ cc.Class({
         this.spriteCoin.setMaterial(0, this.nomarlM);
 
         if (cc.Mgr.Config.isDebug) {
-            this.recoveryBtn.y = -22;
+            this.recoveryBtn.y = -100;
         } else {
-            this.recoveryBtn.y = -300;
+            this.recoveryBtn.y = -200;
         }
 
         this.recoveryBtn.active = false;
+
+        this.playerId.string = "PlayerID: " + (cc.Mgr.Config.isTelegram ? window.Telegram.WebApp.initDataUnsafe.user.id : "Local");
+        this.inviterId.string = "InviterID: " + ((window.startParam != null && window.startParam) == "" ? "SOLO" : window.startParam);
     },
 
     copyID() {

@@ -54,6 +54,15 @@ cc.Class({
         let curProductID = this.productsIDList[_index];
         this.callback = _callback
 
+        // let orderId = 13
+        // let url = cc.Mgr.Config.isDebug ? "https://tg-api-service-test.lunamou.com/orders/" : "https://tg-api-service.lunamou.com/orders/";
+        // cc.Mgr.http.httpGets(url + orderId + "/status", (error, response) => {
+        //     if (error == true) {
+        //         window.Telegram.WebApp.showAlert('Error checking order status. Please try again later.');
+        //         return;
+        //     }
+        // })
+
         if (cc.Mgr.Config.isTelegram) {
             this.purchase(curProductID);
         } else {
@@ -64,10 +73,11 @@ cc.Class({
     purchase (_productId) {
         this.purchaseProductID = _productId;
 
+        let priceValue = cc.Mgr.Config.isDebug ? 1 : this.priceValueList[this.index];
         const requestBody = JSON.stringify({
             user_id: window.Telegram.WebApp.initDataUnsafe.user.id,
             product_name: this.productsNameList[this.index],
-            amount: this.priceValueList[this.index]
+            amount: priceValue
         });
 
         let data = {}
@@ -76,9 +86,9 @@ cc.Class({
         cc.Mgr.analytics.logEvent("purchase_start", JSON.stringify(data));
 
         cc.Mgr.UIMgr.showLoading(true);
-        cc.Mgr.game.pauseGame();
 
-        cc.Mgr.http.httpPost("https://tg-api-service.lunamou.com/orders/create", requestBody, (error, response) => {
+        let url = cc.Mgr.Config.isDebug ? "https://tg-api-service-test.lunamou.com/orders/create" : "https://tg-api-service.lunamou.com/orders/create";
+        cc.Mgr.http.httpPost(url, requestBody, (error, response) => {
             if (error == true) {
                 // failed
                 cc.Mgr.UIMgr.showPrompt(cc.Mgr.Utils.getTranslation("payment-failed"), "", this.tipParent);
@@ -101,17 +111,14 @@ cc.Class({
                         this.checkOrderStatus(data.id);
                     } else if (status === 'failed') {
                         window.Telegram.WebApp.showAlert('Payment failed. Please try again.');
-                        cc.Mgr.game.resumeGame();
                         cc.Mgr.UIMgr.hideLoading();
                         this.callback = null;
                     } else if (status === 'cancelled') {
                         window.Telegram.WebApp.showAlert('Payment was cancelled.');
-                        cc.Mgr.game.resumeGame();
                         cc.Mgr.UIMgr.hideLoading();
                         this.callback = null;
                     } else {
                         window.Telegram.WebApp.showAlert('Unexpected payment status: ' + status);
-                        cc.Mgr.game.resumeGame();
                         cc.Mgr.UIMgr.hideLoading();
                         this.callback = null;
                     }
@@ -126,17 +133,17 @@ cc.Class({
     },
 
     checkOrderStatus(orderId) {
-        cc.Mgr.http.httpGets("https://tg-api-service.lunamou.com//orders/" + orderId + "/status", (error, response) => {
+        let url = cc.Mgr.Config.isDebug ? "https://tg-api-service-test.lunamou.com/orders/" : "https://tg-api-service.lunamou.com/orders/";
+        cc.Mgr.http.httpGets(url + orderId + "/status", (error, response) => {
             if (error == true) {
                 window.Telegram.WebApp.showAlert('Error checking order status. Please try again later.');
                 return;
             }
             let data = JSON.parse(response);
-            if (data.status === 'paid') {
-                webapp.showAlert('Payment successful! Thank you for your purchase.');
+            if (data.status && data.status === 'paid') {
+                window.Telegram.WebApp.showAlert('Payment successful! Thank you for your purchase.');
 
                 // success
-                cc.Mgr.game.resumeGame();
                 cc.Mgr.UIMgr.showPrompt(cc.Mgr.Utils.getTranslation("payment-successful"), "", this.tipParent);
                 this.callback(this.getGems[this.index]);
                 cc.Mgr.game.isPayingUser = true;
@@ -149,11 +156,10 @@ cc.Class({
 
                 cc.Mgr.UIMgr.hideLoading();
                 this.callback = null;
-            } else if (data.status === 'pending') {
+            } else if (data.status && data.status === 'pending') {
                 setTimeout(() => this.checkOrderStatus(orderId), 5000);  // 5秒后再次检查
             } else {
-                window.Telegram.WebApp.showAlert('Order status: ' + data.status + '. Please contact support if you have any questions.');
-                cc.Mgr.game.resumeGame();
+                window.Telegram.WebApp.showAlert(response + '   Please contact support if you have any questions.');
                 cc.Mgr.UIMgr.hideLoading();
                 this.callback = null;
             }

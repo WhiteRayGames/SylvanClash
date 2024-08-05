@@ -47,26 +47,34 @@ var shareUI = cc.Class({
             return
         }
 
-        cc.Mgr.UIMgr.showLoading();
+        if (cc.Mgr.Config.isTelegram == false) return;
 
-        let self = this;
-        cc.Mgr.Utils.getBase64Image("resources/tex/shareImage_5.png", (_data) => {
-            cc.Mgr.UIMgr.hideLoading();
+        let userId = window.Telegram.WebApp.initDataUnsafe.user.id;
+        const messageText = encodeURIComponent("💰Catizen: Unleash, Play, Earn - Where Every Game Leads to an Airdrop Adventure! \n🎁Let's play-to-earn airdrop right now!");
+        const gameUrl = encodeURIComponent("https://t.me/Vision_test_02_bot/paytest?startapp=" + userId);
+        const telegramUrl = `https://t.me/share/url?url=${gameUrl}&text=${messageText}`;
+        window.open(telegramUrl, '_blank');
 
-            cc.Mgr.game.updateMissionProgressById(MissionType.InviteCount);
-            cc.Mgr.game.updateAchieveProgressByType(AchieveType.Invite);
-            cc.Mgr.UIMgr.InGameUI.checkMissionAchieveTip();
-
-            self.getReward = true;
-
-            let data = {}
-            data.elapsed = cc.Mgr.Utils.getDate9(true)
-            data.stage = cc.Mgr.game.level
-            data.feature = "invite friends"
-            cc.Mgr.analytics.logEvent("share_message", JSON.stringify(data));
-
-            self.closeUI();
-        });
+        // cc.Mgr.UIMgr.showLoading();
+        //
+        // let self = this;
+        // cc.Mgr.Utils.getBase64Image("resources/tex/shareImage_5.png", (_data) => {
+        //     cc.Mgr.UIMgr.hideLoading();
+        //
+        //     cc.Mgr.game.updateMissionProgressById(MissionType.InviteCount);
+        //     cc.Mgr.game.updateAchieveProgressByType(AchieveType.Invite);
+        //     cc.Mgr.UIMgr.InGameUI.checkMissionAchieveTip();
+        //
+        //     self.getReward = true;
+        //
+        //     let data = {}
+        //     data.elapsed = cc.Mgr.Utils.getDate9(true)
+        //     data.stage = cc.Mgr.game.level
+        //     data.feature = "invite friends"
+        //     cc.Mgr.analytics.logEvent("share_message", JSON.stringify(data));
+        //
+        //     self.closeUI();
+        // });
     },
 
     showUI:function () {

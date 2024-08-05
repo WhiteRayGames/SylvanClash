@@ -7,35 +7,35 @@ var turnTableUI = cc.Class({
     extends: cc.Component,
 
     properties: {
-        disc: cc.Node,
+        disc:cc.Node,
 
-        spList: [cc.Sprite],
+        spList:[cc.Sprite],
         mySpList: [MySprite],
 
-        freeBtn: cc.Button,
-        gemBtn: cc.Button,
-        closeBtn: cc.Node,
+        freeBtn:cc.Button,
+        gemBtn:cc.Button,
+        closeBtn:cc.Node,
         inviteBtn: cc.Button,
 
-        lblList: [cc.Label],
+        lblList:[cc.Label],
         lblList_ru: [cc.Label],
         lblListNode: cc.Node,
         lblListNode_ru: cc.Node,
 
-        gemLbl: cc.Label,
-        freetimeLbl: cc.Label,
+        gemLbl:cc.Label,
+        freetimeLbl:cc.Label,
 
         timeNode: cc.Node,
-        freetimeTipLbl: cc.Label,
-        timeDesLbl: cc.Label,
+        freetimeTipLbl:cc.Label,
+        timeDesLbl:cc.Label,
 
-        rotating: false,
+        rotating:false,
 
-        lastPlantMaxLv: 0,
-        gemLabel: cc.Label,
+        lastPlantMaxLv:0,
+        gemLabel:cc.Label,
 
-        adsIconNode: cc.Node,
-        freeLabelNode: cc.Label,
+        adsIconNode:cc.Node,
+        freeLabelNode:cc.Label,
 
         spriteFrameList: [cc.SpriteFrame],
 
@@ -44,30 +44,30 @@ var turnTableUI = cc.Class({
         content: cc.Node,
         blurBg: cc.Node,
 
-        // dbListNode: cc.Node,
-        // titleLabel: cc.Label,
+        dbListNode: cc.Node,
+        titleLabel: cc.Label,
         okLabel: cc.Label,
         okBtn: cc.Node,
 
-        // spriteCoin: cc.Sprite,
-        // nomarlM: cc.Material,
-        // grayM: cc.Material
+        spriteCoin: cc.Sprite,
+        nomarlM: cc.Material,
+        grayM: cc.Material
     },
 
-    onLoad() {
+    onLoad () {
         this.buffMap = ["rage", "auto", "flame", "freeze", "crit"];
 
         this.max_count = 6;
         this.ads_count = 5;
     },
 
-    start() {
+    start(){
         cc.Mgr.UIMgr.turnTableUI = this;
 
         this.freetimeTipLbl.string = cc.Mgr.Utils.getTranslation("roulette-timeTip");
         this.startLabel.string = cc.Mgr.Utils.getTranslation("roulette-start");
         this.freeLabelNode.string = cc.Mgr.Utils.getTranslation("btn-free");
-        // this.titleLabel.string = cc.Mgr.Utils.getTranslation("roulette-title");
+        this.titleLabel.string = cc.Mgr.Utils.getTranslation("roulette-title");
         this.okLabel.string = cc.Mgr.Utils.getTranslation("btn-ok");
 
         this.limitClick = this.node.getComponent('LimitClick');
@@ -75,12 +75,12 @@ var turnTableUI = cc.Class({
         this.allowShow = true;
     },
 
-    showBtns: function () {
+    showBtns:function(){
         this.refreshBtns();
         this.closeBtn.active = true;
     },
 
-    hideBtns: function () {
+    hideBtns:function(){
         this.freeBtn.node.active = false;
         this.gemBtn.node.active = false;
         this.closeBtn.active = false;
@@ -88,7 +88,7 @@ var turnTableUI = cc.Class({
         this.inviteBtn.node.active = false;
     },
 
-    showUI: function () {
+    showUI:function(){
         if (cc.Mgr.game.level <= 10) {
             this.costGem = 5;
         } else if (cc.Mgr.game.level <= 20) {
@@ -102,24 +102,26 @@ var turnTableUI = cc.Class({
         } else {
             this.costGem = 60;
         }
-
+       
         this.showBtns();
         this.disc.angle = 0;
         this.startTimeCount();
         this.node.width = cc.Mgr.Config.winSize.width;
         this.node.height = cc.Mgr.Config.winSize.height;
-        if (cc.Mgr.game.plantMaxLv > this.lastPlantMaxLv)
+        if(cc.Mgr.game.plantMaxLv > this.lastPlantMaxLv)
             this.refreshPanel();
 
         this.gemLabel.string = this.costGem;
 
-        if (cc.Mgr.game.freeFlag.TurnTable || cc.Mgr.game.spinADResetTime === 0) {
+        if(cc.Mgr.game.freeFlag.TurnTable || cc.Mgr.game.spinADResetTime === 0)
+        {
             cc.Mgr.game.freeFlag.TurnTable = true;
             this.adsIconNode.active = false;
             this.freeLabelNode.node.active = true;
             this.freetimeLbl.node.active = false;
         }
-        else {
+        else
+        {
             this.adsIconNode.active = true;
             this.freeLabelNode.node.active = false;
             this.freetimeLbl.node.active = true;
@@ -127,8 +129,8 @@ var turnTableUI = cc.Class({
         this.blurBg.opacity = 0
         this.content.opacity = 0;
         this.content.setScale(.5)
-        cc.tween(this.blurBg).to(0.05, { opacity: 255 }).call().start();
-        cc.tween(this.content).to(0.15, { opacity: 255, scale: 1 }).start();
+        cc.tween(this.blurBg).to(0.05, {opacity:255}).call().start();
+        cc.tween(this.content).to(0.15, {opacity:255, scale: 1}).start();
 
         cc.Mgr.admob.showBanner("turnTable");
 
@@ -138,13 +140,13 @@ var turnTableUI = cc.Class({
         this.lblListNode_ru.active = false;
     },
 
-    playOverAnimation: function () {
+    playOverAnimation:function(){
         this.rotating = false;
         this.showBtns();
     },
 
-    playTurnAnimation: function () {
-        // this.dbListNode.active = false;
+    playTurnAnimation:function(){
+        this.dbListNode.active = false;
         this.count = 0;
         this.callback = function () {
             if (this.count == 30) {
@@ -157,24 +159,28 @@ var turnTableUI = cc.Class({
         this.hideBtns();
     },
 
-    refreshPanel: function () {
-        // this.dbListNode.active = true;
+    refreshPanel:function(){
+        this.dbListNode.active = true;
         this.lastPlantMaxLv = cc.Mgr.game.plantMaxLv;
         this.currentBuffList = [];
 
-        let checkAvailabelAds = cc.Mgr.admob.checkAvailableRewardedAd();
-        if (this.max_count - cc.Mgr.game.spinADResetTime > 0 && checkAvailabelAds == true) {
-            this.timeNode.active = false;
-            // this.inviteBtn.node.position = this.freeBtn.node.position = cc.v2(0, -415);
-            // this.gemBtn.node.position = cc.v2(0, -415);
-            this.freetimeLbl.string = cc.Mgr.Utils.getTranslation("btn-get") + " (" + (this.max_count - cc.Mgr.game.spinADResetTime) + "/" + this.ads_count + ")";
-            this.gemLbl.string = this.costGem;
-        }
-        else {
-            this.inviteBtn.node.active = this.freeBtn.node.active = false;
-            // this.gemBtn.node.position = cc.v2(0, -415);
-            this.gemLbl.string = this.costGem;
-        }
+        this.freeBtn.node.active = cc.Mgr.game.freeFlag.TurnTable;
+
+        // let checkAvailabelAds = cc.Mgr.admob.checkAvailableRewardedAd();
+        // if (this.max_count - cc.Mgr.game.spinADResetTime > 0 && checkAvailabelAds == true)
+        // {
+        //     this.timeNode.active = false;
+        //     this.inviteBtn.node.position = this.freeBtn.node.position = cc.v2(0, -415);
+        //     this.gemBtn.node.position = cc.v2(0, -415);
+        //     this.freetimeLbl.string = cc.Mgr.Utils.getTranslation("btn-get") + " ("+(this.max_count - cc.Mgr.game.spinADResetTime) + "/" + this.ads_count + ")";
+        //     this.gemLbl.string = this.costGem;
+        // }
+        // else
+        // {
+        //     this.inviteBtn.node.active = this.freeBtn.node.active = false;
+        //     this.gemBtn.node.position = cc.v2(0, -415);
+        //     this.gemLbl.string = this.costGem;
+        // }
 
         var list = cc.Mgr.MapDataMgr.getDataListByDataType(DataType.TurnTableData);
         var chooseList = [];//最终选择出来的
@@ -192,7 +198,8 @@ var turnTableUI = cc.Class({
         for (var key = 1; key < list.length; key++) {
             var key = key.toString();
             var dt = list[key];
-            switch (dt.type) {
+            switch(dt.type)
+            { 
                 case TurnTableGetType.coin:
                     coinList.push(dt);
                     break;
@@ -216,36 +223,42 @@ var turnTableUI = cc.Class({
         var i = 0;
         for (i = 0; i < 6; i++) {
             var seed = Math.random();
-            if (seed < 1 / 5 && coinCount < 2 && coinList.length > 0) {
+            if(seed < 1/5 && coinCount < 2 && coinList.length > 0)
+            {
                 coinCount += 1;
                 var dt = cc.Mgr.Utils.getArrayItemsAndChangeArr(coinList, 1);
                 chooseList.push(dt[0]);
             }
-            else if (seed < 2 / 5 && gemCount < 2 && gemList.length > 0) {
+            else if(seed < 2/5 && gemCount < 2 && gemList.length > 0)
+            {
                 gemCount += 1;
                 var dt = cc.Mgr.Utils.getArrayItemsAndChangeArr(gemList, 1);
                 chooseList.push(dt[0]);
             }
-            else if (seed < 3 / 5 && plantCount < 2 && plantList.length > 0) {
+            else if(seed < 3/5 && plantCount < 2 && plantList.length > 0)
+            {
                 plantCount += 1;
                 var dt = cc.Mgr.Utils.getArrayItemsAndChangeArr(plantList, 1);
                 chooseList.push(dt[0]);
             }
-            else if (seed < 4 / 5 && buffCount < 2 && buffList.length > 0) {
+            else if(seed < 4/5 && buffCount < 2 && buffList.length > 0)
+            {
                 buffCount += 1;
                 var dt = cc.Mgr.Utils.getArrayItemsAndChangeArr(buffList, 1);
                 chooseList.push(dt[0]);
             }
-            else if (droneCount < 2 && droneList.length > 0) {
+            else if(droneCount < 2 && droneList.length > 0)
+            {
                 droneCount += 1;
                 var dt = cc.Mgr.Utils.getArrayItemsAndChangeArr(droneList, 1);
                 chooseList.push(dt[0]);
             }
-            else {
-                if (chooseList.length == 6)
+            else
+            {
+                if(chooseList.length == 6)
                     break;
 
-                if (chooseList.length < 6 && i > 0)
+                if(chooseList.length < 6 && i > 0)
                     i--;
             }
         }
@@ -255,18 +268,19 @@ var turnTableUI = cc.Class({
         }
     },
 
-    setBlockInfo: function (index, dt, curMaxLv) {
+    setBlockInfo:function(index, dt, curMaxLv){
         this.spList[index].node.setScale(1);
-        switch (dt.type) {
+        switch(dt.type)
+        { 
             case TurnTableGetType.coin:
                 this.spList[index].node.active = true;
                 this.mySpList[index].node.active = false;
                 this.spList[index].spriteFrame = this.spriteFrameList[0];
                 this.spList[index].scale = 1;
-                var spinLv = this.pickOutSpinData(dt.rarity, cc.Mgr.MapDataMgr.getDataByDataTypeAndKey(DataType.SpinLevelData, curMaxLv));
+                var spinLv = this.pickOutSpinData(dt.rarity ,cc.Mgr.MapDataMgr.getDataByDataTypeAndKey(DataType.SpinLevelData, curMaxLv));
                 var num = cc.Mgr.MapDataMgr.getDataByDataTypeAndKey(DataType.PlantData, spinLv).price;
                 num = num * BigInt(8) / BigInt(10);
-                this.lblList[index].string = "x" + cc.Mgr.Utils.getNumStr2(num);
+                this.lblList[index].string = "x"+cc.Mgr.Utils.getNumStr2(num);
                 // this.lblList_ru[index].string = "x"+cc.Mgr.Utils.getNumStr2(num);
                 var rewardData = new rewardBox();
                 rewardData.setData(dt.type, num, 1, dt.weight);
@@ -277,7 +291,7 @@ var turnTableUI = cc.Class({
                 this.mySpList[index].node.active = false;
                 this.spList[index].spriteFrame = this.spriteFrameList[1];
                 this.spList[index].scale = 1;
-                this.lblList[index].string = "x" + dt.rewards;
+                this.lblList[index].string = "x"+dt.rewards;
                 // this.lblList_ru[index].string = "x"+dt.rewards;
                 var rewardData = new rewardBox();
                 rewardData.setData(dt.type, dt.rewards, 1, dt.weight);
@@ -286,10 +300,10 @@ var turnTableUI = cc.Class({
             case TurnTableGetType.plant:
                 this.spList[index].node.active = false;
                 this.mySpList[index].node.active = true;
-                var spinLv = this.pickOutSpinData(dt.rarity, cc.Mgr.MapDataMgr.getDataByDataTypeAndKey(DataType.SpinLevelData, curMaxLv));
+                var spinLv = this.pickOutSpinData(dt.rarity ,cc.Mgr.MapDataMgr.getDataByDataTypeAndKey(DataType.SpinLevelData, curMaxLv));
                 var spName = cc.Mgr.MapDataMgr.getDataByDataTypeAndKey(DataType.PlantData, spinLv).head;
                 this.mySpList[index].setSprite(AtlasType.PlantHead, spName);
-                this.lblList[index].string = "Lv." + spinLv;
+                this.lblList[index].string = "Lv."+spinLv;
                 // this.lblList_ru[index].string = "Ур."+spinLv;
                 var rewardData = new rewardBox();
                 rewardData.setData(dt.type, 1, spinLv, dt.weight);
@@ -324,9 +338,10 @@ var turnTableUI = cc.Class({
         }
     },
 
-    pickOutSpinData: function (spinType, dt) {
+    pickOutSpinData:function(spinType, dt){
         let lv;
-        switch (spinType) {
+        switch(spinType)
+        { 
             case "S":
                 return cc.Mgr.game.plantMaxLv - 1
                 break;
@@ -345,10 +360,10 @@ var turnTableUI = cc.Class({
         }
     },
 
-    startTimeCount: function () {
-        if (this.max_count - cc.Mgr.game.spinADResetTime > 0)
+    startTimeCount:function(){
+        if(this.max_count - cc.Mgr.game.spinADResetTime > 0)
             return;
-
+        
         //北京时间相差8个小时
         // tempory code 10
         cc.Mgr.game.spinADTimeCount = cc.Mgr.game.spinADTimeCount === 0 ? cc.Mgr.Utils.GetSysTime() + 2 * 3600 : cc.Mgr.game.spinADTimeCount;
@@ -356,14 +371,16 @@ var turnTableUI = cc.Class({
         this.seconds = cc.Mgr.game.spinADTimeCount - cc.Mgr.Utils.GetSysTime();
 
         this.unschedule(this.countTime);
-        if (this.seconds > 0) {
+        if(this.seconds > 0)
+        {
             this.schedule(this.countTime, 1);
         }
     },
 
-    countTime: function () {
+    countTime:function(){
         this.seconds -= 1;
-        if (this.seconds < 0) {
+        if(this.seconds < 0)
+        {
             this.unschedule(this.countTime);
             cc.Mgr.game.spinADResetTime = 0;
             this.timeNode.active = false
@@ -377,40 +394,47 @@ var turnTableUI = cc.Class({
         this.timeDesLbl.string = timeStr;
     },
 
-    refreshBtns: function () {
+    refreshBtns:function(){
 
-        if (cc.Mgr.game.freeFlag.TurnTable) {
+        if(cc.Mgr.game.freeFlag.TurnTable)
+        {
             this.adsIconNode.active = false;
             this.freeLabelNode.node.active = true;
             this.freetimeLbl.node.active = false;
+            this.freeBtn.node.active = true;
         }
-        else {
+        else
+        {
             this.adsIconNode.active = true;
             this.freeLabelNode.node.active = false;
             this.freetimeLbl.node.active = true;
+            this.freeBtn.node.active = false;
         }
 
-        if (this.max_count - cc.Mgr.game.spinADResetTime > 0) {
-            this.freeBtn.node.active = true;
-            this.timeNode.active = false;
-            // this.inviteBtn.node.position = this.freeBtn.node.position = cc.v2(0, -415);
-            // this.gemBtn.node.position = cc.v2(0, -415);
-            this.freetimeLbl.string = cc.Mgr.Utils.getTranslation("btn-get") + " (" + (this.max_count - cc.Mgr.game.spinADResetTime) + "/" + this.ads_count + ")";
-            this.gemLbl.string = this.costGem;
-            this.updateBtns();
-        }
-        else {
-            this.inviteBtn.node.active = this.freeBtn.node.active = false;
-            // this.gemBtn.node.position = cc.v2(0, -415);
-            this.gemLbl.string = this.costGem;
-        }
+        // temp code
+        // if(this.max_count - cc.Mgr.game.spinADResetTime > 0)
+        // {
+        //     this.freeBtn.node.active = true;
+        //     this.timeNode.active = false;
+        //     this.inviteBtn.node.position = this.freeBtn.node.position = cc.v2(0, -415);
+        //     this.gemBtn.node.position = cc.v2(0, -415);
+        //     this.freetimeLbl.string = cc.Mgr.Utils.getTranslation("btn-get") + " ("+(this.max_count - cc.Mgr.game.spinADResetTime) + "/" + this.ads_count + ")";
+        //     this.gemLbl.string = this.costGem;
+        //     this.updateBtns();
+        // }
+        // else
+        // {
+        //     this.inviteBtn.node.active = this.freeBtn.node.active = false;
+        //     this.gemBtn.node.position = cc.v2(0, -415);
+        //     this.gemLbl.string = this.costGem;
+        // }
         this.gemBtn.node.active = true;
         // this.okBtn.active = true;
 
         this.updateAdsBtnState();
     },
 
-    updateBtns(_noFill) {
+    updateBtns (_noFill) {
         if (_noFill == true) cc.Mgr.game.noFillCount++;
 
         if (cc.Mgr.game.noFillCount >= 3) {
@@ -424,14 +448,14 @@ var turnTableUI = cc.Class({
         }
     },
 
-    onClickTurnTableByInvite() {
+    onClickTurnTableByInvite () {
         if (this.limitClick.clickTime() == false) {
             return
         }
         cc.Mgr.AudioMgr.playSFX("click");
         if (this.rotating) return;
 
-        if (cc.Mgr.game.spinADResetTime >= this.max_count)
+        if(cc.Mgr.game.spinADResetTime >= this.max_count)
             return;
 
         var self = this;
@@ -444,7 +468,7 @@ var turnTableUI = cc.Class({
             cc.Mgr.UIMgr.InGameUI.checkMissionAchieveTip();
 
             cc.Mgr.game.spinADResetTime++;
-            if (this.max_count - cc.Mgr.game.spinADResetTime <= 0) self.startTimeCount();
+            if(this.max_count - cc.Mgr.game.spinADResetTime <= 0)self.startTimeCount();
             self.refreshBtns();
             self.startRotate();
             self.playTurnAnimation();
@@ -461,31 +485,33 @@ var turnTableUI = cc.Class({
         });
     },
 
-    adsTurnTable: function () {
+    adsTurnTable:function(){
         if (this.limitClick.clickTime() == false) {
             return
         }
         cc.Mgr.AudioMgr.playSFX("click");
         if (this.rotating) return;
 
-        if (cc.Mgr.game.spinADResetTime >= this.max_count)
+        if(cc.Mgr.game.spinADResetTime >= this.max_count)
             return;
 
         var self = this;
 
-        if (cc.Mgr.game.freeFlag.TurnTable) {
+        if(cc.Mgr.game.freeFlag.TurnTable)
+        {
             cc.Mgr.game.freeFlag.TurnTable = false;
             this.adsIconNode.active = true;
             this.freeLabelNode.node.active = false;
             this.freetimeLbl.node.active = true;
 
             cc.Mgr.game.spinADResetTime++;
-            if (this.max_count - cc.Mgr.game.spinADResetTime <= 0) self.startTimeCount();
+            if(this.max_count - cc.Mgr.game.spinADResetTime <= 0)self.startTimeCount();
             self.refreshBtns();
             self.startRotate();
             self.playTurnAnimation();
         }
-        else {
+        else
+        {
             if (this.checkAvailabelAds === false) {
                 cc.Mgr.UIMgr.showPrompt(cc.Mgr.Utils.getTranslation("ad-tip-3"), "", this.node);
                 // let data = {};
@@ -495,10 +521,10 @@ var turnTableUI = cc.Class({
                 // cc.Mgr.analytics.logEvent("ad_present_failed", JSON.stringify(data));
                 return;
             }
-            cc.Mgr.admob.showRewardedVideoAd((function (_state, _noFill) {
+            cc.Mgr.admob.showRewardedVideoAd((function(_state, _noFill) {
                 if (_state) {
                     cc.Mgr.game.spinADResetTime++;
-                    if (this.max_count - cc.Mgr.game.spinADResetTime <= 0) self.startTimeCount();
+                    if(this.max_count - cc.Mgr.game.spinADResetTime <= 0)self.startTimeCount();
                     self.refreshBtns();
                     self.startRotate();
                     self.playTurnAnimation();
@@ -515,7 +541,7 @@ var turnTableUI = cc.Class({
         }
     },
 
-    updateAdsBtnState() {
+    updateAdsBtnState () {
         // this.checkAvailabelAds = cc.Mgr.admob.checkAvailableRewardedAd();
         // this.freeBtn.node.active = cc.Mgr.game.freeFlag.TurnTable || this.checkAvailabelAds;
         // if (this.checkAvailabelAds || cc.Mgr.game.freeFlag.TurnTable) {
@@ -525,14 +551,15 @@ var turnTableUI = cc.Class({
         // }
     },
 
-    gemTurnTable: function () {
+    gemTurnTable:function(){
         if (this.limitClick.clickTime() == false) {
             return
         }
         cc.Mgr.AudioMgr.playSFX("click");
         if (this.rotating) return;
 
-        if (cc.Mgr.game.gems < this.costGem) {
+        if(cc.Mgr.game.gems < this.costGem)
+        {
             cc.Mgr.UIMgr.showPrompt(cc.Mgr.Utils.getTranslation("NoGems"), "gem", this.node);
             // cc.Mgr.game.needShowIAPCount++;
             // if (cc.Mgr.game.needShowIAPCount >= 1) {
@@ -556,22 +583,22 @@ var turnTableUI = cc.Class({
         // data.value = this.costGem;
         // data.feature = "roulette";
         // cc.Mgr.analytics.logEvent("spend_gem", JSON.stringify(data));
-
+        
         cc.Mgr.game.spinUseGemTime++;
-        if (cc.Mgr.game.spinUseGemTime > this.ads_count)
+        if(cc.Mgr.game.spinUseGemTime > this.ads_count)
             cc.Mgr.game.spinUseGemTime = this.ads_count;
         this.startRotate();
         this.playTurnAnimation();
     },
 
-    playSFXRotation: function () {
+    playSFXRotation:function(){
         cc.Mgr.AudioMgr.playSFX("spin");
     },
 
     // 转盘旋转
     startRotate(callback) {
         this.rotating = true;
-
+        
         var angle = 0;
         var allWeight = 0;
         for (var i = 0; i < this.rewardList.length; i++) {
@@ -589,7 +616,7 @@ var turnTableUI = cc.Class({
             angle = 4;
         } else if (num <= this.rewardList[4].weight + this.rewardList[3].weight + this.rewardList[2].weight + this.rewardList[1].weight + this.rewardList[0].weight) {
             angle = 5;
-        } else {
+        } else  {
             angle = 0;
         }
 
@@ -600,7 +627,7 @@ var turnTableUI = cc.Class({
         var action = cc.rotateTo(2.5, 360 * 6 + angle * 60);
         action.easing(cc.easeInOut(3.0));
         this.disc.runAction(cc.sequence(action, cc.callFunc(() => {
-            if (typeof callback === 'function')
+            if(typeof callback === 'function') 
                 callback();
 
             this.getRewards(angle);
@@ -612,10 +639,11 @@ var turnTableUI = cc.Class({
         })));
     },
 
-    getRewards: function (angle) {
+    getRewards:function(angle){
         this.hideBtns();
         var rewardData = this.rewardList[angle];
-        switch (rewardData.rType) {
+        switch(rewardData.rType)
+        { 
             case TurnTableGetType.coin:
                 cc.Mgr.UIMgr.openAssetGetUI("money", rewardData.num, "turnTable");
                 break;
@@ -635,13 +663,13 @@ var turnTableUI = cc.Class({
         }
     },
 
-    closeUI: function () {
+    closeUI:function(){
         cc.Mgr.AudioMgr.playSFX("click");
-        if (this.rotating) return;
+        if(this.rotating) return;
         cc.Mgr.admob.hideBanner("turnTable");
         let self = this
-        cc.tween(this.blurBg).to(0.15, { opacity: 0 }).start();
-        cc.tween(this.content).to(0.15, { opacity: 0, scale: .5 }).call(() => {
+        cc.tween(this.blurBg).to(0.15, {opacity:0}).start();
+        cc.tween(this.content).to(0.15, {opacity:0, scale: .5}).call(() => {
             self.unschedule(self.countTime);
             self.node.active = false;
         }).start();

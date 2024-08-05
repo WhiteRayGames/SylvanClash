@@ -84,6 +84,9 @@ var plant = cc.Class({
       cc.Mgr.plantMgr.hideTipAttackNode()
       cc.Mgr.plantMgr.showAttackRange(this.node);
       this.TouchStart(event)
+
+      cc.Mgr.UIMgr.GameInUINode.getComponent("InGameUI").buyButtonNode.active = false;
+      cc.Mgr.GameCenterCtrl.rubbishNode.active = true;
     }, this)
 
     this.node.on(cc.Node.EventType.TOUCH_MOVE, function (event) {
@@ -96,6 +99,9 @@ var plant = cc.Class({
       cc.Mgr.plantMgr.hideTipAttackNode()
       cc.Mgr.plantMgr.hideAttackRange();
       this.TouchEnd(event)
+
+      cc.Mgr.UIMgr.GameInUINode.getComponent("InGameUI").buyButtonNode.active = true;
+      cc.Mgr.GameCenterCtrl.rubbishNode.active = false;
     }, this)
 
     this.node.on(cc.Node.EventType.TOUCH_UP, function (event) {

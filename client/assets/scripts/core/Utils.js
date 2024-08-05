@@ -160,8 +160,8 @@ var Utils = cc.Class({
 
         pDistance:function(v1, v2){
             let dx = Math.abs(v2.x - v1.x);
-            let dy = Math.abs(v2.y - v1.y);
-            return Math.sqrt((Math.pow(dx,2) + Math.pow(dy,2)));
+            let dy = Math.abs(v2.y - v1.y);
+            return Math.sqrt((Math.pow(dx,2) + Math.pow(dy,2)));
         },
 
         calculateAngle:function(startPos, endPos)

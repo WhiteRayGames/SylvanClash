@@ -34,17 +34,9 @@ cc.Class({
         cc.tween(this.unitsContainer).to(0.2,{position: cc.v2(50, 0)}).start();
         cc.tween(this.gameFront).to(0.2, {position: cc.v2(248, 176)}).start();
 
-        let targetY;
-        if (cc.Mgr.UIMgr.InGameUI.doubleCoinNode.active === false) {
-            targetY = -230;
-        } else {
-            targetY = -150;
-        }
         cc.tween(this.rubbishNode).to(0.2,{scale:0.83}).start();
-        let currentX = cc.Mgr.game.isPad ? (-253 - (cc.Mgr.game.ratioOffsetX * 0.83)) : -253;
-        if (currentX < -340) currentX = -340;
-        // let currentX = -253
-        cc.tween(this.rubbishNode).to(0.2, {position: cc.v2(currentX, targetY)}).start();
+        let currentX = -30;
+        cc.tween(this.rubbishNode).to(0.2, {position: cc.v2(currentX, -310)}).start();
     },
 
     zoomOut () {
@@ -56,17 +48,9 @@ cc.Class({
         cc.tween(this.unitsContainer).to(0.2,{position: cc.v2(0, 0)}).start();
         cc.tween(this.gameFront).to(0.2, {position: cc.v2(169, 154)}).start();
 
-        let targetY;
-        if (cc.Mgr.UIMgr.InGameUI.doubleCoinNode.active === false) {
-            targetY = -270;
-        } else {
-            targetY = -180;
-        }
         cc.tween(this.rubbishNode).to(0.2,{scale:1}).start();
-        let currentX = cc.Mgr.game.isPad ? (-268 - (cc.Mgr.game.ratioOffsetX * 0.83)) : -253;
-        if (currentX < -360) currentX = -360;
-        // let currentX = -253
-        cc.tween(this.rubbishNode).to(0.2, {position: cc.v2(currentX, targetY)}).start();
+        let currentX = 10;
+        cc.tween(this.rubbishNode).to(0.2, {position: cc.v2(currentX, -370)}).start();
     },
 
     setLanguage () {
@@ -148,6 +132,8 @@ cc.Class({
         cc.Mgr.game.vip = cc.Mgr.game.isVIP ? "active" : "inactive";
 
         this.checkTimer = 0;
+
+        this.rubbishNode.active = false;
     },
 
     defense:function(data)

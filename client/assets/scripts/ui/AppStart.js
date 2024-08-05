@@ -84,7 +84,9 @@ cc.Class({
     },
 
     onChangeScreenCallback () {
-
+        cc.Mgr.AudioMgr.stopAll();
+        cc.game.restart();
+        window.onChangeScreen = null;
     },
 
     onResizeScreenCallback () {
@@ -116,7 +118,7 @@ cc.Class({
             cc.Mgr.game.isPad = false;
             // this.canvas.fitHeight = false;
             // this.canvas.fitWidth = true;
-        }  
+        }
     }
 
     /*
