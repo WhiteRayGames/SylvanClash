@@ -49,9 +49,9 @@ var shareUI = cc.Class({
 
         if (cc.Mgr.Config.isTelegram == false) return;
 
-        let userId = window.Telegram.WebApp.initDataUnsafe.user.id;
+        let inviteCode = cc.Mgr.telegram.userInfo.invite_code;
         const messageText = encodeURIComponent("💰Catizen: Unleash, Play, Earn - Where Every Game Leads to an Airdrop Adventure! \n🎁Let's play-to-earn airdrop right now!");
-        const gameUrl = encodeURIComponent("https://t.me/Vision_test_02_bot/paytest?startapp=" + userId);
+        const gameUrl = encodeURIComponent("https://t.me/Vision_test_02_bot/paytest?startapp=" + inviteCode);
         const telegramUrl = `https://t.me/share/url?url=${gameUrl}&text=${messageText}`;
         window.open(telegramUrl, '_blank');
 
