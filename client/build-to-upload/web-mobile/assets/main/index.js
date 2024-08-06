@@ -1640,7 +1640,7 @@ window.__require = function e(t, n, r) {
         isTelegram: true,
         platform: "Telegram",
         version: "1.0.0",
-        debug_version: "_debug_21",
+        debug_version: "_debug_22",
         zOffsetY: 142,
         zBossLine: 100,
         allPlantCount: 75,
@@ -6612,7 +6612,7 @@ window.__require = function e(t, n, r) {
       },
       start: function start() {
         this.getLanguageLabel();
-        this.languageList = [ "English", "Russian" ];
+        this.languageList = [ "English" ];
         for (var i = 0; i < this.languageList.length; i++) {
           if (this.languageList[i] === cc.Mgr.Config.language) continue;
           var otherItem = cc.instantiate(this.languageItem);
@@ -12788,11 +12788,11 @@ window.__require = function e(t, n, r) {
       },
       start: function start() {
         if (window.winSize) {
-          this.box.width = window.winSize.width;
-          this.box.height = window.winSize.height;
+          this.box.width = window.winSize.width / cc.view.getScaleX();
+          this.box.height = window.winSize.height / cc.view.getScaleY();
         } else {
-          this.box.width = window.innerWidth;
-          this.box.height = window.innerHeight;
+          this.box.width = window.innerWidth / cc.view._scaleX;
+          this.box.height = window.innerHeight / cc.view._scaleY;
         }
         this.dragon.on(dragonBones.EventObject.COMPLETE, this.onAnimComplete, this);
       },
@@ -17388,8 +17388,7 @@ window.__require = function e(t, n, r) {
         title_ja: cc.Node,
         title_ru: cc.Node,
         debugVersion: cc.Label,
-        playerId: cc.Label,
-        inviterId: cc.Label
+        invitationCode: cc.Label
       },
       start: function start() {
         this.bgmON = 1 === cc.Mgr.AudioMgr.bgmVolume;
@@ -17439,8 +17438,7 @@ window.__require = function e(t, n, r) {
         this.spriteCoin.setMaterial(0, this.nomarlM);
         cc.Mgr.Config.isDebug ? this.recoveryBtn.y = -100 : this.recoveryBtn.y = -200;
         this.recoveryBtn.active = false;
-        this.playerId.string = "PlayerID: " + (cc.Mgr.Config.isTelegram ? window.Telegram.WebApp.initDataUnsafe.user.id : "Local");
-        this.inviterId.string = "InviterID: " + (null != window.startParam && "" != window.startParam ? window.startParam : "SOLO");
+        this.invitationCode.string = "Invitation code: " + (cc.Mgr.telegram && cc.Mgr.telegram.userInfo ? cc.Mgr.telegram.userInfo.user.invite_code : "");
       },
       copyID: function copyID() {
         cc.Mgr.Utils.copyID();
@@ -17524,8 +17522,15 @@ window.__require = function e(t, n, r) {
       },
       onClickShare: function onClickShare() {
         if (false == this.limitClick.clickTime()) return;
-        if (false == cc.Mgr.Config.isTelegram) return;
-        var inviteCode = cc.Mgr.telegram.userInfo.invite_code;
+        if (false == cc.Mgr.Config.isTelegram) {
+          cc.Mgr.UIMgr.showPrompt("This feature is not supported", "", this.node);
+          return;
+        }
+        if (null == cc.Mgr.telegram || null == cc.Mgr.telegram.userInfo) {
+          cc.Mgr.UIMgr.showPrompt("This feature is not supported", "", this.node);
+          return;
+        }
+        var inviteCode = cc.Mgr.telegram.userInfo.user.invite_code;
         var messageText = encodeURIComponent("\ud83d\udcb0Catizen: Unleash, Play, Earn - Where Every Game Leads to an Airdrop Adventure! \n\ud83c\udf81Let's play-to-earn airdrop right now!");
         var gameUrl = encodeURIComponent("https://t.me/Vision_test_02_bot/paytest?startapp=" + inviteCode);
         var telegramUrl = "https://t.me/share/url?url=" + gameUrl + "&text=" + messageText;

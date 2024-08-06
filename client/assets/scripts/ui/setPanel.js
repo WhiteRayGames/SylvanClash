@@ -68,8 +68,7 @@ cc.Class({
 
         debugVersion: cc.Label,
 
-        playerId: cc.Label,
-        inviterId: cc.Label
+        invitationCode: cc.Label
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -146,8 +145,7 @@ cc.Class({
 
         this.recoveryBtn.active = false;
 
-        this.playerId.string = "PlayerID: " + (cc.Mgr.Config.isTelegram ? window.Telegram.WebApp.initDataUnsafe.user.id : "Local");
-        this.inviterId.string = "InviterID: " + ((window.startParam != null && window.startParam != "") ? window.startParam : "SOLO");
+        this.invitationCode.string = "Invitation code: " + ((cc.Mgr.telegram && cc.Mgr.telegram.userInfo) ? cc.Mgr.telegram.userInfo.user.invite_code : "");
     },
 
     copyID() {

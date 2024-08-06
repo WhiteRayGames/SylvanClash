@@ -44,12 +44,20 @@ var shareUI = cc.Class({
 
     onClickShare () {
         if (this.limitClick.clickTime() == false) {
-            return
+            return;
         }
 
-        if (cc.Mgr.Config.isTelegram == false) return;
+        if (cc.Mgr.Config.isTelegram == false) {
+            cc.Mgr.UIMgr.showPrompt("This feature is not supported", "", this.node);
+            return;
+        }
 
-        let inviteCode = cc.Mgr.telegram.userInfo.invite_code;
+        if (cc.Mgr.telegram == null || cc.Mgr.telegram.userInfo == null) {
+            cc.Mgr.UIMgr.showPrompt("This feature is not supported", "", this.node);
+            return;
+        }
+
+        let inviteCode = cc.Mgr.telegram.userInfo.user.invite_code;
         const messageText = encodeURIComponent("💰Catizen: Unleash, Play, Earn - Where Every Game Leads to an Airdrop Adventure! \n🎁Let's play-to-earn airdrop right now!");
         const gameUrl = encodeURIComponent("https://t.me/Vision_test_02_bot/paytest?startapp=" + inviteCode);
         const telegramUrl = `https://t.me/share/url?url=${gameUrl}&text=${messageText}`;
