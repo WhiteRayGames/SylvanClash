@@ -4,9 +4,9 @@
     "ecpdLyjvZBwrvm+cedCcQy",
     "9elZmWDh9KNIHgrqobLntL",
     "1ae0oupk1Oh4DpsoxDtNil",
+    "192872c6d",
     "a86WzVG4ZBGbqoAbtkBGgE",
     "094kR0xqpC24B2U9Y/vdbJ",
-    "1fbb3c150",
     "03bxquLGZJhKO+uGrmI8cB",
     "479uvEwL1FeIaHTUJhs6lG",
     "9a5RtHa7dPs7x7IFnTkS4Q",
@@ -15,8 +15,7 @@
     "45WHV1+fRKkrzgmxuZjgHQ",
     "0dzYHfoZJLDKWe0qFVBhNl",
     "b4FSWn3khMR6tH4Ljhm4Aw",
-    "1eb6e95ac",
-    "19d548f06"
+    "1446149c1"
   ],
   [
     "node",
@@ -2056,19 +2055,19 @@
         12,
         0,
         0,
-        3,
+        4,
         0,
         13,
         0,
         1,
         0,
-        3,
-        0,
-        0,
         4,
         0,
         0,
-        4,
+        5,
+        0,
+        0,
+        5,
         1,
         1,
         1
@@ -2079,8 +2078,8 @@
         {
           "name": "sales-bg",
           "rect": [
-            1200,
-            793,
+            97,
+            223,
             253,
             70
           ],
@@ -2112,7 +2111,7 @@
         3
       ],
       [
-        14
+        3
       ]
     ],
     [
@@ -2120,8 +2119,8 @@
         {
           "name": "offline-Earnings",
           "rect": [
-            951,
-            818,
+            3,
+            751,
             657,
             183
           ],
@@ -2153,7 +2152,7 @@
         3
       ],
       [
-        5
+        14
       ]
     ],
     [
@@ -2161,8 +2160,8 @@
         {
           "name": "2offline",
           "rect": [
-            1474,
-            1410,
+            1015,
+            223,
             538,
             571
           ],
@@ -2174,7 +2173,6 @@
             541,
             574
           ],
-          "rotated": 1,
           "capInsets": [
             0,
             0,
@@ -2194,7 +2192,7 @@
         3
       ],
       [
-        5
+        3
       ]
     ],
     [
@@ -2202,8 +2200,8 @@
         {
           "name": "offline-Earnings-R",
           "rect": [
-            1267,
-            223,
+            782,
+            3,
             773,
             214
           ],
@@ -2234,7 +2232,7 @@
         3
       ],
       [
-        15
+        3
       ]
     ]
   ]

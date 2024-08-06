@@ -3,10 +3,10 @@
   [
     "ecpdLyjvZBwrvm+cedCcQy",
     "9elZmWDh9KNIHgrqobLntL",
-    "1fbb3c150",
+    "12df5f461",
     "0cZB3XDwlIH4QkDwMZlvNl",
     "95JGVgbDNPqb9lzbJWNtdm",
-    "19d548f06",
+    "192872c6d",
     "03bxquLGZJhKO+uGrmI8cB",
     "c0WERvvlVAZKIGBKI1Cq5a",
     "c18a1bvXND/LwFBXEXoZyS",
@@ -28,6 +28,7 @@
     "6eCVjWRlRE070mYb4bsla/",
     "3bfKVWrkRJVagKSN3McpBQ",
     "9fQMIIsiJP4LZzzuT9Cngi",
+    "1446149c1",
     "abEaLstolMoId2+1bbA++q"
   ],
   [
@@ -939,8 +940,8 @@
         {
           "name": "title-board1-reuse",
           "rect": [
-            1783,
-            1954,
+            3,
+            223,
             256,
             88
           ],
@@ -952,6 +953,7 @@
             256,
             88
           ],
+          "rotated": 1,
           "capInsets": [
             0,
             0,
@@ -971,7 +973,7 @@
         4
       ],
       [
-        2
+        5
       ]
     ],
     [
@@ -993,8 +995,8 @@
         {
           "name": "CloudsunlockCharacters",
           "rect": [
-            732,
-            1298,
+            672,
+            1232,
             181,
             94
           ],
@@ -1025,7 +1027,7 @@
         4
       ],
       [
-        5
+        2
       ]
     ],
     [
@@ -4618,8 +4620,8 @@
         {
           "name": "light-yellow",
           "rect": [
-            1719,
-            687,
+            987,
+            127,
             122,
             121
           ],
@@ -4631,7 +4633,6 @@
             122,
             121
           ],
-          "rotated": 1,
           "capInsets": [
             0,
             0,
@@ -4693,8 +4694,8 @@
         {
           "name": "background",
           "rect": [
-            1475,
-            817,
+            350,
+            1414,
             569,
             587
           ],
@@ -4725,7 +4726,7 @@
         4
       ],
       [
-        2
+        27
       ]
     ],
     [
@@ -4745,7 +4746,7 @@
         11
       ],
       [
-        27
+        28
       ]
     ]
   ]

@@ -1,0 +1,35 @@
+[
+  1,
+  0,
+  0,
+  [
+    [
+      "dragonBones.DragonBonesAsset",
+      [
+        "_name",
+        "_dragonBonesJson"
+      ],
+      1
+    ]
+  ],
+  [
+    [
+      0,
+      0,
+      1,
+      3
+    ]
+  ],
+  [
+    [
+      0,
+      "Roulette_ske",
+      "{\"frameRate\":24,\"name\":\"Roulette\",\"version\":\"5.5\",\"compatibleVersion\":\"5.5\",\"armature\":[{\"type\":\"Armature\",\"frameRate\":24,\"name\":\"Armature\",\"aabb\":{\"x\":-38,\"y\":-72.5,\"width\":76,\"height\":75},\"bone\":[{\"name\":\"root\"},{\"length\":4,\"name\":\"light1\",\"parent\":\"root\",\"transform\":{\"x\":-0.0246,\"y\":-34.2488,\"skX\":-92.1211,\"skY\":-92.1211}},{\"length\":4,\"name\":\"light2\",\"parent\":\"root\",\"transform\":{\"x\":0.45,\"y\":-34.25,\"skX\":-92.0454,\"skY\":-92.0454}},{\"length\":3,\"name\":\"light3\",\"parent\":\"root\",\"transform\":{\"x\":0.2734,\"y\":-34.2534,\"skX\":-92.5261,\"skY\":-92.5261}}],\"slot\":[{\"name\":\"light3\",\"parent\":\"light3\"},{\"name\":\"light2\",\"parent\":\"light2\"},{\"name\":\"light1\",\"parent\":\"light1\"}],\"skin\":[{\"slot\":[{\"name\":\"light2\",\"display\":[{\"name\":\"Roulette/light2\",\"transform\":{\"x\":0.77,\"y\":-0.42,\"skX\":92.05,\"skY\":92.05}}]},{\"name\":\"light1\",\"display\":[{\"name\":\"Roulette/light1\",\"transform\":{\"x\":0.91,\"y\":-0.58,\"skX\":92.12,\"skY\":92.12}}]},{\"name\":\"light3\",\"display\":[{\"name\":\"Roulette/light3\",\"transform\":{\"x\":0.24,\"y\":0.34,\"skX\":92.53,\"skY\":92.53}}]}]}],\"animation\":[{\"duration\":48,\"playTimes\":0,\"name\":\"Roulette1\",\"slot\":[{\"name\":\"light3\",\"colorFrame\":[{\"duration\":24,\"tweenEasing\":0},{\"duration\":8,\"tweenEasing\":0},{\"duration\":8,\"tweenEasing\":0,\"value\":{\"aM\":0}},{\"duration\":8}]},{\"name\":\"light2\",\"colorFrame\":[{\"duration\":14,\"tweenEasing\":0},{\"duration\":10,\"tweenEasing\":0},{\"duration\":10,\"tweenEasing\":0,\"value\":{\"aM\":0}},{\"duration\":14}]},{\"name\":\"light1\",\"colorFrame\":[{\"duration\":8,\"tweenEasing\":0,\"value\":{\"aM\":0}},{\"duration\":32,\"tweenEasing\":0},{\"duration\":8,\"tweenEasing\":0},{\"duration\":0,\"value\":{\"aM\":0}}]}]}],\"defaultActions\":[{\"gotoAndPlay\":\"Roulette1\"}]}]}"
+    ]
+  ],
+  0,
+  0,
+  [],
+  [],
+  []
+]

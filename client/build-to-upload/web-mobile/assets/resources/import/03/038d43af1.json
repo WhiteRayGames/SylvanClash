@@ -15,7 +15,7 @@
     "3ae7efMv1CLq2ilvUY/tQi",
     "c18a1bvXND/LwFBXEXoZyS",
     "46FAjJJBhMsbsU/F2LraLL",
-    "1eb6e95ac"
+    "1446149c1"
   ],
   [
     "node",
@@ -1695,8 +1695,8 @@
         {
           "name": "star",
           "rect": [
+            638,
             3,
-            556,
             575,
             149
           ],
@@ -1708,6 +1708,7 @@
             575,
             150
           ],
+          "rotated": 1,
           "capInsets": [
             0,
             0,

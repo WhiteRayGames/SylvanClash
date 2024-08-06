@@ -1640,7 +1640,7 @@ window.__require = function e(t, n, r) {
         isTelegram: true,
         platform: "Telegram",
         version: "1.0.0",
-        debug_version: "_debug_18",
+        debug_version: "_debug_19",
         zOffsetY: 142,
         zBossLine: 100,
         allPlantCount: 75,
@@ -5091,7 +5091,6 @@ window.__require = function e(t, n, r) {
         rubbishLabel: cc.Label,
         loadScreen: cc.Node,
         gameBg: cc.Node,
-        gameFront: cc.Node,
         unitsContainer: cc.Node,
         rubbishNode: cc.Node
       },
@@ -5103,17 +5102,11 @@ window.__require = function e(t, n, r) {
         cc.tween(this.gameBg).to(.2, {
           position: cc.v2(50, 0)
         }).start();
-        cc.tween(this.gameFront).to(.2, {
-          scale: 1.2
-        }).start();
         cc.tween(this.unitsContainer).to(.2, {
           scale: 1.2
         }).start();
         cc.tween(this.unitsContainer).to(.2, {
           position: cc.v2(50, 0)
-        }).start();
-        cc.tween(this.gameFront).to(.2, {
-          position: cc.v2(248, 176)
         }).start();
         cc.tween(this.rubbishNode).to(.2, {
           scale: .83
@@ -5131,17 +5124,11 @@ window.__require = function e(t, n, r) {
         cc.tween(this.gameBg).to(.2, {
           position: cc.v2(0, 0)
         }).start();
-        cc.tween(this.gameFront).to(.2, {
-          scale: 1
-        }).start();
         cc.tween(this.unitsContainer).to(.2, {
           scale: 1
         }).start();
         cc.tween(this.unitsContainer).to(.2, {
           position: cc.v2(0, 0)
-        }).start();
-        cc.tween(this.gameFront).to(.2, {
-          position: cc.v2(169, 154)
         }).start();
         cc.tween(this.rubbishNode).to(.2, {
           scale: 1
@@ -5208,6 +5195,30 @@ window.__require = function e(t, n, r) {
         cc.Mgr.game.vip = cc.Mgr.game.isVIP ? "active" : "inactive";
         this.checkTimer = 0;
         this.rubbishNode.active = false;
+        if (cc.Mgr.Config.isTelegram) {
+          var userPhoto = "";
+          var photoUrl = cc.Mgr.Config.isDebug ? "https://tg-api-service-test.lunamou.com/user/profile_photo/" + window.Telegram.WebApp.initDataUnsafe.user.id : "https://tg-api-service.lunamou.com/user/profile_photo/" + window.Telegram.WebApp.initDataUnsafe.user.id;
+          cc.Mgr.http.httpGets(photoUrl, function(error, response) {
+            if (true == error) {
+              photoUrl = "";
+              return;
+            }
+            photoUrl = response;
+            var requestBody = JSON.stringify({
+              telegram_id: window.Telegram.WebApp.initDataUnsafe.user.id,
+              username: window.Telegram.WebApp.initDataUnsafe.user.username,
+              avatar_url: photoUrl,
+              invited_by_code: null != window.startParam && "" != window.startParam ? window.startParam : "SOLO"
+            });
+            var url = cc.Mgr.Config.isDebug ? "https://tg-api-service-test.lunamou.com/user/init" : "https://tg-api-service.lunamou.com/user/init";
+            cc.Mgr.http.httpPost(url, requestBody, function(error, response) {
+              if (true == error) return;
+              var data = JSON.parse(response);
+              cc.Mgr.telegram = {};
+              cc.Mgr.telegram.userInfo = data;
+            });
+          });
+        }
       },
       defense: function defense(data) {
         cc.Mgr.plantMgr.hideTipAttackNode();
@@ -12484,8 +12495,6 @@ window.__require = function e(t, n, r) {
         vipTip: cc.Label,
         content: cc.Node,
         blurBg: cc.Node,
-        winDb: dragonBones.ArmatureDisplay,
-        failedDb: dragonBones.ArmatureDisplay,
         checkboxNode: cc.Node,
         vipNode: cc.Node,
         failedCheckboxNode: cc.Node,
@@ -12572,11 +12581,9 @@ window.__require = function e(t, n, r) {
         this.showBtnCounter && clearTimeout(this.showBtnCounter);
         if (suc) {
           cc.Mgr.AudioMgr.playSFX(MyEnum.AudioType.success1);
-          this.winDb.playAnimation("win", 1);
           this.showVipCount = 0;
         } else {
           cc.Mgr.AudioMgr.playSFX(MyEnum.AudioType.fail);
-          this.failedDb.playAnimation("Defeat", 1);
           this.showVipCount++;
         }
         if (this.showVipCount >= 10) {
@@ -17442,7 +17449,7 @@ window.__require = function e(t, n, r) {
         cc.Mgr.Config.isDebug ? this.recoveryBtn.y = -100 : this.recoveryBtn.y = -200;
         this.recoveryBtn.active = false;
         this.playerId.string = "PlayerID: " + (cc.Mgr.Config.isTelegram ? window.Telegram.WebApp.initDataUnsafe.user.id : "Local");
-        this.inviterId.string = "InviterID: " + ("" == (null != window.startParam && window.startParam) ? "SOLO" : window.startParam);
+        this.inviterId.string = "InviterID: " + (null != window.startParam && "" != window.startParam ? window.startParam : "SOLO");
       },
       copyID: function copyID() {
         cc.Mgr.Utils.copyID();
@@ -17527,9 +17534,9 @@ window.__require = function e(t, n, r) {
       onClickShare: function onClickShare() {
         if (false == this.limitClick.clickTime()) return;
         if (false == cc.Mgr.Config.isTelegram) return;
-        var userId = window.Telegram.WebApp.initDataUnsafe.user.id;
+        var inviteCode = cc.Mgr.telegram.userInfo.invite_code;
         var messageText = encodeURIComponent("\ud83d\udcb0Catizen: Unleash, Play, Earn - Where Every Game Leads to an Airdrop Adventure! \n\ud83c\udf81Let's play-to-earn airdrop right now!");
-        var gameUrl = encodeURIComponent("https://t.me/Vision_test_02_bot/paytest?startapp=" + userId);
+        var gameUrl = encodeURIComponent("https://t.me/Vision_test_02_bot/paytest?startapp=" + inviteCode);
         var telegramUrl = "https://t.me/share/url?url=" + gameUrl + "&text=" + messageText;
         window.open(telegramUrl, "_blank");
       },
@@ -18176,13 +18183,8 @@ window.__require = function e(t, n, r) {
         startLabel: cc.Label,
         content: cc.Node,
         blurBg: cc.Node,
-        dbListNode: cc.Node,
-        titleLabel: cc.Label,
         okLabel: cc.Label,
-        okBtn: cc.Node,
-        spriteCoin: cc.Sprite,
-        nomarlM: cc.Material,
-        grayM: cc.Material
+        okBtn: cc.Node
       },
       onLoad: function onLoad() {
         this.buffMap = [ "rage", "auto", "flame", "freeze", "crit" ];
@@ -18194,7 +18196,6 @@ window.__require = function e(t, n, r) {
         this.freetimeTipLbl.string = cc.Mgr.Utils.getTranslation("roulette-timeTip");
         this.startLabel.string = cc.Mgr.Utils.getTranslation("roulette-start");
         this.freeLabelNode.string = cc.Mgr.Utils.getTranslation("btn-free");
-        this.titleLabel.string = cc.Mgr.Utils.getTranslation("roulette-title");
         this.okLabel.string = cc.Mgr.Utils.getTranslation("btn-ok");
         this.limitClick = this.node.getComponent("LimitClick");
         this.allowShow = true;
@@ -18249,7 +18250,6 @@ window.__require = function e(t, n, r) {
         this.showBtns();
       },
       playTurnAnimation: function playTurnAnimation() {
-        this.dbListNode.active = false;
         this.count = 0;
         this.callback = function() {
           if (30 == this.count) {
@@ -18262,7 +18262,6 @@ window.__require = function e(t, n, r) {
         this.hideBtns();
       },
       refreshPanel: function refreshPanel() {
-        this.dbListNode.active = true;
         this.lastPlantMaxLv = cc.Mgr.game.plantMaxLv;
         this.currentBuffList = [];
         this.freeBtn.node.active = cc.Mgr.game.freeFlag.TurnTable;
@@ -18353,9 +18352,9 @@ window.__require = function e(t, n, r) {
           this.mySpList[index].node.active = false;
           this.spList[index].spriteFrame = this.spriteFrameList[1];
           this.spList[index].scale = 1;
-          this.lblList[index].string = "x" + dt.rewards;
+          this.lblList[index].string = "x" + 2 * this.costGem;
           var rewardData = new rewardBox();
-          rewardData.setData(dt.type, dt.rewards, 1, dt.weight);
+          rewardData.setData(dt.type, 2 * this.costGem, 1, dt.weight);
           this.rewardList[index] = rewardData;
           break;
 

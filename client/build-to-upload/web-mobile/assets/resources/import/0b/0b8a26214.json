@@ -3,8 +3,8 @@
   [
     "ecpdLyjvZBwrvm+cedCcQy",
     "9elZmWDh9KNIHgrqobLntL",
-    "1fbb3c150",
-    "19d548f06",
+    "192872c6d",
+    "163996b5f",
     "03bxquLGZJhKO+uGrmI8cB",
     "c18a1bvXND/LwFBXEXoZyS",
     "46FAjJJBhMsbsU/F2LraLL",
@@ -591,8 +591,8 @@
         {
           "name": "Progress-bar_common",
           "rect": [
-            3,
-            1594,
+            1277,
+            1607,
             438,
             58
           ],
@@ -632,8 +632,8 @@
         {
           "name": "Progress-bar1",
           "rect": [
-            732,
-            1398,
+            2007,
+            1020,
             409,
             33
           ],

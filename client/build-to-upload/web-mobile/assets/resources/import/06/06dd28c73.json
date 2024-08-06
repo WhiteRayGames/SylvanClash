@@ -4,7 +4,7 @@
     "ecpdLyjvZBwrvm+cedCcQy",
     "beonlTE0BPboHwwdBV/lI0",
     "9elZmWDh9KNIHgrqobLntL",
-    "1eb6e95ac",
+    "1446149c1",
     "03bxquLGZJhKO+uGrmI8cB",
     "b7bhim+JlJLrbGxERyarKG",
     "c18a1bvXND/LwFBXEXoZyS",
@@ -14,7 +14,8 @@
     "6eCVjWRlRE070mYb4bsla/",
     "efaHf0kMxFX72w0oGVjkae",
     "59tgU9X65DNawhtOU9Eyo4",
-    "3ae7efMv1CLq2ilvUY/tQi"
+    "3ae7efMv1CLq2ilvUY/tQi",
+    "192872c6d"
   ],
   [
     "node",
@@ -1450,8 +1451,8 @@
         {
           "name": "gold-coins",
           "rect": [
-            1329,
-            3,
+            1225,
+            1265,
             325,
             213
           ],
@@ -1482,7 +1483,7 @@
         3
       ],
       [
-        3
+        14
       ]
     ],
     [
@@ -1490,8 +1491,8 @@
         {
           "name": "double-gold-R",
           "rect": [
-            993,
-            1039,
+            1276,
+            1660,
             201,
             44
           ],
@@ -1503,6 +1504,7 @@
             201,
             44
           ],
+          "rotated": 1,
           "capInsets": [
             0,
             0,
@@ -1530,8 +1532,8 @@
         {
           "name": "double-gold",
           "rect": [
-            984,
-            1111,
+            1326,
+            1660,
             201,
             44
           ],
@@ -1543,6 +1545,7 @@
             201,
             44
           ],
+          "rotated": 1,
           "capInsets": [
             0,
             0,

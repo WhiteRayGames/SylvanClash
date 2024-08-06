@@ -1,7 +1,7 @@
 [
   1,
   [
-    "1eb6e95ac"
+    "12df5f461"
   ],
   [
     "_textureSetter"
@@ -14,19 +14,20 @@
     {
       "name": "gems3",
       "rect": [
-        835,
-        1078,
-        143,
-        160
+        177,
+        1584,
+        146,
+        168
       ],
       "offset": [
         0,
         0
       ],
       "originalSize": [
-        143,
-        160
+        146,
+        168
       ],
+      "rotated": 1,
       "capInsets": [
         0,
         0,

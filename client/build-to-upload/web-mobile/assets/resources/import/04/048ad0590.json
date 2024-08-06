@@ -6,8 +6,8 @@
     "dedIWe0AdES4y1+Wf9803B",
     "d3OJbvNY5LfrLI0ZaVEQwx",
     "97D75Hl3VCWIaPCxJPD57i",
-    "1150a8081",
-    "1eb6e95ac"
+    "12df5f461",
+    "1446149c1"
   ],
   [
     "node",
@@ -582,8 +582,8 @@
         {
           "name": "coins",
           "rect": [
-            1981,
-            1665,
+            433,
+            1748,
             63,
             54
           ],
@@ -622,8 +622,8 @@
         {
           "name": "gems_common",
           "rect": [
-            1057,
-            1410,
+            1977,
+            1977,
             66,
             48
           ],
@@ -635,7 +635,6 @@
             66,
             48
           ],
-          "rotated": 1,
           "capInsets": [
             0,
             0,

@@ -1,0 +1,35 @@
+[
+  1,
+  0,
+  0,
+  [
+    [
+      "dragonBones.DragonBonesAsset",
+      [
+        "_name",
+        "_dragonBonesJson"
+      ],
+      1
+    ]
+  ],
+  [
+    [
+      0,
+      0,
+      1,
+      3
+    ]
+  ],
+  [
+    [
+      0,
+      "check_ske",
+      "{\"frameRate\":24,\"name\":\"check\",\"version\":\"5.5\",\"compatibleVersion\":\"5.5\",\"armature\":[{\"type\":\"Armature\",\"frameRate\":24,\"name\":\"Armature\",\"aabb\":{\"x\":-62,\"y\":-138,\"width\":124,\"height\":124},\"bone\":[{\"name\":\"root\"},{\"length\":50,\"name\":\"light\",\"parent\":\"root\",\"transform\":{\"y\":-76.75,\"skX\":-90,\"skY\":-90}},{\"length\":26,\"name\":\"check\",\"parent\":\"root\",\"transform\":{\"x\":-1,\"y\":-39.55,\"skX\":-88.5707,\"skY\":-88.5707}}],\"slot\":[{\"name\":\"light\",\"parent\":\"light\"},{\"name\":\"check\",\"parent\":\"check\"},{\"name\":\"check1\",\"parent\":\"check\"}],\"skin\":[{\"slot\":[{\"name\":\"check\",\"display\":[{\"name\":\"check/check\",\"transform\":{\"x\":35.46,\"y\":0.12,\"skX\":88.41,\"skY\":88.41}}]},{\"name\":\"check1\",\"display\":[{\"name\":\"check/check1\",\"transform\":{\"x\":35.46,\"y\":0.12,\"skX\":88.41,\"skY\":88.41}}]},{\"name\":\"light\",\"display\":[{\"name\":\"check/light\",\"transform\":{\"x\":-0.75,\"skX\":89.84,\"skY\":89.84}}]}]}],\"animation\":[{\"duration\":40,\"playTimes\":0,\"name\":\"newAnimation\",\"bone\":[{\"name\":\"light\",\"scaleFrame\":[{\"duration\":10,\"tweenEasing\":0,\"x\":0.8,\"y\":0.8},{\"duration\":10,\"tweenEasing\":0,\"x\":1.03,\"y\":1.03},{\"duration\":10,\"tweenEasing\":0,\"x\":0.8,\"y\":0.8},{\"duration\":10,\"tweenEasing\":0,\"x\":1.03,\"y\":1.03},{\"duration\":0,\"x\":0.8,\"y\":0.8}]}],\"slot\":[{\"name\":\"check1\",\"colorFrame\":[{\"duration\":10,\"tweenEasing\":0},{\"duration\":10,\"tweenEasing\":0,\"value\":{\"aM\":0}},{\"duration\":10,\"tweenEasing\":0},{\"duration\":10,\"tweenEasing\":0,\"value\":{\"aM\":0}},{\"duration\":0}]}]}],\"defaultActions\":[{\"gotoAndPlay\":\"newAnimation\"}]}]}"
+    ]
+  ],
+  0,
+  0,
+  [],
+  [],
+  []
+]
