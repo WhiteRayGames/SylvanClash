@@ -289,10 +289,10 @@ var turnTableUI = cc.Class({
                 this.mySpList[index].node.active = false;
                 this.spList[index].spriteFrame = this.spriteFrameList[1];
                 this.spList[index].scale = 1;
-                this.lblList[index].string = "x"+dt.rewards;
+                this.lblList[index].string = "x"+ (this.costGem * 2);
                 // this.lblList_ru[index].string = "x"+dt.rewards;
                 var rewardData = new rewardBox();
-                rewardData.setData(dt.type, dt.rewards, 1, dt.weight);
+                rewardData.setData(dt.type, (this.costGem * 2), 1, dt.weight);
                 this.rewardList[index] = rewardData;
                 break;
             case TurnTableGetType.plant:
