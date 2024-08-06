@@ -1640,7 +1640,7 @@ window.__require = function e(t, n, r) {
         isTelegram: true,
         platform: "Telegram",
         version: "1.0.0",
-        debug_version: "_debug_19",
+        debug_version: "_debug_20",
         zOffsetY: 142,
         zBossLine: 100,
         allPlantCount: 75,
