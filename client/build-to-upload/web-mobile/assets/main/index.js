@@ -494,7 +494,11 @@ window.__require = function e(t, n, r) {
         window.onResizeScreen = this.onResizeScreenCallback.bind(this);
         cc.game.setFrameRate(55);
       },
-      onChangeScreenCallback: function onChangeScreenCallback() {},
+      onChangeScreenCallback: function onChangeScreenCallback() {
+        cc.Mgr.AudioMgr.stopAll();
+        cc.game.restart();
+        window.onChangeScreen = null;
+      },
       onResizeScreenCallback: function onResizeScreenCallback() {
         cc.Mgr.AudioMgr.stopAll();
         cc.game.restart();
@@ -1636,7 +1640,7 @@ window.__require = function e(t, n, r) {
         isTelegram: true,
         platform: "Telegram",
         version: "1.0.0",
-        debug_version: "_debug_11",
+        debug_version: "_debug_18",
         zOffsetY: 142,
         zBossLine: 100,
         allPlantCount: 75,
@@ -5111,15 +5115,12 @@ window.__require = function e(t, n, r) {
         cc.tween(this.gameFront).to(.2, {
           position: cc.v2(248, 176)
         }).start();
-        var targetY;
-        targetY = false === cc.Mgr.UIMgr.InGameUI.doubleCoinNode.active ? -230 : -150;
         cc.tween(this.rubbishNode).to(.2, {
           scale: .83
         }).start();
-        var currentX = cc.Mgr.game.isPad ? -253 - .83 * cc.Mgr.game.ratioOffsetX : -253;
-        currentX < -340 && (currentX = -340);
+        var currentX = -30;
         cc.tween(this.rubbishNode).to(.2, {
-          position: cc.v2(currentX, targetY)
+          position: cc.v2(currentX, -310)
         }).start();
       },
       zoomOut: function zoomOut() {
@@ -5142,15 +5143,12 @@ window.__require = function e(t, n, r) {
         cc.tween(this.gameFront).to(.2, {
           position: cc.v2(169, 154)
         }).start();
-        var targetY;
-        targetY = false === cc.Mgr.UIMgr.InGameUI.doubleCoinNode.active ? -270 : -180;
         cc.tween(this.rubbishNode).to(.2, {
           scale: 1
         }).start();
-        var currentX = cc.Mgr.game.isPad ? -268 - .83 * cc.Mgr.game.ratioOffsetX : -253;
-        currentX < -360 && (currentX = -360);
+        var currentX = 10;
         cc.tween(this.rubbishNode).to(.2, {
-          position: cc.v2(currentX, targetY)
+          position: cc.v2(currentX, -370)
         }).start();
       },
       setLanguage: function setLanguage() {
@@ -5209,6 +5207,7 @@ window.__require = function e(t, n, r) {
         }, 300);
         cc.Mgr.game.vip = cc.Mgr.game.isVIP ? "active" : "inactive";
         this.checkTimer = 0;
+        this.rubbishNode.active = false;
       },
       defense: function defense(data) {
         cc.Mgr.plantMgr.hideTipAttackNode();
@@ -5694,7 +5693,7 @@ window.__require = function e(t, n, r) {
         doubleCoinNode: cc.Node,
         doubleCoinLabel: cc.Node,
         uav: uav,
-        buyButtonScprit: cc.Button,
+        buyButtonNode: cc.Node,
         missionTip: cc.Node,
         turntableTip: cc.Node,
         signTip: cc.Node,
@@ -5759,7 +5758,8 @@ window.__require = function e(t, n, r) {
         buffBtn: cc.Node,
         shopBtn: cc.Node,
         gemBtn: cc.Node,
-        gemBtn_2: cc.Node
+        gemBtn_2: cc.Node,
+        coinsNGemsNode: cc.Node
       },
       showBtnTip: function showBtnTip() {
         var index = cc.Mgr.game.btnTipList.indexOf(0);
@@ -5866,10 +5866,13 @@ window.__require = function e(t, n, r) {
           this.doubleCoinNode.x < -350 && (this.doubleCoinNode.x = -350);
           this.coinBonusNode.x = 370 + cc.Mgr.game.ratioOffsetX;
           this.coinBonusNode.x > 500 && (this.coinBonusNode.x = 500);
+          this.coinsNGemsNode.x = 350 + cc.Mgr.game.ratioOffsetX;
+          this.coinsNGemsNode.x > 500 && (this.coinsNGemsNode.x = 500);
           this.pauseBtnNode.x = 370 + cc.Mgr.game.ratioOffsetX;
           this.pauseBtnNode.x > 500 && (this.pauseBtnNode.x = 500);
-          this.shopBtn.x = 217 + cc.Mgr.game.ratioOffsetX;
-          this.shopBtn.x > 350 && (this.shopBtn.x = 350);
+          this.shopBtn.removeComponent(cc.Widget);
+          this.shopBtn.x = cc.view.getVisibleSizeInPixel().width;
+          this.shopBtn.x >= 425 && (this.shopBtn.x = 425);
         }
         true === cc.Mgr.GameCenterCtrl.isIphoneX && (this.topNode.getComponent(cc.Widget).top -= 30);
         this.whiteColor = new cc.Color(255, 255, 255);
@@ -6026,19 +6029,6 @@ window.__require = function e(t, n, r) {
           cc.Mgr.game.localPoint_doubleCoinNode = cc.Mgr.plantMgr.rubbishNode.convertToNodeSpaceAR(worldPoint_doubleCoinNode);
           this.hasSetPos = true;
         }
-        toShow ? true === cc.Mgr.game.zoomIn ? cc.Mgr.plantMgr.rubbishNode.y = -150 : cc.Mgr.plantMgr.rubbishNode.y = -185 : true === cc.Mgr.game.zoomIn ? cc.Mgr.plantMgr.rubbishNode.y = -280 : cc.Mgr.plantMgr.rubbishNode.y = -335;
-        var currentX;
-        if (true === cc.Mgr.game.zoomIn) {
-          currentX = cc.Mgr.game.isPad ? -238 - .83 * cc.Mgr.game.ratioOffsetX : -253;
-          currentX < -340 && (currentX = -340);
-          cc.Mgr.plantMgr.rubbishNode.x = currentX;
-        } else {
-          currentX = cc.Mgr.game.isPad ? -268 - .83 * cc.Mgr.game.ratioOffsetX : -253;
-          currentX < -360 && (currentX = -360);
-          cc.Mgr.plantMgr.rubbishNode.x = currentX;
-        }
-        currentX < -360 && (currentX = -160);
-        cc.Mgr.plantMgr.rubbishNode.x = currentX;
       },
       onClickPause: function onClickPause() {
         cc.Mgr.UIMgr.openPauseUI();
@@ -10422,13 +10412,34 @@ window.__require = function e(t, n, r) {
       properties: {
         jsName: "userdata"
       },
+      compressString: function compressString(str) {
+        var compressedStr = window.LZString.compressToBase64(str);
+        return compressedStr;
+      },
+      decompressString: function decompressString(compressedStr) {
+        var decompressedStr = window.LZString.decompressFromBase64(compressedStr);
+        return decompressedStr;
+      },
       initData: function initData(_callback) {
         cc.Mgr.initData = false;
         this.callback = _callback;
-        var storageData = cc.sys.localStorage.getItem(this.jsName);
-        storageData = null == storageData || "" == storageData ? {} : JSON.parse(storageData);
-        this.initDataCallback(storageData);
-        this.callback && this.callback();
+        if (cc.Mgr.Config.isTelegram) window.Telegram.WebApp.CloudStorage.getItem(this.jsName, function(err, data) {
+          if (null == err) {
+            var jsonData = null == data || "" == data ? {} : JSON.parse(this.decompressString(data));
+            this.initDataCallback(jsonData);
+            this.callback && this.callback();
+          } else {
+            var storageData = cc.sys.localStorage.getItem(this.jsName);
+            storageData = null == storageData || "" == storageData ? {} : JSON.parse(storageData);
+            this.initDataCallback(storageData);
+            this.callback && this.callback();
+          }
+        }.bind(this)); else {
+          var storageData = cc.sys.localStorage.getItem(this.jsName);
+          storageData = null == storageData || "" == storageData ? {} : JSON.parse(storageData);
+          this.initDataCallback(storageData);
+          this.callback && this.callback();
+        }
       },
       initDataCallback: function initDataCallback(storageData) {
         cc.Mgr.AudioMgr.sfxVolume = void 0 == storageData.sfxVolume ? 1 : storageData.sfxVolume;
@@ -10436,7 +10447,9 @@ window.__require = function e(t, n, r) {
         cc.Mgr.game.needGuide = storageData.needGuide = void 0 == storageData.needGuide || storageData.needGuide;
         cc.Mgr.game.curGuide = storageData.curGuide = void 0 == storageData.curGuide ? 0 : storageData.curGuide;
         if (cc.Mgr.game.curGuide <= 1) {
-          cc.sys.localStorage.clear();
+          cc.Mgr.Config.isTelegram ? window.Telegram.WebApp.CloudStorage.removeItem(this.jsName, function(err, data) {
+            null == err && console.log("removed!");
+          }.bind(this)) : cc.sys.localStorage.clear();
           cc.Mgr.game.needGuide = storageData.needGuide = void 0 == storageData.needGuide || storageData.needGuide;
           cc.Mgr.game.curGuide = storageData.curGuide = void 0 == storageData.curGuide ? 0 : storageData.curGuide;
         } else 3 == cc.Mgr.game.curGuide && (cc.Mgr.game.needGuide = false);
@@ -10683,11 +10696,17 @@ window.__require = function e(t, n, r) {
         cc.Mgr.game.vipdiscount = true;
         cc.Mgr.game.unlockGridFirst = storageData.unlockGridFirst = void 0 != storageData.unlockGridFirst && storageData.unlockGridFirst;
         cc.Mgr.game.openEggCount = 0;
+        cc.Mgr.Config.isTelegram && window.Telegram.WebApp.CloudStorage.setItem(this.jsName, this.compressString(JSON.stringify(storageData)), function(err, data) {
+          null == err && console.log("saved!");
+        }.bind(this));
         cc.sys.localStorage.setItem(this.jsName, JSON.stringify(storageData));
         cc.Mgr.initData = true;
       },
       SaveUserData: function SaveUserData(_recoveryData) {
         if (_recoveryData) {
+          cc.Mgr.Config.isTelegram && window.Telegram.WebApp.CloudStorage.setItem(this.jsName, this.compressString(JSON.stringify(_recoveryData)), function(err, data) {
+            null == err && console.log("saved!");
+          }.bind(this));
           cc.sys.localStorage.setItem(this.jsName, JSON.stringify(_recoveryData));
           return;
         }
@@ -10772,6 +10791,9 @@ window.__require = function e(t, n, r) {
         userdata.needUpdateMoneyInGame = cc.Mgr.game.needUpdateMoneyInGame;
         userdata.vipdiscount = cc.Mgr.game.vipdiscount;
         userdata.unlockGridFirst = cc.Mgr.game.unlockGridFirst;
+        cc.Mgr.Config.isTelegram && window.Telegram.WebApp.CloudStorage.setItem(this.jsName, this.compressString(JSON.stringify(userdata)), function(err, data) {
+          null == err && console.log("saved!");
+        }.bind(this));
         cc.sys.localStorage.setItem(this.jsName, JSON.stringify(userdata));
       }
     });
@@ -12767,8 +12789,13 @@ window.__require = function e(t, n, r) {
         monsterContainer: cc.Node
       },
       start: function start() {
-        this.box.width = cc.Mgr.Config.winSize.width;
-        this.box.height = cc.Mgr.Config.winSize.height;
+        if (window.winSize) {
+          this.box.width = window.winSize.width;
+          this.box.height = window.winSize.height;
+        } else {
+          this.box.width = window.innerWidth;
+          this.box.height = window.innerHeight;
+        }
         this.dragon.on(dragonBones.EventObject.COMPLETE, this.onAnimComplete, this);
       },
       onAnimComplete: function onAnimComplete() {
@@ -16149,14 +16176,6 @@ window.__require = function e(t, n, r) {
         var tem = this.refrain(levelList);
         tem.indexOf(lastLevel) >= 0 && (result = false);
         true === this.checkHasMergeItem() && (result = false);
-        if (true === result) {
-          var startPos = cc.v2(this.plantPos[this.targetIdx].x, this.plantPos[this.targetIdx].y);
-          var endPos = cc.v2(this.rubbishNode.x, this.rubbishNode.y);
-          this.showTrashGuide(startPos, endPos);
-        } else {
-          cc.Mgr.UIMgr.showTipToTrash(false);
-          this.hideTrashGuide();
-        }
       },
       showTrashGuide: function showTrashGuide(startPos, endPos) {
         if (this.unlockTip && this.unlockTip.active) return;
@@ -16628,7 +16647,10 @@ window.__require = function e(t, n, r) {
         obj.y = this.node.y;
         obj.x = this.node.x;
         var self = this;
-        obj.getComponent("dieSmoke").playAnimation(function() {});
+        obj.getComponent("dieSmoke").playAnimation(function() {
+          cc.Mgr.UIMgr.GameInUINode.getComponent("InGameUI").buyButtonNode.active = true;
+          cc.Mgr.GameCenterCtrl.rubbishNode.active = false;
+        });
       }
       var backMoney = cc.Mgr.MapDataMgr.getDataByDataTypeAndKey(DataType.PlantData, this.grids[index].content.level).price;
       var money = backMoney / BigInt(2);
@@ -16708,7 +16730,11 @@ window.__require = function e(t, n, r) {
         var disY = Math.abs(_plant.node.position.y - this.rubbishNode.position.y);
         disX < 100 && disY < 100 && (resultIndex = this.plantPos.length);
       }
-      null != resultIndex ? this.touchEndHandle(resultIndex, _plant) : _plant.setPosition(this.plantPos[_plant.index]);
+      if (null != resultIndex) this.touchEndHandle(resultIndex, _plant); else {
+        _plant.setPosition(this.plantPos[_plant.index]);
+        cc.Mgr.UIMgr.GameInUINode.getComponent("InGameUI").buyButtonNode.active = true;
+        cc.Mgr.GameCenterCtrl.rubbishNode.active = false;
+      }
       cc.tween(this.rubbishNode).to(.2, {
         scale: cc.Mgr.game.zoomIn ? .83 : 1
       }).start();
@@ -16718,6 +16744,8 @@ window.__require = function e(t, n, r) {
         if (_plant.level == cc.Mgr.game.plantMaxLv) {
           cc.Mgr.UIMgr.showPrompt(cc.Mgr.Utils.getTranslation("max-level-cannt-recovery"), "", cc.Mgr.UIMgr.uiRoot);
           _plant.setPosition(this.plantPos[_plant.index]);
+          cc.Mgr.UIMgr.GameInUINode.getComponent("InGameUI").buyButtonNode.active = true;
+          cc.Mgr.GameCenterCtrl.rubbishNode.active = false;
         } else {
           this.plantPutRubbish(_plant.index);
           this.checkTrash();
@@ -16725,6 +16753,8 @@ window.__require = function e(t, n, r) {
         }
         return;
       }
+      cc.Mgr.UIMgr.GameInUINode.getComponent("InGameUI").buyButtonNode.active = true;
+      cc.Mgr.GameCenterCtrl.rubbishNode.active = false;
       var currentGrid = this.grids[_index];
       if (this.autoMergeData && _plant.index != this.autoMergeData.startIndex && currentGrid.type == MyEnum.GridState.plant && (currentGrid.content.index == this.autoMergeData.startIndex || currentGrid.content.index == this.autoMergeData.targetIndex)) {
         _plant.setPosition(this.plantPos[_plant.index]);
@@ -16994,6 +17024,8 @@ window.__require = function e(t, n, r) {
           cc.Mgr.plantMgr.hideTipAttackNode();
           cc.Mgr.plantMgr.showAttackRange(this.node);
           this.TouchStart(event);
+          cc.Mgr.UIMgr.GameInUINode.getComponent("InGameUI").buyButtonNode.active = false;
+          cc.Mgr.GameCenterCtrl.rubbishNode.active = true;
         }, this);
         this.node.on(cc.Node.EventType.TOUCH_MOVE, function(event) {
           if (cc.Mgr.plantMgr.autoMergeData && (cc.Mgr.plantMgr.autoMergeData.startIndex == this.index || cc.Mgr.plantMgr.autoMergeData.targetIndex == this.index)) return;
@@ -17004,6 +17036,8 @@ window.__require = function e(t, n, r) {
           cc.Mgr.plantMgr.hideTipAttackNode();
           cc.Mgr.plantMgr.hideAttackRange();
           this.TouchEnd(event);
+          cc.Mgr.UIMgr.GameInUINode.getComponent("InGameUI").buyButtonNode.active = true;
+          cc.Mgr.GameCenterCtrl.rubbishNode.active = false;
         }, this);
         this.node.on(cc.Node.EventType.TOUCH_UP, function(event) {
           if (cc.Mgr.plantMgr.autoMergeData && (cc.Mgr.plantMgr.autoMergeData.startIndex == this.index || cc.Mgr.plantMgr.autoMergeData.targetIndex == this.index)) return;
@@ -18231,18 +18265,7 @@ window.__require = function e(t, n, r) {
         this.dbListNode.active = true;
         this.lastPlantMaxLv = cc.Mgr.game.plantMaxLv;
         this.currentBuffList = [];
-        var checkAvailabelAds = cc.Mgr.admob.checkAvailableRewardedAd();
-        if (this.max_count - cc.Mgr.game.spinADResetTime > 0 && true == checkAvailabelAds) {
-          this.timeNode.active = false;
-          this.inviteBtn.node.position = this.freeBtn.node.position = cc.v2(0, -415);
-          this.gemBtn.node.position = cc.v2(0, -415);
-          this.freetimeLbl.string = cc.Mgr.Utils.getTranslation("btn-get") + " (" + (this.max_count - cc.Mgr.game.spinADResetTime) + "/" + this.ads_count + ")";
-          this.gemLbl.string = this.costGem;
-        } else {
-          this.inviteBtn.node.active = this.freeBtn.node.active = false;
-          this.gemBtn.node.position = cc.v2(0, -415);
-          this.gemLbl.string = this.costGem;
-        }
+        this.freeBtn.node.active = cc.Mgr.game.freeFlag.TurnTable;
         var list = cc.Mgr.MapDataMgr.getDataListByDataType(DataType.TurnTableData);
         var chooseList = [];
         this.disc.rotate = 0;
@@ -18419,23 +18442,12 @@ window.__require = function e(t, n, r) {
           this.adsIconNode.active = false;
           this.freeLabelNode.node.active = true;
           this.freetimeLbl.node.active = false;
+          this.freeBtn.node.active = true;
         } else {
           this.adsIconNode.active = true;
           this.freeLabelNode.node.active = false;
           this.freetimeLbl.node.active = true;
-        }
-        if (this.max_count - cc.Mgr.game.spinADResetTime > 0) {
-          this.freeBtn.node.active = true;
-          this.timeNode.active = false;
-          this.inviteBtn.node.position = this.freeBtn.node.position = cc.v2(0, -415);
-          this.gemBtn.node.position = cc.v2(0, -415);
-          this.freetimeLbl.string = cc.Mgr.Utils.getTranslation("btn-get") + " (" + (this.max_count - cc.Mgr.game.spinADResetTime) + "/" + this.ads_count + ")";
-          this.gemLbl.string = this.costGem;
-          this.updateBtns();
-        } else {
-          this.inviteBtn.node.active = this.freeBtn.node.active = false;
-          this.gemBtn.node.position = cc.v2(0, -415);
-          this.gemLbl.string = this.costGem;
+          this.freeBtn.node.active = false;
         }
         this.gemBtn.node.active = true;
         this.updateAdsBtnState();

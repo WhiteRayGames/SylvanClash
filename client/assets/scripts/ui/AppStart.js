@@ -84,7 +84,9 @@ cc.Class({
     },
 
     onChangeScreenCallback () {
-
+        cc.Mgr.AudioMgr.stopAll();
+        cc.game.restart();
+        window.onChangeScreen = null;
     },
 
     onResizeScreenCallback () {

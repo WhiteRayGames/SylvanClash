@@ -106,8 +106,6 @@ var AudioMgr = cc.Class({
         var VolumeData = {};
         VolumeData.bgmVolume = this.bgmVolume;
         VolumeData.sfxVolume = v;
-        // cc.sys.localStorage.setItem("VolumeData",JSON.stringify(VolumeData));
-
 
         cc.Mgr.admob.muteAds();
     },
@@ -120,7 +118,6 @@ var AudioMgr = cc.Class({
         var VolumeData = {};
         VolumeData.bgmVolume = v;
         VolumeData.sfxVolume = this.sfxVolume;
-        // cc.sys.localStorage.setItem("VolumeData",JSON.stringify(VolumeData));
 
         cc.Mgr.admob.muteAds();
     },

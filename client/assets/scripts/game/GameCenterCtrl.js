@@ -8,13 +8,13 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        
-        _type:-1,
+
+        _type: -1,
         rubbishLabel: cc.Label,
         loadScreen: cc.Node,
 
         gameBg: cc.Node,
-        gameFront: cc.Node,
+        // gameFront: cc.Node,
         unitsContainer: cc.Node,
         rubbishNode: cc.Node
     },
@@ -25,59 +25,43 @@ cc.Class({
 
     // },
 
-    zoomIn () {
+    zoomIn() {
         cc.Mgr.game.zoomIn = cc.Mgr.game.isZoomIn = true;
-        cc.tween(this.gameBg).to(0.2,{scale:1.2}).start();
-        cc.tween(this.gameBg).to(0.2,{position: cc.v2(50, 0)}).start();
-        cc.tween(this.gameFront).to(0.2,{scale:1.2}).start();
-        cc.tween(this.unitsContainer).to(0.2,{scale:1.2}).start();
-        cc.tween(this.unitsContainer).to(0.2,{position: cc.v2(50, 0)}).start();
-        cc.tween(this.gameFront).to(0.2, {position: cc.v2(248, 176)}).start();
+        cc.tween(this.gameBg).to(0.2, { scale: 1.2 }).start();
+        cc.tween(this.gameBg).to(0.2, { position: cc.v2(50, 0) }).start();
+        // cc.tween(this.gameFront).to(0.2,{scale:1.2}).start();
+        cc.tween(this.unitsContainer).to(0.2, { scale: 1.2 }).start();
+        cc.tween(this.unitsContainer).to(0.2, { position: cc.v2(50, 0) }).start();
+        // cc.tween(this.gameFront).to(0.2, {position: cc.v2(248, 176)}).start();
 
-        let targetY;
-        if (cc.Mgr.UIMgr.InGameUI.doubleCoinNode.active === false) {
-            targetY = -230;
-        } else {
-            targetY = -150;
-        }
-        cc.tween(this.rubbishNode).to(0.2,{scale:0.83}).start();
-        let currentX = cc.Mgr.game.isPad ? (-253 - (cc.Mgr.game.ratioOffsetX * 0.83)) : -253;
-        if (currentX < -340) currentX = -340;
-        // let currentX = -253
-        cc.tween(this.rubbishNode).to(0.2, {position: cc.v2(currentX, targetY)}).start();
+        cc.tween(this.rubbishNode).to(0.2, { scale: 0.83 }).start();
+        let currentX = -30;
+        cc.tween(this.rubbishNode).to(0.2, { position: cc.v2(currentX, -310) }).start();
     },
 
-    zoomOut () {
+    zoomOut() {
         cc.Mgr.game.zoomIn = cc.Mgr.game.isZoomIn = false;
-        cc.tween(this.gameBg).to(0.2,{scale:1}).start();
-        cc.tween(this.gameBg).to(0.2,{position: cc.v2(0, 0)}).start();
-        cc.tween(this.gameFront).to(0.2,{scale:1}).start();
-        cc.tween(this.unitsContainer).to(0.2,{scale:1}).start();
-        cc.tween(this.unitsContainer).to(0.2,{position: cc.v2(0, 0)}).start();
-        cc.tween(this.gameFront).to(0.2, {position: cc.v2(169, 154)}).start();
+        cc.tween(this.gameBg).to(0.2, { scale: 1 }).start();
+        cc.tween(this.gameBg).to(0.2, { position: cc.v2(0, 0) }).start();
+        // cc.tween(this.gameFront).to(0.2,{scale:1}).start();
+        cc.tween(this.unitsContainer).to(0.2, { scale: 1 }).start();
+        cc.tween(this.unitsContainer).to(0.2, { position: cc.v2(0, 0) }).start();
+        // cc.tween(this.gameFront).to(0.2, {position: cc.v2(169, 154)}).start();
 
-        let targetY;
-        if (cc.Mgr.UIMgr.InGameUI.doubleCoinNode.active === false) {
-            targetY = -270;
-        } else {
-            targetY = -180;
-        }
-        cc.tween(this.rubbishNode).to(0.2,{scale:1}).start();
-        let currentX = cc.Mgr.game.isPad ? (-268 - (cc.Mgr.game.ratioOffsetX * 0.83)) : -253;
-        if (currentX < -360) currentX = -360;
-        // let currentX = -253
-        cc.tween(this.rubbishNode).to(0.2, {position: cc.v2(currentX, targetY)}).start();
+        cc.tween(this.rubbishNode).to(0.2, { scale: 1 }).start();
+        let currentX = 10;
+        cc.tween(this.rubbishNode).to(0.2, { position: cc.v2(currentX, -370) }).start();
     },
 
-    setLanguage () {
+    setLanguage() {
         cc.Mgr.Config.language = cc.Mgr.game.setLanguageManually === "" ? "English" : cc.Mgr.game.setLanguageManually;
     },
 
-    start () {
+    start() {
         //具体作用，参照Event注释
         cc.Mgr.GameCenterCtrl = this;
-        cc.director.GlobalEvent.on(Event.defense,this.defense,this);
-        cc.director.GlobalEvent.on(Event.AllGuideComplete,this.AllGuideComplete,this);
+        cc.director.GlobalEvent.on(Event.defense, this.defense, this);
+        cc.director.GlobalEvent.on(Event.AllGuideComplete, this.AllGuideComplete, this);
         cc.Mgr.game.enterGameTimeStamp = cc.Mgr.Utils.GetSysTime();
         let self = this;
 
@@ -125,9 +109,9 @@ cc.Class({
 
         // check vip
         if (cc.Mgr.game.vipExpire > 0) {
-            this.scheduleOnce(function(){
+            this.scheduleOnce(function () {
                 cc.Mgr.game.isVIP = cc.Mgr.game.vipExpire > Date.now();
-    
+
                 if (cc.Mgr.game.isVIP === true && cc.Mgr.game.vipStartTimer > 0 && Date.now() - cc.Mgr.game.vipStartTimer > 7 * 24 * 3600 * 1000) {
 
                     let data = {}
@@ -135,8 +119,8 @@ cc.Class({
                     data.state = "convert"
                     cc.Mgr.analytics.logEvent("vip_subscription", JSON.stringify(data));
                     cc.Mgr.game.openSpecialGridCount = 0;
-                    
-                } else if (cc.Mgr.game.isVIP === false){
+
+                } else if (cc.Mgr.game.isVIP === false) {
                     let data = {}
                     data.elapsed = cc.Mgr.Utils.getDate9(true)
                     data.state = "unsubscribed"
@@ -148,10 +132,11 @@ cc.Class({
         cc.Mgr.game.vip = cc.Mgr.game.isVIP ? "active" : "inactive";
 
         this.checkTimer = 0;
+
+        this.rubbishNode.active = false;
     },
 
-    defense:function(data)
-    {
+    defense: function (data) {
         cc.Mgr.plantMgr.hideTipAttackNode();
         //下一波过来的间隔
         var interval = cc.Mgr.Config.normalWaveWaitTime;
@@ -162,17 +147,15 @@ cc.Class({
         this.clearZombiePool = false;
         var key = cc.Mgr.game.level > 60 ? (cc.Mgr.game.level % 60) + "_" + cc.Mgr.game.curBoshu : cc.Mgr.game.level + "_" + cc.Mgr.game.curBoshu;
         var levelData = cc.Mgr.MapDataMgr.getDataByDataTypeAndKey(DataType.LevelData, key);
-        if(data.state)
-        {
+        if (data.state) {
             cc.Mgr.game.updateMissionProgressById(MissionType.DefenseSuc);
-            
-            if(cc.Mgr.game.curBoshu == levelData.waveCount)
-            {
+
+            if (cc.Mgr.game.curBoshu == levelData.waveCount) {
                 interval = cc.Mgr.Config.lastWaveWaitTime + 2; //大关卡完成  时间间隔加长
                 isBigLv = true;
                 var dt = cc.Mgr.MapDataMgr.getDataByDataTypeAndKey(DataType.ZombieData, levelData.zombieID1);
                 coin = dt.money * BigInt(Math.round((0.8 + Math.random() * 0.4) * 100)) / BigInt(100);
-                
+
                 cc.Mgr.game.level++;
                 cc.Mgr.game.curBoshu = 1;
 
@@ -183,17 +166,14 @@ cc.Class({
                 //     if (cc.Mgr.game.isCleared == undefined)cc.Mgr.game.isCleared = true;
                 // }
             }
-            else
-            {
+            else {
                 cc.Mgr.game.curBoshu++;
-                if(cc.Mgr.game.curBoshu == levelData.waveCount)
+                if (cc.Mgr.game.curBoshu == levelData.waveCount)
                     bossComing = true;
             }
         }
-        else
-        {
-            if(cc.Mgr.game.curBoshu == levelData.waveCount)
-            {
+        else {
+            if (cc.Mgr.game.curBoshu == levelData.waveCount) {
                 var dt = cc.Mgr.MapDataMgr.getDataByDataTypeAndKey(DataType.ZombieData, levelData.zombieID1);
                 coin = dt.money * BigInt(Math.round((1 - bigDecimal.divide(data.zhp.toString(), dt.hp.toString(), 2)) * 100)) / BigInt(100);
                 isBigLv = true;
@@ -201,12 +181,11 @@ cc.Class({
             cc.Mgr.game.curBoshu = 1;
         }
 
-        if(isBigLv && data.state)
-        {
+        if (isBigLv && data.state) {
             this.clearZombiePool = true;
         }
 
-        if(isBigLv) {
+        if (isBigLv) {
             cc.Mgr.admob.showInterstitial("newStage", 'next', () => {
                 cc.Mgr.UIMgr.showBigResult(data.state, coin);
             }, false);
@@ -216,86 +195,80 @@ cc.Class({
                 // setTimeout (() => {
                 //     cc.Mgr.admob.showInterstitial("win", 'next', null, false);
                 // }, 2200)
-            } else if (data.state === false){
+            } else if (data.state === false) {
                 // setTimeout (() => {
                 //     cc.Mgr.admob.showInterstitial("defeat", 'next', null, false);
                 // }, 2200)
             }
-        } 
+        }
 
-        if(bossComing)
-        {
-            this.scheduleOnce(function(){
+        if (bossComing) {
+            this.scheduleOnce(function () {
                 cc.Mgr.UIMgr.showBossComing(levelData.zombieID1);
                 cc.Mgr.UIMgr.InGameUI.showBuffTip();
             }, 2.0);
         }
 
-        this.createCallback = function(){
+        this.createCallback = function () {
 
             this.createZoombie();
         };
-        
-        if(!isBigLv)
-        {
+
+        if (!isBigLv) {
             this.scheduleOnce(this.createCallback, interval);
         }
-       
+
     },
 
-    unschedduleCreateCallBack:function(isNewCreate = true){
+    unschedduleCreateCallBack: function (isNewCreate = true) {
         this.unschedule(this.createCallback);
-        
-        if(isNewCreate == false)
+
+        if (isNewCreate == false)
             return;
 
-        this.scheduleOnce(function(){
-            
-            if(this.clearZombiePool)
-            {
+        this.scheduleOnce(function () {
+
+            if (this.clearZombiePool) {
                 cc.Mgr.ZombieMgr.clearZombiesPool();
             }
             this.createZoombie();
         }, 1);
     },
 
-    AllGuideComplete(data)
-    {
+    AllGuideComplete(data) {
         this.createZoombie();
-        if(cc.Mgr.plantMgr.checkHasAnySpaceGird(true))
+        if (cc.Mgr.plantMgr.checkHasAnySpaceGird(true))
             cc.Mgr.UIMgr.InGameUI.showTipBuyTimesNode(true);
     },
 
-    rebornToLvLastWave:function(){
+    rebornToLvLastWave: function () {
         var key = cc.Mgr.game.level > 60 ? (cc.Mgr.game.level % 60) + "_" + cc.Mgr.game.curBoshu : cc.Mgr.game.level + "_" + cc.Mgr.game.curBoshu;
         var levelData = cc.Mgr.MapDataMgr.getDataByDataTypeAndKey(DataType.LevelData, key);
         cc.Mgr.game.curBoshu = levelData.waveCount;
         cc.Mgr.UIMgr.InGameUI.RefreshLvData();
-        this.scheduleOnce(function(){
-            if(this.clearZombiePool)
-            {
+        this.scheduleOnce(function () {
+            if (this.clearZombiePool) {
                 cc.Mgr.ZombieMgr.clearZombiesPool();
             }
             this.createZoombie();
         }, 1);
     },
 
-    checkIphoneX () {
+    checkIphoneX() {
         return false;
     },
 
-    init()
-    {
-        if(this.isInit) return;
+    init() {
+        if (this.isInit) return;
 
         this.setLanguage();
 
         cc.Mgr.game.winSize = cc.view.getVisibleSize();
 
         this.isIphoneX = this.checkIphoneX();
-        
+
         cc.Mgr.admob.isInit = true;
-        
+
         var self = this;
 
         cc.Mgr.MapDataMgr.initMaps(); //初始化解析数据表
@@ -308,16 +281,15 @@ cc.Class({
         cc.Mgr.analytics.logEvent("start_loading", JSON.stringify(data));
 
         this.curProgress = 0
-        
+
         this.targetProgress = 0.6
 
         this.isInit = true;
 
-        cc.Mgr.flowerPotMgr.init(function()
-        {
+        cc.Mgr.flowerPotMgr.init(function () {
             self.targetProgress = 0.7
 
-            cc.Mgr.plantMgr.init(function(){
+            cc.Mgr.plantMgr.init(function () {
                 self.targetProgress = 0.8
 
                 cc.Mgr.ZombieMgr.InitZombiesMgr();
@@ -327,10 +299,9 @@ cc.Class({
         });
 
         //每次重新登录检查下任务刷新问题
-        if(cc.Mgr.Utils.getDays(cc.Mgr.Utils.GetSysTime())-cc.Mgr.Utils.getDays(cc.Mgr.UserDataMgr.lastPlayTime) >= 1)
-        {
+        if (cc.Mgr.Utils.getDays(cc.Mgr.Utils.GetSysTime()) - cc.Mgr.Utils.getDays(cc.Mgr.UserDataMgr.lastPlayTime) >= 1) {
             cc.Mgr.game.clearMissionDataToNextDay();
-            
+
             cc.Mgr.game.currentExchangeCount = 0;
 
             cc.Mgr.game.vipDailyBonus = true;
@@ -345,26 +316,25 @@ cc.Class({
         }
 
         // refresh every 2 hours
-        if((cc.Mgr.Utils.GetSysTime() - cc.Mgr.UserDataMgr.lastPlayTime) >= (2 * 3600))
-        {
+        if ((cc.Mgr.Utils.GetSysTime() - cc.Mgr.UserDataMgr.lastPlayTime) >= (2 * 3600)) {
             cc.Mgr.game.spinADResetTime = 0;
             cc.Mgr.game.spinUseGemTime = 0;
 
             if (cc.Mgr.game.level <= 10) {
-				cc.Mgr.game.uavAdsCount = 5;
-			} else if (cc.Mgr.game.level <= 20) {
-				cc.Mgr.game.uavAdsCount = 5;
-			} else if (cc.Mgr.game.level <= 30) {
-				cc.Mgr.game.uavAdsCount = 5;
-			} else if (cc.Mgr.game.level <= 40) {
-				cc.Mgr.game.uavAdsCount = 5;
-			} else if (cc.Mgr.game.level <= 50) {
-				cc.Mgr.game.uavAdsCount = 5;
-			} else {
-				cc.Mgr.game.uavAdsCount = 5;
-			}
+                cc.Mgr.game.uavAdsCount = 5;
+            } else if (cc.Mgr.game.level <= 20) {
+                cc.Mgr.game.uavAdsCount = 5;
+            } else if (cc.Mgr.game.level <= 30) {
+                cc.Mgr.game.uavAdsCount = 5;
+            } else if (cc.Mgr.game.level <= 40) {
+                cc.Mgr.game.uavAdsCount = 5;
+            } else if (cc.Mgr.game.level <= 50) {
+                cc.Mgr.game.uavAdsCount = 5;
+            } else {
+                cc.Mgr.game.uavAdsCount = 5;
+            }
         }
-        
+
         var score = cc.Mgr.game.level * 100 + cc.Mgr.game.curBoshu;
         cc.Mgr.game.lastMaxWave = score;
         cc.Mgr.game.updateMissionProgressById(MissionType.Login);
@@ -392,7 +362,7 @@ cc.Class({
         }
     },
 
-    compareVersion (_a, _b) {
+    compareVersion(_a, _b) {
         let versionAList = _a.split(".");
         let versionBList = _b.split(".");
         let numA = parseInt(versionAList[0]) * 100 + parseInt(versionAList[1]) * 10 + parseInt(versionAList[2]) * 1;
@@ -401,17 +371,16 @@ cc.Class({
         return numA < numB;
     },
 
-    caculateOfflineAsset:function(){
+    caculateOfflineAsset: function () {
         var allminute = Math.floor((cc.Mgr.Utils.GetSysTime() - cc.Mgr.game.lastOfflineTime) / 60);
-        if(allminute < 1)
-           return;
+        if (allminute < 1)
+            return;
 
         var hours = Math.floor(allminute / 60);
         var leftmin = Math.floor(allminute % 60)
 
         var intervalMode = (cc.Mgr.Utils.GetSysTime() - cc.Mgr.game.lastOfflineTime) % 60;
-        if(intervalMode >= 30)
-        {
+        if (intervalMode >= 30) {
             allminute += 0.5;
             leftmin += 0.5;
         }
@@ -419,33 +388,31 @@ cc.Class({
         var money = 0;
         var allPerMinMoney = 0;
         var ratio = 0;
-        if(hours < 1)
+        if (hours < 1)
             ratio = 0.83;
-        else if(hours < 2)
+        else if (hours < 2)
             ratio = 0.49;
-        else if(hours < 3)
+        else if (hours < 3)
             ratio = 0.34;
-        else if(hours < 4)
+        else if (hours < 4)
             ratio = 0.25;
-        else if(hours < 5)
+        else if (hours < 5)
             ratio = 0.16;
-        else if(hours < 6)
+        else if (hours < 6)
             ratio = 0.08;
-        else if(hours < 7)
+        else if (hours < 7)
             ratio = 0.05;
-        else if(hours < 8)
+        else if (hours < 8)
             ratio = 0.03;
-        else
-        {
+        else {
             leftmin = allminute - 480;
             ratio = 0.0167;
         }
         var offlineMoney = cc.Mgr.MapDataMgr.getDataByDataTypeAndKey(DataType.PlantData, cc.Mgr.game.plantMaxLv).offline;
         for (var i = 0; i < cc.Mgr.game.plantsPK.length; i++) {
-            if(cc.Mgr.game.plantsPK[i].type == MyEnum.GridState.plant)
-            {
+            if (cc.Mgr.game.plantsPK[i].type == MyEnum.GridState.plant) {
                 var dt = cc.Mgr.MapDataMgr.getDataByDataTypeAndKey(DataType.PlantData, cc.Mgr.game.plantsPK[i].level);
-                var per = Math.floor(offlineMoney * Math.pow(2.1,dt.level - 1));
+                var per = Math.floor(offlineMoney * Math.pow(2.1, dt.level - 1));
                 money += per;
 
                 var onePer = per * ratio;
@@ -453,30 +420,29 @@ cc.Class({
                 allPerMinMoney += onePer * leftmin;
             }
         }
-        console.log("offlineMoney = " + offlineMoney + "  hours = " + hours  + "  money = " + money);
+        console.log("offlineMoney = " + offlineMoney + "  hours = " + hours + "  money = " + money);
         var outMoney = 0;
-        if(hours <= 1)
+        if (hours <= 1)
             outMoney = Math.floor(money * allminute * 0.83);
-        else if(hours < 2)
+        else if (hours < 2)
             outMoney = Math.floor(money * 60 * 0.83 + allPerMinMoney);
-        else if(hours < 3)
+        else if (hours < 3)
             outMoney = Math.floor(money * 60 * (0.83 + 0.49) + allPerMinMoney);
-        else if(hours < 4)
+        else if (hours < 4)
             outMoney = Math.floor(money * 60 * (0.83 + 0.49 + 0.34) + allPerMinMoney);
-        else if(hours < 5)
+        else if (hours < 5)
             outMoney = Math.floor(money * 60 * (0.83 + 0.49 + 0.34 + 0.25) + allPerMinMoney);
-        else if(hours < 6)
+        else if (hours < 6)
             outMoney = Math.floor(money * 60 * (0.83 + 0.49 + 0.34 + 0.25 + 0.16) + allPerMinMoney);
-        else if(hours < 7)
+        else if (hours < 7)
             outMoney = Math.floor(money * 60 * (0.83 + 0.49 + 0.34 + 0.25 + 0.16 + 0.08) + allPerMinMoney);
-        else if(hours < 8)
+        else if (hours < 8)
             outMoney = Math.floor(money * 60 * (0.83 + 0.49 + 0.34 + 0.25 + 0.16 + 0.08 + 0.05) + allPerMinMoney);
-        else
-        {
+        else {
             outMoney = Math.floor(money * 60 * (0.83 + 0.49 + 0.34 + 0.25 + 0.16 + 0.08 + 0.05 + 0.03) + allPerMinMoney);
-            console.log("offlineMoney = " + offlineMoney + "  hours = " + hours  + "  money = " + money + " outMoney = " + outMoney);
+            console.log("offlineMoney = " + offlineMoney + "  hours = " + hours + "  money = " + money + " outMoney = " + outMoney);
         }
-        
+
         outMoney = Math.round(outMoney * 0.8);
         if (outMoney > 0) cc.Mgr.UIMgr.openOfflineAssetsUI(BigInt(outMoney));
 
@@ -485,16 +451,14 @@ cc.Class({
         // cc.Mgr.analytics.logEvent("initialize", JSON.stringify(data));
     },
 
-    getChannel () {
+    getChannel() {
         return "Telegram"
     },
 
-    showGameUI()
-    {
+    showGameUI() {
         var self = this;
-        
-        cc.Mgr.UIMgr.openGameInUI(function()
-        {
+
+        cc.Mgr.UIMgr.openGameInUI(function () {
             // let data = {}
             // data.elapsed = Date.now()
             // cc.Mgr.analytics.logEvent("enter_game", JSON.stringify(data));
@@ -522,11 +486,11 @@ cc.Class({
         cc.Mgr.game.first_daily = false;
     },
 
-    startGame () {
+    startGame() {
         this.SaveUserDataSchedule();
 
         cc.Mgr.AudioMgr.playBGM("bgm");
-          
+
         this.createPlant();
 
         if (!cc.Mgr.game.needGuide) {
@@ -536,45 +500,41 @@ cc.Class({
         }
     },
 
-    unscheduleSaveData () {
+    unscheduleSaveData() {
         this.unschedule(this.SaveUserData);
     },
 
-    SaveUserDataSchedule:function(){
-        this.schedule(this.SaveUserData,10,cc.macro.REPEAT_FOREVER, 5);
+    SaveUserDataSchedule: function () {
+        this.schedule(this.SaveUserData, 10, cc.macro.REPEAT_FOREVER, 5);
     },
 
-    SaveUserData:function(){
+    SaveUserData: function () {
         cc.Mgr.UserDataMgr.SaveUserData();
     },
 
-    createPlant()
-    {
+    createPlant() {
         cc.Mgr.plantMgr.initPlants();
-        
-        if(cc.Mgr.game.needGuide)
-        {
+
+        if (cc.Mgr.game.needGuide) {
             cc.Mgr.UIMgr.openGuide();
         }
-        else
-        {
+        else {
             this.createZoombie();
-            
+
         }
     },
 
-    createZoombie()
-    {
+    createZoombie() {
         // let data = {}
         // data.elapsed = Date.now()
         // data.wave_stage = cc.Mgr.game.level
         // data.wave_no = cc.Mgr.game.curBoshu
         // cc.Mgr.analytics.logEvent("wave", JSON.stringify(data));
 
-        cc.Mgr.ZombieMgr.getOneWaveZombies(cc.Mgr.game.level,cc.Mgr.game.curBoshu);
+        cc.Mgr.ZombieMgr.getOneWaveZombies(cc.Mgr.game.level, cc.Mgr.game.curBoshu);
     },
 
-    update (dt) {
+    update(dt) {
         if (!this.isInit) return;
         // 5pm - 11pm
         if (Date.now() - this.checkTimer >= 5000) {
@@ -583,7 +543,7 @@ cc.Class({
             cc.Mgr.game.isFreeDoubleDaily = h <= 23 && h >= 17;
             this.checkTimer = Date.now();
         }
-        
+
         if (this.loadScreen == null || this.loadScreen.getComponent("FirstUI").startUpdate === false) return;
         this.curProgress += 0.02;
         if (this.curProgress >= this.targetProgress) this.curProgress = this.targetProgress;

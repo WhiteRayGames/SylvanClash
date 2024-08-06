@@ -7,11 +7,11 @@ var Config = cc.Class({
 
     isTelegram: true,
 
-    platform: "Local", // Telegram Local
+    platform: "Telegram", // Telegram Local
 
     version: "1.0.0",
 
-    debug_version: "_debug_11",
+    debug_version: "_debug_18",
 
     zOffsetY: 142,
 

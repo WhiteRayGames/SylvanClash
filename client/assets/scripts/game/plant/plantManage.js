@@ -530,14 +530,15 @@ var plantManage = cc.Class({
 
         if (this.checkHasMergeItem() === true) result = false;
 
-        if (result === true) {
-            let startPos = cc.v2(this.plantPos[this.targetIdx].x,this.plantPos[this.targetIdx].y)
-            let endPos = cc.v2(this.rubbishNode.x,this.rubbishNode.y)
-            this.showTrashGuide(startPos, endPos);
-        } else {
-            cc.Mgr.UIMgr.showTipToTrash(false);
-            this.hideTrashGuide();
-        }
+        // temp code 暂时隐藏垃圾桶提示
+        // if (result === true) {
+        //     let startPos = cc.v2(this.plantPos[this.targetIdx].x,this.plantPos[this.targetIdx].y)
+        //     let endPos = cc.v2(this.rubbishNode.x,this.rubbishNode.y)
+        //     this.showTrashGuide(startPos, endPos);
+        // } else {
+        //     cc.Mgr.UIMgr.showTipToTrash(false);
+        //     this.hideTrashGuide();
+        // }
     },
 
     showTrashGuide(startPos,endPos)
@@ -1264,7 +1265,8 @@ var plantManage = cc.Class({
             obj.x = this.node.x;
             var self = this;
             obj.getComponent("dieSmoke").playAnimation(function(){
-                
+                cc.Mgr.UIMgr.GameInUINode.getComponent("InGameUI").buyButtonNode.active = true;
+                cc.Mgr.GameCenterCtrl.rubbishNode.active = false;
             });
         }
 
@@ -1388,7 +1390,12 @@ var plantManage = cc.Class({
         }
 
          if (resultIndex != null) this.touchEndHandle(resultIndex, _plant);
-         else _plant.setPosition(this.plantPos[_plant.index]);
+         else {
+             _plant.setPosition(this.plantPos[_plant.index]);
+
+             cc.Mgr.UIMgr.GameInUINode.getComponent("InGameUI").buyButtonNode.active = true;
+             cc.Mgr.GameCenterCtrl.rubbishNode.active = false;
+         }
 
          cc.tween(this.rubbishNode).to(0.2,{scale:(cc.Mgr.game.zoomIn ? 0.83 : 1)}).start();
 
@@ -1400,6 +1407,9 @@ var plantManage = cc.Class({
             if (_plant.level == cc.Mgr.game.plantMaxLv) {
                 cc.Mgr.UIMgr.showPrompt(cc.Mgr.Utils.getTranslation("max-level-cannt-recovery"), "", cc.Mgr.UIMgr.uiRoot);
                 _plant.setPosition(this.plantPos[_plant.index]);
+
+                cc.Mgr.UIMgr.GameInUINode.getComponent("InGameUI").buyButtonNode.active = true;
+                cc.Mgr.GameCenterCtrl.rubbishNode.active = false;
             } else {
                 this.plantPutRubbish(_plant.index);
                 // if (_plant.index == this.targetIdx) {
@@ -1411,6 +1421,9 @@ var plantManage = cc.Class({
 
             return;
         }
+
+        cc.Mgr.UIMgr.GameInUINode.getComponent("InGameUI").buyButtonNode.active = true;
+        cc.Mgr.GameCenterCtrl.rubbishNode.active = false;
 
         let currentGrid = this.grids[_index]
         if (this.autoMergeData && _plant.index != this.autoMergeData.startIndex && currentGrid.type == MyEnum.GridState.plant && (currentGrid.content.index == this.autoMergeData.startIndex || currentGrid.content.index == this.autoMergeData.targetIndex)) {
