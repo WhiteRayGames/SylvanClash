@@ -1640,7 +1640,7 @@ window.__require = function e(t, n, r) {
         isTelegram: true,
         platform: "Telegram",
         version: "1.0.0",
-        debug_version: "_debug_22",
+        debug_version: "_debug_23",
         zOffsetY: 142,
         zBossLine: 100,
         allPlantCount: 75,
@@ -9391,7 +9391,6 @@ window.__require = function e(t, n, r) {
           this.bossComingNode.active = true;
           this.bossComingNode.getComponent("bossComing").playAnimation(_id);
           this.bossComingNode.zIndex = uiConfig.bossComing.Layer;
-          this.bossComingNode.setScale(cc.Mgr.game.isPad ? 1.35 : 1);
         } else {
           this.bossComingNode = null;
           cc.loader.loadRes("prefab/uiPrefab/" + uiConfig.bossComing.Name, cc.Prefab, function(errmsg, prefab) {
@@ -9404,7 +9403,6 @@ window.__require = function e(t, n, r) {
             self.bossComingNode.active = true;
             self.bossComingNode.getComponent("bossComing").playAnimation(_id);
             self.bossComingNode.zIndex = uiConfig.bossComing.Layer;
-            self.bossComingNode.setScale(cc.Mgr.game.isPad ? 1.35 : 1);
           });
         }
       },
@@ -12784,15 +12782,16 @@ window.__require = function e(t, n, r) {
       properties: {
         dragon: dragonBones.ArmatureDisplay,
         box: cc.Node,
-        monsterContainer: cc.Node
+        monsterContainer: cc.Node,
+        mask: cc.Node
       },
       start: function start() {
         if (window.winSize) {
-          this.box.width = window.winSize.width / cc.view.getScaleX();
-          this.box.height = window.winSize.height / cc.view.getScaleY();
+          this.box.width = window.winSize.width;
+          this.box.height = window.winSize.height;
         } else {
-          this.box.width = window.innerWidth / cc.view._scaleX;
-          this.box.height = window.innerHeight / cc.view._scaleY;
+          this.box.width = window.innerWidth;
+          this.box.height = window.innerHeight;
         }
         this.dragon.on(dragonBones.EventObject.COMPLETE, this.onAnimComplete, this);
       },
@@ -12804,6 +12803,7 @@ window.__require = function e(t, n, r) {
         }, 1e3);
       },
       playAnimation: function playAnimation(_id) {
+        this.mask.setScale(cc.Mgr.game.isPad ? 1.35 : 1);
         var data = cc.Mgr.MapDataMgr.getDataByDataTypeAndKey(DataType.ZombieData, _id.toString());
         this.monsterContainer.x = -400;
         this.box.opacity = 150;
