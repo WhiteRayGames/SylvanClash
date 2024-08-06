@@ -1640,7 +1640,7 @@ window.__require = function e(t, n, r) {
         isTelegram: true,
         platform: "Telegram",
         version: "1.0.0",
-        debug_version: "_debug_20",
+        debug_version: "_debug_21",
         zOffsetY: 142,
         zBossLine: 100,
         allPlantCount: 75,
@@ -5196,27 +5196,18 @@ window.__require = function e(t, n, r) {
         this.checkTimer = 0;
         this.rubbishNode.active = false;
         if (cc.Mgr.Config.isTelegram) {
-          var userPhoto = "";
-          var photoUrl = cc.Mgr.Config.isDebug ? "https://tg-api-service-test.lunamou.com/user/profile_photo/" + window.Telegram.WebApp.initDataUnsafe.user.id : "https://tg-api-service.lunamou.com/user/profile_photo/" + window.Telegram.WebApp.initDataUnsafe.user.id;
-          cc.Mgr.http.httpGets(photoUrl, function(error, response) {
-            if (true == error) {
-              photoUrl = "";
-              return;
-            }
-            photoUrl = response;
-            var requestBody = JSON.stringify({
-              telegram_id: window.Telegram.WebApp.initDataUnsafe.user.id,
-              username: window.Telegram.WebApp.initDataUnsafe.user.username,
-              avatar_url: photoUrl,
-              invited_by_code: null != window.startParam && "" != window.startParam ? window.startParam : "SOLO"
-            });
-            var url = cc.Mgr.Config.isDebug ? "https://tg-api-service-test.lunamou.com/user/init" : "https://tg-api-service.lunamou.com/user/init";
-            cc.Mgr.http.httpPost(url, requestBody, function(error, response) {
-              if (true == error) return;
-              var data = JSON.parse(response);
-              cc.Mgr.telegram = {};
-              cc.Mgr.telegram.userInfo = data;
-            });
+          var requestBody = JSON.stringify({
+            telegram_id: window.Telegram.WebApp.initDataUnsafe.user.id,
+            username: window.Telegram.WebApp.initDataUnsafe.user.username,
+            avatar_url: "",
+            invited_by_code: null != window.startParam && "" != window.startParam ? window.startParam : "SOLO"
+          });
+          var url = cc.Mgr.Config.isDebug ? "https://tg-api-service-test.lunamou.com/user/init" : "https://tg-api-service.lunamou.com/user/init";
+          cc.Mgr.http.httpPost(url, requestBody, function(error, response) {
+            if (true == error) return;
+            var data = JSON.parse(response);
+            cc.Mgr.telegram = {};
+            cc.Mgr.telegram.userInfo = data;
           });
         }
       },
