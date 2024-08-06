@@ -10,11 +10,11 @@ var bossComing = cc.Class({
 
     start(){
         if (window.winSize) {
-            this.box.width = window.winSize.width;
-            this.box.height = window.winSize.height;
+            this.box.width = window.winSize.width / cc.view.getScaleX();
+            this.box.height = window.winSize.height / cc.view.getScaleY();
         } else {
-            this.box.width = window.innerWidth;
-            this.box.height = window.innerHeight;
+            this.box.width = window.innerWidth / cc.view.getScaleX();
+            this.box.height = window.innerHeight / cc.view.getScaleY();
         }
 
         

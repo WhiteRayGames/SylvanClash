@@ -1640,7 +1640,7 @@ window.__require = function e(t, n, r) {
         isTelegram: true,
         platform: "Telegram",
         version: "1.0.0",
-        debug_version: "_debug_23",
+        debug_version: "_debug_24",
         zOffsetY: 142,
         zBossLine: 100,
         allPlantCount: 75,
@@ -12787,11 +12787,11 @@ window.__require = function e(t, n, r) {
       },
       start: function start() {
         if (window.winSize) {
-          this.box.width = window.winSize.width;
-          this.box.height = window.winSize.height;
+          this.box.width = window.winSize.width / cc.view.getScaleX();
+          this.box.height = window.winSize.height / cc.view.getScaleY();
         } else {
-          this.box.width = window.innerWidth;
-          this.box.height = window.innerHeight;
+          this.box.width = window.innerWidth / cc.view.getScaleX();
+          this.box.height = window.innerHeight / cc.view.getScaleY();
         }
         this.dragon.on(dragonBones.EventObject.COMPLETE, this.onAnimComplete, this);
       },
