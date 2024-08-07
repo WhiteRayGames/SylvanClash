@@ -15,17 +15,17 @@
       "name": "gameBg_house_2",
       "rect": [
         0,
-        36,
-        203,
-        374
+        0,
+        333,
+        556
       ],
       "offset": [
         0,
-        -11
+        0
       ],
       "originalSize": [
-        203,
-        424
+        333,
+        556
       ],
       "capInsets": [
         0,

@@ -1,7 +1,7 @@
 [
   1,
   [
-    "1eb6e95ac"
+    "163996b5f"
   ],
   [
     "_textureSetter"
@@ -14,8 +14,8 @@
     {
       "name": "button-green-shop-1",
       "rect": [
-        835,
-        847,
+        462,
+        1979,
         154,
         49
       ],

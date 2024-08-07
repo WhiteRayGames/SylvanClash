@@ -1,7 +1,7 @@
 [
   1,
   [
-    "1eb6e95ac"
+    "12df5f461"
   ],
   [
     "_textureSetter"
@@ -14,8 +14,8 @@
     {
       "name": "background0-reuse_common",
       "rect": [
-        247,
-        813,
+        1085,
+        540,
         26,
         26
       ],

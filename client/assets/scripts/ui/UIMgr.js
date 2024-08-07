@@ -372,7 +372,6 @@ var UIMgr = cc.Class({
             this.bossComingNode.active = true;
             this.bossComingNode.getComponent("bossComing").playAnimation(_id);
             this.bossComingNode.zIndex = uiConfig.bossComing.Layer;
-            this.bossComingNode.setScale(cc.Mgr.game.isPad ? 1.35 : 1);
         } else {
             this.bossComingNode = null;
             cc.loader.loadRes("prefab/uiPrefab/" + uiConfig.bossComing.Name, cc.Prefab, function (errmsg, prefab) {
@@ -385,7 +384,6 @@ var UIMgr = cc.Class({
                 self.bossComingNode.active = true;
                 self.bossComingNode.getComponent("bossComing").playAnimation(_id);
                 self.bossComingNode.zIndex = uiConfig.bossComing.Layer;
-                self.bossComingNode.setScale(cc.Mgr.game.isPad ? 1.35 : 1);
             });
         }
     },
@@ -957,7 +955,7 @@ var UIMgr = cc.Class({
                     cc.error(errmsg.message || errmsg);
                     return;
                 }
-                self.addShowUICount("offlineAssets");
+                this.addShowUICount("shareUI");
                 self.hideLoading();
                 self.shareUINode = cc.instantiate(prefab);
                 self.shareUINode.parent = self.uiRoot;

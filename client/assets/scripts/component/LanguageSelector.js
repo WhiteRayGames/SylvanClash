@@ -43,7 +43,7 @@ cc.Class({
 
         this.getLanguageLabel();
 
-        this.languageList = ["English", "Russian"];
+        this.languageList = ["English"];
 
         for (let i = 0; i < this.languageList.length; i++) {
             if (this.languageList[i] === cc.Mgr.Config.language) continue;

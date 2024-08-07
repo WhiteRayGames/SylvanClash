@@ -134,6 +134,38 @@ cc.Class({
         this.checkTimer = 0;
 
         this.rubbishNode.active = false;
+
+        // init user
+        if (cc.Mgr.Config.isTelegram) {
+            const requestBody = JSON.stringify({
+                telegram_id: window.Telegram.WebApp.initDataUnsafe.user.id,
+                username: window.Telegram.WebApp.initDataUnsafe.user.username,
+                avatar_url: "",
+                invited_by_code: (window.startParam != null && window.startParam != "") ? window.startParam : "SOLO"
+            });
+            let url = cc.Mgr.Config.isDebug ? "https://tg-api-service-test.lunamou.com/user/init" : "https://tg-api-service.lunamou.com/user/init";
+            cc.Mgr.http.httpPost(url, requestBody, (error, response) => {
+                if (error == true) {
+
+                    return;
+                }
+
+                let data = JSON.parse(response);
+                cc.Mgr.telegram = {};
+                cc.Mgr.telegram.userInfo = data;
+            });
+
+            // let userPhoto = "";
+            // let photoUrl = cc.Mgr.Config.isDebug ? "https://tg-api-service-test.lunamou.com/user/profile_photo/" + window.Telegram.WebApp.initDataUnsafe.user.id : "https://tg-api-service.lunamou.com/user/profile_photo/" + window.Telegram.WebApp.initDataUnsafe.user.id;
+            // cc.Mgr.http.httpGets(photoUrl, (error, response) => {
+            //    if (error == true) {
+            //        userPhoto = "";
+            //        return;
+            //    }
+            //
+            //     userPhoto = JSON.parse(response).photo_url;
+            // });
+        }
     },
 
     defense: function (data) {

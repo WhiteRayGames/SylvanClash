@@ -44,14 +44,22 @@ var shareUI = cc.Class({
 
     onClickShare () {
         if (this.limitClick.clickTime() == false) {
-            return
+            return;
         }
 
-        if (cc.Mgr.Config.isTelegram == false) return;
+        if (cc.Mgr.Config.isTelegram == false) {
+            cc.Mgr.UIMgr.showPrompt("This feature is not supported", "", this.node);
+            return;
+        }
 
-        let userId = window.Telegram.WebApp.initDataUnsafe.user.id;
+        if (cc.Mgr.telegram == null || cc.Mgr.telegram.userInfo == null) {
+            cc.Mgr.UIMgr.showPrompt("This feature is not supported", "", this.node);
+            return;
+        }
+
+        let inviteCode = cc.Mgr.telegram.userInfo.user.invite_code;
         const messageText = encodeURIComponent("💰Catizen: Unleash, Play, Earn - Where Every Game Leads to an Airdrop Adventure! \n🎁Let's play-to-earn airdrop right now!");
-        const gameUrl = encodeURIComponent("https://t.me/Vision_test_02_bot/paytest?startapp=" + userId);
+        const gameUrl = encodeURIComponent("https://t.me/Vision_test_02_bot/paytest?startapp=" + inviteCode);
         const telegramUrl = `https://t.me/share/url?url=${gameUrl}&text=${messageText}`;
         window.open(telegramUrl, '_blank');
 
@@ -102,21 +110,15 @@ var shareUI = cc.Class({
 
     closeUI:function(){
         cc.Mgr.AudioMgr.playSFX("click");
-        cc.Mgr.admob.hideBanner("offline");
+
         let self = this
         cc.tween(this.blurBg).to(0.15, {opacity:0}).start();
         cc.tween(this.content).to(0.15, {opacity:0, scale: .5}).call(() => {
-            if (self.getReward == true) {
-                cc.Mgr.game.money += BigInt(self.coins);
-            
-                cc.Mgr.game.coin_gained_total += BigInt(self.coins);
-                cc.Mgr.UIMgr.showJibEffect();
-                cc.Mgr.UIMgr.InGameUI.RefreshAssetData(false, "money");
-            }
+
             
             self.node.active = false;
         }).start();
-        cc.Mgr.UIMgr.reduceShowUICount("offlineAssets");
+        cc.Mgr.UIMgr.reduceShowUICount("shareUI");
     }
 
     // update (dt) {},

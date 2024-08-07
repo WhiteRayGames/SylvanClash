@@ -10,7 +10,7 @@
     "73WRAyPGxGPovPeSZ+MRgG",
     "9elZmWDh9KNIHgrqobLntL",
     "b52gxaAfNNS5dLuG7H2Ews",
-    "1fbb3c150"
+    "12df5f461"
   ],
   [
     "node",
@@ -801,8 +801,8 @@
         {
           "name": "X",
           "rect": [
-            1361,
-            1281,
+            502,
+            1748,
             53,
             54
           ],
@@ -814,7 +814,6 @@
             53,
             54
           ],
-          "rotated": 1,
           "capInsets": [
             0,
             0,

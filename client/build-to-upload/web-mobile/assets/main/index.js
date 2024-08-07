@@ -1640,7 +1640,7 @@ window.__require = function e(t, n, r) {
         isTelegram: true,
         platform: "Telegram",
         version: "1.0.0",
-        debug_version: "_debug_18",
+        debug_version: "_debug_24",
         zOffsetY: 142,
         zBossLine: 100,
         allPlantCount: 75,
@@ -5091,7 +5091,6 @@ window.__require = function e(t, n, r) {
         rubbishLabel: cc.Label,
         loadScreen: cc.Node,
         gameBg: cc.Node,
-        gameFront: cc.Node,
         unitsContainer: cc.Node,
         rubbishNode: cc.Node
       },
@@ -5103,17 +5102,11 @@ window.__require = function e(t, n, r) {
         cc.tween(this.gameBg).to(.2, {
           position: cc.v2(50, 0)
         }).start();
-        cc.tween(this.gameFront).to(.2, {
-          scale: 1.2
-        }).start();
         cc.tween(this.unitsContainer).to(.2, {
           scale: 1.2
         }).start();
         cc.tween(this.unitsContainer).to(.2, {
           position: cc.v2(50, 0)
-        }).start();
-        cc.tween(this.gameFront).to(.2, {
-          position: cc.v2(248, 176)
         }).start();
         cc.tween(this.rubbishNode).to(.2, {
           scale: .83
@@ -5131,17 +5124,11 @@ window.__require = function e(t, n, r) {
         cc.tween(this.gameBg).to(.2, {
           position: cc.v2(0, 0)
         }).start();
-        cc.tween(this.gameFront).to(.2, {
-          scale: 1
-        }).start();
         cc.tween(this.unitsContainer).to(.2, {
           scale: 1
         }).start();
         cc.tween(this.unitsContainer).to(.2, {
           position: cc.v2(0, 0)
-        }).start();
-        cc.tween(this.gameFront).to(.2, {
-          position: cc.v2(169, 154)
         }).start();
         cc.tween(this.rubbishNode).to(.2, {
           scale: 1
@@ -5208,6 +5195,21 @@ window.__require = function e(t, n, r) {
         cc.Mgr.game.vip = cc.Mgr.game.isVIP ? "active" : "inactive";
         this.checkTimer = 0;
         this.rubbishNode.active = false;
+        if (cc.Mgr.Config.isTelegram) {
+          var requestBody = JSON.stringify({
+            telegram_id: window.Telegram.WebApp.initDataUnsafe.user.id,
+            username: window.Telegram.WebApp.initDataUnsafe.user.username,
+            avatar_url: "",
+            invited_by_code: null != window.startParam && "" != window.startParam ? window.startParam : "SOLO"
+          });
+          var url = cc.Mgr.Config.isDebug ? "https://tg-api-service-test.lunamou.com/user/init" : "https://tg-api-service.lunamou.com/user/init";
+          cc.Mgr.http.httpPost(url, requestBody, function(error, response) {
+            if (true == error) return;
+            var data = JSON.parse(response);
+            cc.Mgr.telegram = {};
+            cc.Mgr.telegram.userInfo = data;
+          });
+        }
       },
       defense: function defense(data) {
         cc.Mgr.plantMgr.hideTipAttackNode();
@@ -6610,7 +6612,7 @@ window.__require = function e(t, n, r) {
       },
       start: function start() {
         this.getLanguageLabel();
-        this.languageList = [ "English", "Russian" ];
+        this.languageList = [ "English" ];
         for (var i = 0; i < this.languageList.length; i++) {
           if (this.languageList[i] === cc.Mgr.Config.language) continue;
           var otherItem = cc.instantiate(this.languageItem);
@@ -9389,7 +9391,6 @@ window.__require = function e(t, n, r) {
           this.bossComingNode.active = true;
           this.bossComingNode.getComponent("bossComing").playAnimation(_id);
           this.bossComingNode.zIndex = uiConfig.bossComing.Layer;
-          this.bossComingNode.setScale(cc.Mgr.game.isPad ? 1.35 : 1);
         } else {
           this.bossComingNode = null;
           cc.loader.loadRes("prefab/uiPrefab/" + uiConfig.bossComing.Name, cc.Prefab, function(errmsg, prefab) {
@@ -9402,7 +9403,6 @@ window.__require = function e(t, n, r) {
             self.bossComingNode.active = true;
             self.bossComingNode.getComponent("bossComing").playAnimation(_id);
             self.bossComingNode.zIndex = uiConfig.bossComing.Layer;
-            self.bossComingNode.setScale(cc.Mgr.game.isPad ? 1.35 : 1);
           });
         }
       },
@@ -12484,8 +12484,6 @@ window.__require = function e(t, n, r) {
         vipTip: cc.Label,
         content: cc.Node,
         blurBg: cc.Node,
-        winDb: dragonBones.ArmatureDisplay,
-        failedDb: dragonBones.ArmatureDisplay,
         checkboxNode: cc.Node,
         vipNode: cc.Node,
         failedCheckboxNode: cc.Node,
@@ -12572,11 +12570,9 @@ window.__require = function e(t, n, r) {
         this.showBtnCounter && clearTimeout(this.showBtnCounter);
         if (suc) {
           cc.Mgr.AudioMgr.playSFX(MyEnum.AudioType.success1);
-          this.winDb.playAnimation("win", 1);
           this.showVipCount = 0;
         } else {
           cc.Mgr.AudioMgr.playSFX(MyEnum.AudioType.fail);
-          this.failedDb.playAnimation("Defeat", 1);
           this.showVipCount++;
         }
         if (this.showVipCount >= 10) {
@@ -12786,15 +12782,16 @@ window.__require = function e(t, n, r) {
       properties: {
         dragon: dragonBones.ArmatureDisplay,
         box: cc.Node,
-        monsterContainer: cc.Node
+        monsterContainer: cc.Node,
+        mask: cc.Node
       },
       start: function start() {
         if (window.winSize) {
-          this.box.width = window.winSize.width;
-          this.box.height = window.winSize.height;
+          this.box.width = window.winSize.width / cc.view.getScaleX();
+          this.box.height = window.winSize.height / cc.view.getScaleY();
         } else {
-          this.box.width = window.innerWidth;
-          this.box.height = window.innerHeight;
+          this.box.width = window.innerWidth / cc.view.getScaleX();
+          this.box.height = window.innerHeight / cc.view.getScaleY();
         }
         this.dragon.on(dragonBones.EventObject.COMPLETE, this.onAnimComplete, this);
       },
@@ -12806,6 +12803,7 @@ window.__require = function e(t, n, r) {
         }, 1e3);
       },
       playAnimation: function playAnimation(_id) {
+        this.mask.setScale(cc.Mgr.game.isPad ? 1.35 : 1);
         var data = cc.Mgr.MapDataMgr.getDataByDataTypeAndKey(DataType.ZombieData, _id.toString());
         this.monsterContainer.x = -400;
         this.box.opacity = 150;
@@ -17390,8 +17388,7 @@ window.__require = function e(t, n, r) {
         title_ja: cc.Node,
         title_ru: cc.Node,
         debugVersion: cc.Label,
-        playerId: cc.Label,
-        inviterId: cc.Label
+        invitationCode: cc.Label
       },
       start: function start() {
         this.bgmON = 1 === cc.Mgr.AudioMgr.bgmVolume;
@@ -17441,8 +17438,7 @@ window.__require = function e(t, n, r) {
         this.spriteCoin.setMaterial(0, this.nomarlM);
         cc.Mgr.Config.isDebug ? this.recoveryBtn.y = -100 : this.recoveryBtn.y = -200;
         this.recoveryBtn.active = false;
-        this.playerId.string = "PlayerID: " + (cc.Mgr.Config.isTelegram ? window.Telegram.WebApp.initDataUnsafe.user.id : "Local");
-        this.inviterId.string = "InviterID: " + ("" == (null != window.startParam && window.startParam) ? "SOLO" : window.startParam);
+        this.invitationCode.string = "Invitation code: " + (cc.Mgr.telegram && cc.Mgr.telegram.userInfo ? cc.Mgr.telegram.userInfo.user.invite_code : "");
       },
       copyID: function copyID() {
         cc.Mgr.Utils.copyID();
@@ -17526,10 +17522,17 @@ window.__require = function e(t, n, r) {
       },
       onClickShare: function onClickShare() {
         if (false == this.limitClick.clickTime()) return;
-        if (false == cc.Mgr.Config.isTelegram) return;
-        var userId = window.Telegram.WebApp.initDataUnsafe.user.id;
+        if (false == cc.Mgr.Config.isTelegram) {
+          cc.Mgr.UIMgr.showPrompt("This feature is not supported", "", this.node);
+          return;
+        }
+        if (null == cc.Mgr.telegram || null == cc.Mgr.telegram.userInfo) {
+          cc.Mgr.UIMgr.showPrompt("This feature is not supported", "", this.node);
+          return;
+        }
+        var inviteCode = cc.Mgr.telegram.userInfo.user.invite_code;
         var messageText = encodeURIComponent("\ud83d\udcb0Catizen: Unleash, Play, Earn - Where Every Game Leads to an Airdrop Adventure! \n\ud83c\udf81Let's play-to-earn airdrop right now!");
-        var gameUrl = encodeURIComponent("https://t.me/Vision_test_02_bot/paytest?startapp=" + userId);
+        var gameUrl = encodeURIComponent("https://t.me/Vision_test_02_bot/paytest?startapp=" + inviteCode);
         var telegramUrl = "https://t.me/share/url?url=" + gameUrl + "&text=" + messageText;
         window.open(telegramUrl, "_blank");
       },
@@ -18176,13 +18179,8 @@ window.__require = function e(t, n, r) {
         startLabel: cc.Label,
         content: cc.Node,
         blurBg: cc.Node,
-        dbListNode: cc.Node,
-        titleLabel: cc.Label,
         okLabel: cc.Label,
-        okBtn: cc.Node,
-        spriteCoin: cc.Sprite,
-        nomarlM: cc.Material,
-        grayM: cc.Material
+        okBtn: cc.Node
       },
       onLoad: function onLoad() {
         this.buffMap = [ "rage", "auto", "flame", "freeze", "crit" ];
@@ -18194,7 +18192,6 @@ window.__require = function e(t, n, r) {
         this.freetimeTipLbl.string = cc.Mgr.Utils.getTranslation("roulette-timeTip");
         this.startLabel.string = cc.Mgr.Utils.getTranslation("roulette-start");
         this.freeLabelNode.string = cc.Mgr.Utils.getTranslation("btn-free");
-        this.titleLabel.string = cc.Mgr.Utils.getTranslation("roulette-title");
         this.okLabel.string = cc.Mgr.Utils.getTranslation("btn-ok");
         this.limitClick = this.node.getComponent("LimitClick");
         this.allowShow = true;
@@ -18249,7 +18246,6 @@ window.__require = function e(t, n, r) {
         this.showBtns();
       },
       playTurnAnimation: function playTurnAnimation() {
-        this.dbListNode.active = false;
         this.count = 0;
         this.callback = function() {
           if (30 == this.count) {
@@ -18262,7 +18258,6 @@ window.__require = function e(t, n, r) {
         this.hideBtns();
       },
       refreshPanel: function refreshPanel() {
-        this.dbListNode.active = true;
         this.lastPlantMaxLv = cc.Mgr.game.plantMaxLv;
         this.currentBuffList = [];
         this.freeBtn.node.active = cc.Mgr.game.freeFlag.TurnTable;
@@ -18353,9 +18348,9 @@ window.__require = function e(t, n, r) {
           this.mySpList[index].node.active = false;
           this.spList[index].spriteFrame = this.spriteFrameList[1];
           this.spList[index].scale = 1;
-          this.lblList[index].string = "x" + dt.rewards;
+          this.lblList[index].string = "x" + 2 * this.costGem;
           var rewardData = new rewardBox();
-          rewardData.setData(dt.type, dt.rewards, 1, dt.weight);
+          rewardData.setData(dt.type, 2 * this.costGem, 1, dt.weight);
           this.rewardList[index] = rewardData;
           break;
 

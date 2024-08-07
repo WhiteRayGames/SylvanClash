@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "1446149c1"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "background1-reuse_common",
+      "rect": [
+        1345,
+        1930,
+        24,
+        24
+      ],
+      "offset": [
+        0,
+        0
+      ],
+      "originalSize": [
+        24,
+        24
+      ],
+      "capInsets": [
+        7,
+        6,
+        7,
+        7
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

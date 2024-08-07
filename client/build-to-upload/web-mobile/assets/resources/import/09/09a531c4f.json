@@ -3,11 +3,11 @@
   [
     "ecpdLyjvZBwrvm+cedCcQy",
     "9elZmWDh9KNIHgrqobLntL",
-    "1eb6e95ac",
+    "12df5f461",
     "282xz5PlhHCb4QvZj+BOUz",
     "deibV05UNO4aAr8wgZ9dSo",
     "83LowdGndNIJ3/OcTDHZRH",
-    "1fbb3c150",
+    "163996b5f",
     "f1lR7B1OlFt5hLmlULhGXN",
     "cdZc+iILRFhqNqn7IkxPNW",
     "b4FSWn3khMR6tH4Ljhm4Aw",
@@ -21,7 +21,8 @@
     "f3s2JKauVM1KFeywKq1ToL",
     "ecb/oqFZVOnaOPTuKuBneK",
     "fbriUNyMdPJYYJPYS8DcT6",
-    "1150a8081"
+    "192872c6d",
+    "1446149c1"
   ],
   [
     "node",
@@ -634,8 +635,8 @@
         {
           "name": "button-yellow-shop-1",
           "rect": [
-            1025,
-            1726,
+            226,
+            1811,
             122,
             49
           ],
@@ -2455,8 +2456,8 @@
         {
           "name": "lock_2",
           "rect": [
-            1011,
-            183,
+            1982,
+            2007,
             38,
             41
           ],
@@ -2468,6 +2469,7 @@
             40,
             43
           ],
+          "rotated": 1,
           "capInsets": [
             0,
             0,
@@ -2487,7 +2489,7 @@
         2
       ],
       [
-        6
+        20
       ]
     ],
     [
@@ -2495,8 +2497,8 @@
         {
           "name": "lock_common",
           "rect": [
-            1626,
-            222,
+            2011,
+            2023,
             22,
             28
           ],
@@ -2507,47 +2509,6 @@
           "originalSize": [
             22,
             28
-          ],
-          "rotated": 1,
-          "capInsets": [
-            0,
-            0,
-            0,
-            0
-          ]
-        }
-      ],
-      [
-        0
-      ],
-      0,
-      [
-        0
-      ],
-      [
-        2
-      ],
-      [
-        2
-      ]
-    ],
-    [
-      [
-        {
-          "name": "light-green",
-          "rect": [
-            1846,
-            687,
-            122,
-            121
-          ],
-          "offset": [
-            0,
-            0
-          ],
-          "originalSize": [
-            122,
-            121
           ],
           "rotated": 1,
           "capInsets": [
@@ -2575,10 +2536,50 @@
     [
       [
         {
+          "name": "light-green",
+          "rect": [
+            987,
+            254,
+            122,
+            121
+          ],
+          "offset": [
+            0,
+            0
+          ],
+          "originalSize": [
+            122,
+            121
+          ],
+          "capInsets": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      [
+        0
+      ],
+      0,
+      [
+        0
+      ],
+      [
+        2
+      ],
+      [
+        2
+      ]
+    ],
+    [
+      [
+        {
           "name": "button-purple-shop-1",
           "rect": [
-            1190,
-            1311,
+            354,
+            1808,
             122,
             49
           ],
@@ -2617,8 +2618,8 @@
         {
           "name": "light-purpl",
           "rect": [
-            507,
-            1354,
+            987,
+            381,
             122,
             121
           ],
@@ -2657,8 +2658,8 @@
         {
           "name": "number-plate",
           "rect": [
-            1944,
-            1364,
+            1964,
+            1077,
             36,
             30
           ],
@@ -2670,7 +2671,6 @@
             36,
             30
           ],
-          "rotated": 1,
           "capInsets": [
             0,
             0,
@@ -2690,7 +2690,7 @@
         2
       ],
       [
-        20
+        21
       ]
     ],
     [
@@ -2698,8 +2698,8 @@
         {
           "name": "light-orange",
           "rect": [
-            1574,
-            1444,
+            693,
+            1856,
             122,
             121
           ],
@@ -2711,6 +2711,7 @@
             122,
             121
           ],
+          "rotated": 1,
           "capInsets": [
             0,
             0,
@@ -2738,8 +2739,8 @@
         {
           "name": "wooden-board",
           "rect": [
-            3,
-            1242,
+            1288,
+            982,
             504,
             34
           ],
@@ -2751,7 +2752,6 @@
             504,
             34
           ],
-          "rotated": 1,
           "capInsets": [
             0,
             0,
@@ -2771,7 +2771,7 @@
         2
       ],
       [
-        2
+        6
       ]
     ]
   ]

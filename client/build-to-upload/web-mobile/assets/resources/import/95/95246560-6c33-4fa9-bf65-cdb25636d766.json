@@ -1,7 +1,7 @@
 [
   1,
   [
-    "1eb6e95ac"
+    "12df5f461"
   ],
   [
     "_textureSetter"
@@ -14,8 +14,8 @@
     {
       "name": "button-yellow-3",
       "rect": [
-        610,
-        1102,
+        3,
+        1176,
         218,
         93
       ],

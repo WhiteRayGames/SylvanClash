@@ -1,7 +1,7 @@
 [
   1,
   [
-    "1eb6e95ac"
+    "1446149c1"
   ],
   [
     "_textureSetter"
@@ -12,20 +12,20 @@
   0,
   [
     {
-      "name": "news",
+      "name": "redTip",
       "rect": [
-        609,
-        795,
-        29,
-        29
+        1345,
+        1900,
+        24,
+        24
       ],
       "offset": [
         0,
         0
       ],
       "originalSize": [
-        29,
-        29
+        24,
+        24
       ],
       "capInsets": [
         0,

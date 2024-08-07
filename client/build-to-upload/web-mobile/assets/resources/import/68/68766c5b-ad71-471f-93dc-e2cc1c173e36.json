@@ -15,13 +15,13 @@
       "name": "EnemyRig03_tex",
       "rect": [
         1,
-        1,
+        0,
         244,
-        172
+        173
       ],
       "offset": [
         -5,
-        41
+        41.5
       ],
       "originalSize": [
         256,

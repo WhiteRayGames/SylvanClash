@@ -1,7 +1,7 @@
 [
   1,
   [
-    "1fbb3c150"
+    "12df5f461"
   ],
   [
     "_textureSetter"
@@ -14,8 +14,8 @@
     {
       "name": "playerPhoto_frame",
       "rect": [
-        1329,
-        1062,
+        3,
+        1869,
         97,
         153
       ],

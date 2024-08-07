@@ -1,7 +1,7 @@
 [
   1,
   [
-    "1fbb3c150"
+    "163996b5f"
   ],
   [
     "_textureSetter"
@@ -14,8 +14,8 @@
     {
       "name": "wooden-board1-reuse",
       "rect": [
-        609,
-        1591,
+        3,
+        1979,
         453,
         59
       ],
@@ -27,7 +27,6 @@
         453,
         59
       ],
-      "rotated": 1,
       "capInsets": [
         0,
         0,

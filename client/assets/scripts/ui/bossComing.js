@@ -4,18 +4,17 @@ var bossComing = cc.Class({
     properties: {
         dragon: dragonBones.ArmatureDisplay,
         box:cc.Node,
-        monsterContainer: cc.Node
+        monsterContainer: cc.Node,
+        mask: cc.Node
     },
 
     start(){
-        // this.box.width = cc.Mgr.Config.winSize.width;
-        // this.box.height = cc.Mgr.Config.winSize.height;
         if (window.winSize) {
-            this.box.width = window.winSize.width;
-            this.box.height = window.winSize.height;
+            this.box.width = window.winSize.width / cc.view.getScaleX();
+            this.box.height = window.winSize.height / cc.view.getScaleY();
         } else {
-            this.box.width = window.innerWidth;
-            this.box.height = window.innerHeight;
+            this.box.width = window.innerWidth / cc.view.getScaleX();
+            this.box.height = window.innerHeight / cc.view.getScaleY();
         }
 
         
@@ -30,6 +29,7 @@ var bossComing = cc.Class({
     },
 
     playAnimation:function(_id) {
+        this.mask.setScale(cc.Mgr.game.isPad ? 1.35 : 1);
         var data = cc.Mgr.MapDataMgr.getDataByDataTypeAndKey(DataType.ZombieData, _id.toString());
         this.monsterContainer.x = -400
         this.box.opacity = 150;
