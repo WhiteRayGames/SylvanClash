@@ -110,21 +110,15 @@ var shareUI = cc.Class({
 
     closeUI:function(){
         cc.Mgr.AudioMgr.playSFX("click");
-        cc.Mgr.admob.hideBanner("offline");
+
         let self = this
         cc.tween(this.blurBg).to(0.15, {opacity:0}).start();
         cc.tween(this.content).to(0.15, {opacity:0, scale: .5}).call(() => {
-            if (self.getReward == true) {
-                cc.Mgr.game.money += BigInt(self.coins);
-            
-                cc.Mgr.game.coin_gained_total += BigInt(self.coins);
-                cc.Mgr.UIMgr.showJibEffect();
-                cc.Mgr.UIMgr.InGameUI.RefreshAssetData(false, "money");
-            }
+
             
             self.node.active = false;
         }).start();
-        cc.Mgr.UIMgr.reduceShowUICount("offlineAssets");
+        cc.Mgr.UIMgr.reduceShowUICount("shareUI");
     }
 
     // update (dt) {},
