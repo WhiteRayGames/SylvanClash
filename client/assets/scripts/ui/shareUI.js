@@ -5,8 +5,6 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 var tweenTime = 0.15;
-var MissionType = require("MissionType");
-var AchieveType = require("AchieveType");
 var shareUI = cc.Class({
     extends: cc.Component,
 
@@ -26,7 +24,6 @@ var shareUI = cc.Class({
         //         this._bar = value;
         //     }
         // },
-        numEffect: cc.Node,
         closeNode: cc.Node,
         blurBg: cc.Node,
         content: cc.Node
@@ -39,7 +36,7 @@ var shareUI = cc.Class({
     },
 
     start () {
-        this.getReward = false;
+
     },
 
     onClickShare () {
@@ -96,10 +93,6 @@ var shareUI = cc.Class({
         this.content.setScale(.5)
         cc.tween(this.blurBg).to(0.05, {opacity:255}).call().start();
         cc.tween(this.content).to(0.15, {opacity:255, scale: 1}).start();
-
-        let coins = cc.Mgr.game.caculatePlantPrice(cc.Mgr.game.plantMaxLv);
-        this.coins = coins;
-        this.numEffect.getComponent("NumEffect").setNumber(cc.Mgr.Utils.getNumStr2(this.coins));
     },
 
     doTween:function(){
