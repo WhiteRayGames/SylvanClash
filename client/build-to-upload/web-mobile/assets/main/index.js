@@ -1640,7 +1640,7 @@ window.__require = function e(t, n, r) {
         isTelegram: true,
         platform: "Telegram",
         version: "1.0.0",
-        debug_version: "_debug_27",
+        debug_version: "_debug_28",
         zOffsetY: 142,
         zBossLine: 100,
         allPlantCount: 75,
@@ -17609,8 +17609,8 @@ window.__require = function e(t, n, r) {
         claimedNode: cc.Node,
         invitedByNode: cc.Node,
         claimAllBtn: cc.Node,
-        claimedAllNode: cc.Node,
-        allPlayersCountLabel: cc.Label
+        allPlayersCountLabel: cc.Label,
+        getGemsLabel: cc.Label
       },
       onLoad: function onLoad() {
         this.limitClick = this.node.getComponent("LimitClick");
@@ -17654,13 +17654,13 @@ window.__require = function e(t, n, r) {
           this._scrollViewComponent.scrollTo(0);
           this.noItemsNode.active = false;
           this.claimAllBtn.active = this.checkHasRewards();
-          this.claimedAllNode.active = !this.checkHasRewards();
           this.allPlayersCountLabel.string = this.shareListData.length;
         } else {
           this.noItemsNode.active = true;
           this.allPlayersCountLabel.string = "0";
         }
         this.setInvitedByData();
+        this.getGemsLabel.string = cc.Mgr.Utils.getCurrentShareReward();
       },
       checkHasRewards: function checkHasRewards() {
         if (this.shareListData && this.shareListData.length > 0) for (var i = 0; i < this.shareListData.length; i++) {
@@ -17703,7 +17703,6 @@ window.__require = function e(t, n, r) {
             playerData.data.invitation_reward_claimed = true;
             _this2._scrollViewComponent.refreshAtCurPosition();
             _this2.claimAllBtn.active = _this2.checkHasRewards();
-            _this2.claimedAllNode.active = !_this2.checkHasRewards();
             _this2.claimBtn.active = !cc.Mgr.Utils.invitedByData.invitation_reward_claimed;
             _this2.claimedNode.active = cc.Mgr.Utils.invitedByData.invitation_reward_claimed;
             var gems = cc.Utils.getCurrentShareReward();
@@ -17735,7 +17734,6 @@ window.__require = function e(t, n, r) {
         }
         this._scrollViewComponent.refreshAtCurPosition();
         this.claimAllBtn.active = this.checkHasRewards();
-        this.claimedAllNode.active = !this.checkHasRewards();
         if (cc.Mgr.Utils.invitedByData) {
           cc.Mgr.Utils.invitedByData.invitation_reward_claimed = true;
           this.claimBtn.active = !cc.Mgr.Utils.invitedByData.invitation_reward_claimed;

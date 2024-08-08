@@ -39,9 +39,10 @@ var shareUI = cc.Class({
         invitedByNode: cc.Node,
 
         claimAllBtn: cc.Node,
-        claimedAllNode: cc.Node,
 
-        allPlayersCountLabel: cc.Label
+        allPlayersCountLabel: cc.Label,
+
+        getGemsLabel: cc.Label
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -100,7 +101,6 @@ var shareUI = cc.Class({
             this.noItemsNode.active = false;
 
             this.claimAllBtn.active = this.checkHasRewards();
-            this.claimedAllNode.active = !this.checkHasRewards();
 
             this.allPlayersCountLabel.string = this.shareListData.length;
         } else {
@@ -109,6 +109,8 @@ var shareUI = cc.Class({
         }
 
         this.setInvitedByData();
+
+        this.getGemsLabel.string = cc.Mgr.Utils.getCurrentShareReward();
     },
 
     checkHasRewards () {
@@ -171,7 +173,6 @@ var shareUI = cc.Class({
 
                 this._scrollViewComponent.refreshAtCurPosition();
                 this.claimAllBtn.active = this.checkHasRewards();
-                this.claimedAllNode.active = !this.checkHasRewards();
                 this.claimBtn.active = !cc.Mgr.Utils.invitedByData.invitation_reward_claimed;
                 this.claimedNode.active = cc.Mgr.Utils.invitedByData.invitation_reward_claimed;
 
@@ -211,7 +212,6 @@ var shareUI = cc.Class({
 
         this._scrollViewComponent.refreshAtCurPosition();
         this.claimAllBtn.active = this.checkHasRewards();
-        this.claimedAllNode.active = !this.checkHasRewards();
 
         if (cc.Mgr.Utils.invitedByData) {
             cc.Mgr.Utils.invitedByData.invitation_reward_claimed = true;

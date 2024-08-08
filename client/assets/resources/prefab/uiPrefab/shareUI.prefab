@@ -3333,7 +3333,7 @@
         "__id__": 96
       }
     ],
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 122
@@ -4523,6 +4523,9 @@
     },
     "allPlayersCountLabel": {
       "__id__": 42
+    },
+    "getGemsLabel": {
+      "__id__": 103
     },
     "_id": ""
   },
