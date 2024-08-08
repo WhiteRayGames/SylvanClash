@@ -3,7 +3,7 @@
   [
     "ecpdLyjvZBwrvm+cedCcQy",
     "9elZmWDh9KNIHgrqobLntL",
-    "12df5f461",
+    "13c9c8616",
     "13LYmwSn5B355aAnp+WnEA",
     "03+cqyBnFBjorD+8AmJNHk",
     "95JGVgbDNPqb9lzbJWNtdm",
@@ -19,8 +19,7 @@
     "95DK/RYBZELoslYNxuhSON",
     "0bbi0RriBPIL26lXrCdUDM",
     "0cZB3XDwlIH4QkDwMZlvNl",
-    "3ae7efMv1CLq2ilvUY/tQi",
-    "1446149c1"
+    "3ae7efMv1CLq2ilvUY/tQi"
   ],
   [
     "node",
@@ -863,8 +862,8 @@
         {
           "name": "img_crown",
           "rect": [
-            506,
-            1863,
+            1071,
+            1064,
             143,
             87
           ],
@@ -876,7 +875,6 @@
             143,
             87
           ],
-          "rotated": 1,
           "capInsets": [
             0,
             0,
@@ -4038,8 +4036,8 @@
         {
           "name": "rage_icon",
           "rect": [
-            1157,
-            1745,
+            1533,
+            1263,
             65,
             63
           ],
@@ -4051,7 +4049,6 @@
             65,
             64
           ],
-          "rotated": 1,
           "capInsets": [
             0,
             0,
@@ -4071,7 +4068,7 @@
         3
       ],
       [
-        19
+        2
       ]
     ],
     [
@@ -4080,7 +4077,7 @@
           "name": "victory",
           "rect": [
             479,
-            467,
+            3,
             470,
             136
           ],
@@ -4119,8 +4116,8 @@
         {
           "name": "rage_roulette",
           "rect": [
-            375,
-            1432,
+            1008,
+            1001,
             53,
             52
           ],
@@ -4132,7 +4129,6 @@
             58,
             58
           ],
-          "rotated": 1,
           "capInsets": [
             0,
             0,

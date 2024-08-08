@@ -8,15 +8,60 @@ var Utils = cc.Class({
     extends: cc.Component,
 
     statics: {
+        getShareDataList: function () {
+            if (cc.Mgr.Config.isTelegram == false) return;
+            let startIndex = 0;
+            let endIndex = 0;
+            if (cc.Mgr.Utils.shareData == null) {
+                startIndex = 0;
+                endIndex = 29;
+            } else {
+                startIndex = cc.Mgr.Utils.shareData.invitees.length;
+                endIndex = ((cc.Mgr.Utils.shareData.invitees.length + 29) >= cc.Mgr.Utils.shareData.total) ? cc.Mgr.Utils.shareData.total - 1 : (cc.Mgr.Utils.shareData.invitees.length + 29);
+            }
+            let range = "?skip=" + startIndex + "&limit=" + endIndex;
+            let url = cc.Mgr.Config.isDebug ? "https://tg-api-service-test.lunamou.com/user/" + window.Telegram.WebApp.initDataUnsafe.user.id + "/invitees" + range :
+                "https://tg-api-service.lunamou.com/user/" + window.Telegram.WebApp.initDataUnsafe.user.id + "/invitees" + range;
+            cc.Mgr.http.httpGets(url, (error, response) => {
+                if (error == true) {
+
+                    return;
+                }
+
+                if (cc.Mgr.Utils.shareData == null) {
+                    cc.Mgr.Utils.shareData = JSON.parse(response);
+                } else {
+                    cc.Mgr.Utils.shareData.invitees.concat(JSON.parse(response).invitees);
+                }
+
+                if (cc.Mgr.Utils.shareData.invitees.length < cc.Mgr.Utils.shareData.total) {
+                    this.getShareDataList();
+                }
+            });
+        },
+
+        getInvitedByData: function () {
+            let url = cc.Mgr.Config.isDebug ? "https://tg-api-service-test.lunamou.com/user/" + window.Telegram.WebApp.initDataUnsafe.user.id + "/with-inviter" :
+                "https://tg-api-service.lunamou.com/user/" + window.Telegram.WebApp.initDataUnsafe.user.id + "/with-inviter";
+            cc.Mgr.http.httpGets(url, (error, response) => {
+                if (error == true) {
+
+                    return;
+                }
+
+                cc.Mgr.Utils.invitedByData = JSON.parse(response);
+            });
+        },
+
         //起先确定下引擎中使用string  是否会引用 format 方法
         init:function(){
             if (!String.prototype.format) {
-                String.prototype.format = function () {
-                    var args = arguments;
-                    return this.replace(/{(\d+)}/g, function (match, number) {
-                        return typeof args[number] != 'undefined' ? args[number] : "";
-                    });
-                };
+                String.prototype.format = function () {
+                    var args = arguments;
+                    return this.replace(/{(\d+)}/g, function (match, number) {
+                        return typeof args[number] != 'undefined' ? args[number] : "";
+                    });
+                };
             }
         },
         //输入一个数值 将这个数值转换为 时间格式  

@@ -15,17 +15,17 @@
       "name": "specialGrid_unlock",
       "rect": [
         0,
-        0,
-        197,
+        28,
+        193,
         134
       ],
       "offset": [
         0,
-        0
+        -8.5
       ],
       "originalSize": [
-        197,
-        134
+        193,
+        173
       ],
       "capInsets": [
         0,

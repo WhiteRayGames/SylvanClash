@@ -3,10 +3,10 @@
   [
     "ecpdLyjvZBwrvm+cedCcQy",
     "9elZmWDh9KNIHgrqobLntL",
-    "12df5f461",
+    "13c9c8616",
     "0cZB3XDwlIH4QkDwMZlvNl",
     "95JGVgbDNPqb9lzbJWNtdm",
-    "192872c6d",
+    "1ddc58705",
     "03bxquLGZJhKO+uGrmI8cB",
     "c0WERvvlVAZKIGBKI1Cq5a",
     "c18a1bvXND/LwFBXEXoZyS",
@@ -28,7 +28,7 @@
     "6eCVjWRlRE070mYb4bsla/",
     "3bfKVWrkRJVagKSN3McpBQ",
     "9fQMIIsiJP4LZzzuT9Cngi",
-    "1446149c1",
+    "137ccb6f0",
     "abEaLstolMoId2+1bbA++q"
   ],
   [
@@ -995,8 +995,8 @@
         {
           "name": "CloudsunlockCharacters",
           "rect": [
-            672,
-            1232,
+            1230,
+            707,
             181,
             94
           ],
@@ -4620,8 +4620,8 @@
         {
           "name": "light-yellow",
           "rect": [
-            987,
-            127,
+            790,
+            1478,
             122,
             121
           ],
@@ -4694,7 +4694,7 @@
         {
           "name": "background",
           "rect": [
-            350,
+            527,
             1414,
             569,
             587

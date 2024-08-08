@@ -3,7 +3,7 @@
   [
     "ecpdLyjvZBwrvm+cedCcQy",
     "9elZmWDh9KNIHgrqobLntL",
-    "12df5f461",
+    "13c9c8616",
     "282xz5PlhHCb4QvZj+BOUz",
     "deibV05UNO4aAr8wgZ9dSo",
     "83LowdGndNIJ3/OcTDHZRH",
@@ -21,8 +21,7 @@
     "f3s2JKauVM1KFeywKq1ToL",
     "ecb/oqFZVOnaOPTuKuBneK",
     "fbriUNyMdPJYYJPYS8DcT6",
-    "192872c6d",
-    "1446149c1"
+    "137ccb6f0"
   ],
   [
     "node",
@@ -635,8 +634,8 @@
         {
           "name": "button-yellow-shop-1",
           "rect": [
-            226,
-            1811,
+            1071,
+            1468,
             122,
             49
           ],
@@ -648,6 +647,7 @@
             122,
             49
           ],
+          "rotated": 1,
           "capInsets": [
             15,
             15,
@@ -2456,7 +2456,7 @@
         {
           "name": "lock_2",
           "rect": [
-            1982,
+            907,
             2007,
             38,
             41
@@ -2538,8 +2538,8 @@
         {
           "name": "light-green",
           "rect": [
-            987,
-            254,
+            1412,
+            1118,
             122,
             121
           ],
@@ -2578,8 +2578,8 @@
         {
           "name": "button-purple-shop-1",
           "rect": [
-            354,
-            1808,
+            1126,
+            1468,
             122,
             49
           ],
@@ -2591,6 +2591,7 @@
             122,
             49
           ],
+          "rotated": 1,
           "capInsets": [
             15,
             15,
@@ -2618,8 +2619,8 @@
         {
           "name": "light-purpl",
           "rect": [
-            987,
-            381,
+            1220,
+            1151,
             122,
             121
           ],
@@ -2658,8 +2659,8 @@
         {
           "name": "number-plate",
           "rect": [
-            1964,
-            1077,
+            1021,
+            1329,
             36,
             30
           ],
@@ -2671,6 +2672,7 @@
             36,
             30
           ],
+          "rotated": 1,
           "capInsets": [
             0,
             0,
@@ -2690,7 +2692,7 @@
         2
       ],
       [
-        21
+        2
       ]
     ],
     [
@@ -2698,8 +2700,8 @@
         {
           "name": "light-orange",
           "rect": [
-            693,
-            1856,
+            1405,
+            1245,
             122,
             121
           ],
@@ -2711,7 +2713,6 @@
             122,
             121
           ],
-          "rotated": 1,
           "capInsets": [
             0,
             0,

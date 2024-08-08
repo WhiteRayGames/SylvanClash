@@ -4,7 +4,7 @@
     "ecpdLyjvZBwrvm+cedCcQy",
     "beonlTE0BPboHwwdBV/lI0",
     "9elZmWDh9KNIHgrqobLntL",
-    "1446149c1",
+    "13c9c8616",
     "03bxquLGZJhKO+uGrmI8cB",
     "b7bhim+JlJLrbGxERyarKG",
     "c18a1bvXND/LwFBXEXoZyS",
@@ -15,7 +15,7 @@
     "efaHf0kMxFX72w0oGVjkae",
     "59tgU9X65DNawhtOU9Eyo4",
     "3ae7efMv1CLq2ilvUY/tQi",
-    "192872c6d"
+    "1ddc58705"
   ],
   [
     "node",
@@ -1491,8 +1491,8 @@
         {
           "name": "double-gold-R",
           "rect": [
-            1276,
-            1660,
+            118,
+            1310,
             201,
             44
           ],
@@ -1532,8 +1532,8 @@
         {
           "name": "double-gold",
           "rect": [
-            1326,
-            1660,
+            168,
+            1310,
             201,
             44
           ],

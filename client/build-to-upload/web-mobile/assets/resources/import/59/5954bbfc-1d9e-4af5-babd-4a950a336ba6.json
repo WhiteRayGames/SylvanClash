@@ -1,0 +1,52 @@
+[
+  1,
+  [
+    "137ccb6f0"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "shareIcon",
+      "rect": [
+        944,
+        503,
+        235,
+        301
+      ],
+      "offset": [
+        0.5,
+        0
+      ],
+      "originalSize": [
+        236,
+        301
+      ],
+      "rotated": 1,
+      "capInsets": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

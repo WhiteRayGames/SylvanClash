@@ -5,7 +5,7 @@
     "5bVLYqLvNOPLRUrPeK24NV",
     "0bbi0RriBPIL26lXrCdUDM",
     "9elZmWDh9KNIHgrqobLntL",
-    "1446149c1"
+    "13c9c8616"
   ],
   [
     "node",
@@ -531,8 +531,8 @@
         {
           "name": "lock",
           "rect": [
-            1670,
-            1393,
+            1021,
+            1229,
             30,
             39
           ],
@@ -544,7 +544,6 @@
             32,
             42
           ],
-          "rotated": 1,
           "capInsets": [
             0,
             0,

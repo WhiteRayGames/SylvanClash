@@ -1640,7 +1640,7 @@ window.__require = function e(t, n, r) {
         isTelegram: true,
         platform: "Telegram",
         version: "1.0.0",
-        debug_version: "_debug_24",
+        debug_version: "_debug_25",
         zOffsetY: 142,
         zBossLine: 100,
         allPlantCount: 75,
@@ -5209,6 +5209,8 @@ window.__require = function e(t, n, r) {
             cc.Mgr.telegram = {};
             cc.Mgr.telegram.userInfo = data;
           });
+          cc.Mgr.Utils.getShareDataList();
+          cc.Mgr.Utils.getInvitedByData();
         }
       },
       defense: function defense(data) {
@@ -8469,6 +8471,48 @@ window.__require = function e(t, n, r) {
     });
     cc._RF.pop();
   }, {} ],
+  ShareItem: [ function(require, module, exports) {
+    "use strict";
+    cc._RF.push(module, "afb53kiqg5NN5xaTPtlCOfr", "ShareItem");
+    "use strict";
+    cc.Class({
+      extends: cc.Component,
+      properties: {
+        playerHead: cc.Sprite,
+        userName: cc.Label,
+        claimBtn: cc.Node,
+        claimedNode: cc.Node
+      },
+      start: function start() {
+        this.limitClick = this.node.getComponent("LimitClick");
+      },
+      setContent: function setContent(_data) {
+        var _this = this;
+        this.data = _data;
+        cc.assetManager.loadRemote(_data.avatar_url, function(err, texture) {
+          if (null == err) {
+            var spriteFrame = new cc.SpriteFrame(texture);
+            _this.playerHead.spriteFrame = spriteFrame;
+            _this.playerHead.node.width = _this.playerHead.node.height = 60;
+          }
+        });
+        this.userName.string = _data.username;
+        this.claimBtn.active = !_data.invitation_reward_claimed;
+        this.claimedNode.active = _data.invitation_reward_claimed;
+      },
+      onClickClaim: function onClickClaim() {
+        var _this2 = this;
+        if (false == this.limitClick.clickTime()) return;
+        var url = cc.Mgr.Config.isDebug ? "https://tg-api-service-test.lunamou.com/invitation-reward/claim-invitation-reward/" + this.data.id : "https://tg-api-service.lunamou.com/invitation-reward/claim-invitation-reward/" + this.data.id;
+        cc.Mgr.http.httpGets(url, function(error, response) {
+          if (true == error) return;
+          _this2.data = JSON.parse(response);
+          _this2.setContent(_this2.data);
+        });
+      }
+    });
+    cc._RF.pop();
+  }, {} ],
   ShopData: [ function(require, module, exports) {
     "use strict";
     cc._RF.push(module, "9b01bjGPhpLoKlNNRFgM+s1", "ShopData");
@@ -9948,7 +9992,7 @@ window.__require = function e(t, n, r) {
               cc.error(errmsg.message || errmsg);
               return;
             }
-            self.addShowUICount("offlineAssets");
+            this.addShowUICount("shareUI");
             self.hideLoading();
             self.shareUINode = cc.instantiate(prefab);
             self.shareUINode.parent = self.uiRoot;
@@ -10816,6 +10860,33 @@ window.__require = function e(t, n, r) {
     var Utils = cc.Class({
       extends: cc.Component,
       statics: {
+        getShareDataList: function getShareDataList() {
+          var _this = this;
+          if (false == cc.Mgr.Config.isTelegram) return;
+          var startIndex = 0;
+          var endIndex = 0;
+          if (null == cc.Mgr.Utils.shareData) {
+            startIndex = 0;
+            endIndex = 29;
+          } else {
+            startIndex = cc.Mgr.Utils.shareData.invitees.length;
+            endIndex = cc.Mgr.Utils.shareData.invitees.length + 29 >= cc.Mgr.Utils.shareData.total ? cc.Mgr.Utils.shareData.total - 1 : cc.Mgr.Utils.shareData.invitees.length + 29;
+          }
+          var range = "?skip=" + startIndex + "&limit=" + endIndex;
+          var url = cc.Mgr.Config.isDebug ? "https://tg-api-service-test.lunamou.com/user/" + window.Telegram.WebApp.initDataUnsafe.user.id + "/invitees" + range : "https://tg-api-service.lunamou.com/user/" + window.Telegram.WebApp.initDataUnsafe.user.id + "/invitees" + range;
+          cc.Mgr.http.httpGets(url, function(error, response) {
+            if (true == error) return;
+            null == cc.Mgr.Utils.shareData ? cc.Mgr.Utils.shareData = JSON.parse(response) : cc.Mgr.Utils.shareData.invitees.concat(JSON.parse(response).invitees);
+            cc.Mgr.Utils.shareData.invitees.length < cc.Mgr.Utils.shareData.total && _this.getShareDataList();
+          });
+        },
+        getInvitedByData: function getInvitedByData() {
+          var url = cc.Mgr.Config.isDebug ? "https://tg-api-service-test.lunamou.com/user/" + window.Telegram.WebApp.initDataUnsafe.user.id + "/with-inviter" : "https://tg-api-service.lunamou.com/user/" + window.Telegram.WebApp.initDataUnsafe.user.id + "/with-inviter";
+          cc.Mgr.http.httpGets(url, function(error, response) {
+            if (true == error) return;
+            cc.Mgr.Utils.invitedByData = JSON.parse(response);
+          });
+        },
         init: function init() {
           String.prototype.format || (String.prototype.format = function() {
             var args = arguments;
@@ -17504,22 +17575,28 @@ window.__require = function e(t, n, r) {
     cc._RF.push(module, "3e244oe5vxFCYhNuPZVqyYl", "shareUI");
     "use strict";
     var tweenTime = .15;
-    var MissionType = require("MissionType");
-    var AchieveType = require("AchieveType");
     var shareUI = cc.Class({
       extends: cc.Component,
       properties: {
-        numEffect: cc.Node,
         closeNode: cc.Node,
         blurBg: cc.Node,
-        content: cc.Node
+        content: cc.Node,
+        shareItemListView: cc.Node,
+        noItemsNode: cc.Node,
+        playerHead: cc.Sprite,
+        playerName: cc.Label,
+        claimBtn: cc.Node,
+        claimedNode: cc.Node,
+        invitedByNode: cc.Node,
+        claimAllBtn: cc.Node,
+        allPlayersCountLabel: cc.Label
       },
       onLoad: function onLoad() {
         this.limitClick = this.node.getComponent("LimitClick");
+        this._scrollViewComponent = this.shareItemListView.getComponent("WaterfallFlow");
+        this.shareListData = cc.Mgr.Utils.shareData ? cc.Mgr.Utils.shareData.invitees : null;
       },
-      start: function start() {
-        this.getReward = false;
-      },
+      start: function start() {},
       onClickShare: function onClickShare() {
         if (false == this.limitClick.clickTime()) return;
         if (false == cc.Mgr.Config.isTelegram) {
@@ -17550,9 +17627,63 @@ window.__require = function e(t, n, r) {
           opacity: 255,
           scale: 1
         }).start();
-        var coins = cc.Mgr.game.caculatePlantPrice(cc.Mgr.game.plantMaxLv);
-        this.coins = coins;
-        this.numEffect.getComponent("NumEffect").setNumber(cc.Mgr.Utils.getNumStr2(this.coins));
+        if (this.shareListData && this.shareListData.length > 0) {
+          this._scrollViewComponent.setBaseInfo(this.shareListData.length, 5, 15, 75, this.setShareList.bind(this));
+          this._scrollViewComponent.clear();
+          this._scrollViewComponent.scrollTo(0);
+          this.noItemsNode.active = false;
+          this.claimAllBtn.active = this.checkHasRewards();
+          this.allPlayersCountLabel.string = this.shareListData.length;
+        } else {
+          this.noItemsNode.active = true;
+          this.allPlayersCountLabel.string = "0";
+        }
+        this.setInvitedByData();
+      },
+      checkHasRewards: function checkHasRewards() {
+        if (this.shareListData && this.shareListData.length > 0) for (var i = 0; i < this.shareListData.length; i++) {
+          var shareData = this.shareListData[i];
+          if (false == shareData.invitation_reward_claimed) return true;
+        }
+        return false;
+      },
+      setInvitedByData: function setInvitedByData() {
+        var _this = this;
+        if (null == cc.Mgr.Utils.invitedByData) {
+          this.invitedByNode.active = false;
+          return;
+        }
+        this.invitedByNode.active = true;
+        cc.assetManager.loadRemote(cc.Mgr.Utils.invitedByData.avatar_url, function(err, texture) {
+          if (null == err) {
+            var spriteFrame = new cc.SpriteFrame(texture);
+            _this.playerHead.spriteFrame = spriteFrame;
+            _this.playerHead.node.width = _this.playerHead.node.height = 60;
+          }
+        });
+        this.playerName.string = "YOU ARE INVITED BY " + cc.Mgr.Utils.invitedByData.username;
+        this.claimBtn.active = !cc.Mgr.Utils.invitedByData.invitation_reward_claimed;
+        this.claimedNode.active = cc.Mgr.Utils.invitedByData.invitation_reward_claimed;
+      },
+      onClickClaimOne: function onClickClaimOne() {
+        var _this2 = this;
+        if (false == this.limitClick.clickTime()) return;
+        var url = cc.Mgr.Config.isDebug ? "https://tg-api-service-test.lunamou.com/invitation-reward/claim-invitation-reward/" + cc.Mgr.Utils.invitedByData.id : "https://tg-api-service.lunamou.com/invitation-reward/claim-invitation-reward/" + cc.Mgr.Utils.invitedByData.id;
+        cc.Mgr.http.httpGets(url, function(error, response) {
+          if (true == error) return;
+          cc.Mgr.Utils.invitedByData = JSON.parse(response);
+          _this2.setInvitedByData();
+        });
+      },
+      setShareList: function setShareList(_index, _updateIdx, _curShowIdxListLen) {
+        void 0 == _updateIdx && (_updateIdx = -1);
+        var result;
+        if (this.shareListData.length <= 5) result = this.shareListData; else {
+          var idx = -1 == _updateIdx ? 5 * _index : 5 * _updateIdx;
+          var endIdx = -1 == _updateIdx ? idx + 5 : idx + 5 * _curShowIdxListLen;
+          result = this.shareListData.slice(idx, endIdx);
+        }
+        this._scrollViewComponent.updateShowList(result, "ShareItem", this);
       },
       doTween: function doTween() {
         this.closeNode.opacity = 0;
@@ -17564,7 +17695,6 @@ window.__require = function e(t, n, r) {
       },
       closeUI: function closeUI() {
         cc.Mgr.AudioMgr.playSFX("click");
-        cc.Mgr.admob.hideBanner("offline");
         var self = this;
         cc.tween(this.blurBg).to(.15, {
           opacity: 0
@@ -17573,23 +17703,14 @@ window.__require = function e(t, n, r) {
           opacity: 0,
           scale: .5
         }).call(function() {
-          if (true == self.getReward) {
-            cc.Mgr.game.money += BigInt(self.coins);
-            cc.Mgr.game.coin_gained_total += BigInt(self.coins);
-            cc.Mgr.UIMgr.showJibEffect();
-            cc.Mgr.UIMgr.InGameUI.RefreshAssetData(false, "money");
-          }
           self.node.active = false;
         }).start();
-        cc.Mgr.UIMgr.reduceShowUICount("offlineAssets");
+        cc.Mgr.UIMgr.reduceShowUICount("shareUI");
       }
     });
     module.exports = shareUI;
     cc._RF.pop();
-  }, {
-    AchieveType: "AchieveType",
-    MissionType: "MissionType"
-  } ],
+  }, {} ],
   shopItem: [ function(require, module, exports) {
     "use strict";
     cc._RF.push(module, "f9ebbffBnRKFrSpScNAXQRK", "shopItem");
@@ -19607,4 +19728,4 @@ window.__require = function e(t, n, r) {
     zombie_config: "zombie_config",
     zombie_state: "zombie_state"
   } ]
-}, {}, [ "use_v2.1-2.2.1_cc.Toggle_event", "Admob", "Analytics", "BlurMask", "Cloud", "FontManager", "LanguageItem", "LanguageSelector", "LimitClick", "MySprite", "SButton", "ScrollLabel", "SwitchFont", "WaterfallFlow", "js-big-decimal", "DB_achievementAwards", "DB_airdrop", "DB_buyButton", "DB_droneRewards", "DB_i18n", "DB_invite", "DB_level", "DB_levelupGem", "DB_plant", "DB_plantName", "DB_shopSort", "DB_spinLevel", "DB_turntable", "db_zombie", "AchieveType", "AudioMgr", "Config", "AchieveData", "AchieveMapMgr", "AirDropData", "AirDropMapMgr", "BuyButtonData", "BuyButtonMapMgr", "DroneData", "DroneMapMgr", "GoodMapDecoder", "GoodsData", "InviteData", "InviteMapMgr", "LevelData", "LevelMapMgr", "LvUpGemData", "LvUpGemMapMgr", "MapDataMgr", "PlantData", "PlantMapMgr", "ShopData", "ShopMapMgr", "SpinLvData", "SpinLvMapMgr", "TransData", "TransMapMgr", "TurnTableData", "TurnTableMapMgr", "ZombieData", "ZombieMapMgr", "DataType", "Event", "GlobalEvent", "HttpUtils", "MissionType", "MyEnum", "NoticeText", "SceneAdapter", "TurnTableGetType", "UserDataMgr", "Utils", "achieveMissonData", "AtlasMgr", "AtlasType", "DragonMgr", "DragonType", "GameCenterCtrl", "ParticleMgr", "BulletPool", "BulletType", "bullet", "EffectMgr", "EffectType", "UnlockTip", "angryEffect", "attackEffect", "coinFly", "dieSmoke", "flowerPotOpen", "plantMerge", "tipMoveAttack", "vertigo", "game", "Notification", "flowerPot", "flowerPotManage", "lockGird", "plant", "plantManage", "ZomBieMgr", "zombie", "zombie_config", "zombie_state", "InviteManager", "Payment", "AdsBlocker", "AppStart", "BuffUI", "CoinBundle", "Compensation", "EnjoyNature", "FirstUI", "Guides", "InGameUI", "MaxLevel", "NumEffect", "NumberCol", "OfflineBundle", "PauseUI", "PaymentUI", "PlantMergeGuide", "RankingItem", "RankingUI", "RemoveAdBundle", "SpecialGridBundle", "StarterBundle", "UIMgr", "UnlockAllBundle", "UpdateAvailable", "Vip", "achieveItem", "angryUI", "assetGetUI", "bigResult", "bossComing", "coinBonus", "jinbi", "jinbiCtrl", "doubleCoinUI", "exchangeCoinUI", "jinggai", "missionItem", "missionUI", "newRecordUI", "noticeUI", "offlineAssetUI", "plantGetUI", "promptUI", "rewardBox", "setPanel", "shareUI", "shopItem", "signItem", "signUI", "smallResult", "turnArrow", "turnTableUI", "uav", "uavUI", "uiConfig", "uiItemMgr" ]);
+}, {}, [ "use_v2.1-2.2.1_cc.Toggle_event", "Admob", "Analytics", "BlurMask", "Cloud", "FontManager", "LanguageItem", "LanguageSelector", "LimitClick", "MySprite", "SButton", "ScrollLabel", "SwitchFont", "WaterfallFlow", "js-big-decimal", "DB_achievementAwards", "DB_airdrop", "DB_buyButton", "DB_droneRewards", "DB_i18n", "DB_invite", "DB_level", "DB_levelupGem", "DB_plant", "DB_plantName", "DB_shopSort", "DB_spinLevel", "DB_turntable", "db_zombie", "AchieveType", "AudioMgr", "Config", "AchieveData", "AchieveMapMgr", "AirDropData", "AirDropMapMgr", "BuyButtonData", "BuyButtonMapMgr", "DroneData", "DroneMapMgr", "GoodMapDecoder", "GoodsData", "InviteData", "InviteMapMgr", "LevelData", "LevelMapMgr", "LvUpGemData", "LvUpGemMapMgr", "MapDataMgr", "PlantData", "PlantMapMgr", "ShopData", "ShopMapMgr", "SpinLvData", "SpinLvMapMgr", "TransData", "TransMapMgr", "TurnTableData", "TurnTableMapMgr", "ZombieData", "ZombieMapMgr", "DataType", "Event", "GlobalEvent", "HttpUtils", "MissionType", "MyEnum", "NoticeText", "SceneAdapter", "TurnTableGetType", "UserDataMgr", "Utils", "achieveMissonData", "AtlasMgr", "AtlasType", "DragonMgr", "DragonType", "GameCenterCtrl", "ParticleMgr", "BulletPool", "BulletType", "bullet", "EffectMgr", "EffectType", "UnlockTip", "angryEffect", "attackEffect", "coinFly", "dieSmoke", "flowerPotOpen", "plantMerge", "tipMoveAttack", "vertigo", "game", "Notification", "flowerPot", "flowerPotManage", "lockGird", "plant", "plantManage", "ZomBieMgr", "zombie", "zombie_config", "zombie_state", "InviteManager", "Payment", "AdsBlocker", "AppStart", "BuffUI", "CoinBundle", "Compensation", "EnjoyNature", "FirstUI", "Guides", "InGameUI", "MaxLevel", "NumEffect", "NumberCol", "OfflineBundle", "PauseUI", "PaymentUI", "PlantMergeGuide", "RankingItem", "RankingUI", "RemoveAdBundle", "ShareItem", "SpecialGridBundle", "StarterBundle", "UIMgr", "UnlockAllBundle", "UpdateAvailable", "Vip", "achieveItem", "angryUI", "assetGetUI", "bigResult", "bossComing", "coinBonus", "jinbi", "jinbiCtrl", "doubleCoinUI", "exchangeCoinUI", "jinggai", "missionItem", "missionUI", "newRecordUI", "noticeUI", "offlineAssetUI", "plantGetUI", "promptUI", "rewardBox", "setPanel", "shareUI", "shopItem", "signItem", "signUI", "smallResult", "turnArrow", "turnTableUI", "uav", "uavUI", "uiConfig", "uiItemMgr" ]);

@@ -3,8 +3,8 @@
   [
     "ecpdLyjvZBwrvm+cedCcQy",
     "9elZmWDh9KNIHgrqobLntL",
+    "1ddc58705",
     "1ae0oupk1Oh4DpsoxDtNil",
-    "192872c6d",
     "a86WzVG4ZBGbqoAbtkBGgE",
     "094kR0xqpC24B2U9Y/vdbJ",
     "03bxquLGZJhKO+uGrmI8cB",
@@ -14,8 +14,7 @@
     "c18a1bvXND/LwFBXEXoZyS",
     "45WHV1+fRKkrzgmxuZjgHQ",
     "0dzYHfoZJLDKWe0qFVBhNl",
-    "b4FSWn3khMR6tH4Ljhm4Aw",
-    "1446149c1"
+    "b4FSWn3khMR6tH4Ljhm4Aw"
   ],
   [
     "node",
@@ -2035,11 +2034,11 @@
         0,
         7,
         0,
-        2,
+        3,
         0,
-        2,
+        3,
         0,
-        2,
+        3,
         0,
         8,
         0,
@@ -2078,7 +2077,7 @@
         {
           "name": "sales-bg",
           "rect": [
-            97,
+            139,
             223,
             253,
             70
@@ -2111,7 +2110,7 @@
         3
       ],
       [
-        3
+        2
       ]
     ],
     [
@@ -2119,8 +2118,8 @@
         {
           "name": "offline-Earnings",
           "rect": [
-            3,
-            751,
+            345,
+            223,
             657,
             183
           ],
@@ -2132,7 +2131,6 @@
             665,
             184
           ],
-          "rotated": 1,
           "capInsets": [
             0,
             0,
@@ -2152,7 +2150,7 @@
         3
       ],
       [
-        14
+        2
       ]
     ],
     [
@@ -2192,7 +2190,7 @@
         3
       ],
       [
-        3
+        2
       ]
     ],
     [
@@ -2232,7 +2230,7 @@
         3
       ],
       [
-        3
+        2
       ]
     ]
   ]

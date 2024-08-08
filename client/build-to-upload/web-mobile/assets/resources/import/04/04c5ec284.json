@@ -5,7 +5,7 @@
     "82U0cGBXZCFq5wPjAHXWw2",
     "9elZmWDh9KNIHgrqobLntL",
     "163996b5f",
-    "192872c6d",
+    "137ccb6f0",
     "03bxquLGZJhKO+uGrmI8cB",
     "c18a1bvXND/LwFBXEXoZyS",
     "3ae7efMv1CLq2ilvUY/tQi",
@@ -434,8 +434,8 @@
         {
           "name": "new-update",
           "rect": [
-            357,
-            318,
+            3,
+            1414,
             608,
             171
           ],
@@ -447,6 +447,7 @@
             609,
             171
           ],
+          "rotated": 1,
           "capInsets": [
             0,
             0,

@@ -1,7 +1,7 @@
 [
   1,
   [
-    "192872c6d",
+    "137ccb6f0",
     "ecpdLyjvZBwrvm+cedCcQy",
     "96WeRToqxMn7UG8Yt+HozX"
   ],
@@ -90,8 +90,8 @@
         {
           "name": "critical",
           "rect": [
-            971,
-            318,
+            747,
+            2007,
             154,
             38
           ],
@@ -103,7 +103,6 @@
             154,
             38
           ],
-          "rotated": 1,
           "capInsets": [
             0,
             0,

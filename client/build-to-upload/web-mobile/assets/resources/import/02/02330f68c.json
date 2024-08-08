@@ -4,7 +4,7 @@
     "ecpdLyjvZBwrvm+cedCcQy",
     "9elZmWDh9KNIHgrqobLntL",
     "54f6D7XhVCQp5lqT3CR8Ee",
-    "1446149c1",
+    "137ccb6f0",
     "45WHV1+fRKkrzgmxuZjgHQ",
     "03bxquLGZJhKO+uGrmI8cB",
     "7aPxWacZNON777iapGxlv0",
@@ -17,7 +17,7 @@
     "f9PLc8tOxPmKOKzkrv+0gU",
     "a86WzVG4ZBGbqoAbtkBGgE",
     "094kR0xqpC24B2U9Y/vdbJ",
-    "192872c6d"
+    "1ddc58705"
   ],
   [
     "node",
@@ -610,7 +610,7 @@
         {
           "name": "Remove-Ad",
           "rect": [
-            192,
+            3,
             751,
             657,
             183
@@ -2163,7 +2163,7 @@
         {
           "name": "3Remove",
           "rect": [
-            1264,
+            1138,
             3,
             460,
             488

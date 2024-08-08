@@ -165,6 +165,9 @@ cc.Class({
             //
             //     userPhoto = JSON.parse(response).photo_url;
             // });
+
+            cc.Mgr.Utils.getShareDataList();
+            cc.Mgr.Utils.getInvitedByData();
         }
     },
 

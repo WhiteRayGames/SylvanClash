@@ -26,13 +26,30 @@ var shareUI = cc.Class({
         // },
         closeNode: cc.Node,
         blurBg: cc.Node,
-        content: cc.Node
+        content: cc.Node,
+
+        shareItemListView: cc.Node,
+        noItemsNode: cc.Node,
+
+        playerHead: cc.Sprite,
+        playerName: cc.Label,
+        claimBtn: cc.Node,
+        claimedNode: cc.Node,
+
+        invitedByNode: cc.Node,
+
+        claimAllBtn: cc.Node,
+
+        allPlayersCountLabel: cc.Label
     },
 
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
-        this.limitClick = this.node.getComponent('LimitClick')
+        this.limitClick = this.node.getComponent('LimitClick');
+        this._scrollViewComponent = this.shareItemListView.getComponent('WaterfallFlow');
+
+        this.shareListData = cc.Mgr.Utils.shareData ? cc.Mgr.Utils.shareData.invitees : null;
     },
 
     start () {
@@ -59,27 +76,6 @@ var shareUI = cc.Class({
         const gameUrl = encodeURIComponent("https://t.me/Vision_test_02_bot/paytest?startapp=" + inviteCode);
         const telegramUrl = `https://t.me/share/url?url=${gameUrl}&text=${messageText}`;
         window.open(telegramUrl, '_blank');
-
-        // cc.Mgr.UIMgr.showLoading();
-        //
-        // let self = this;
-        // cc.Mgr.Utils.getBase64Image("resources/tex/shareImage_5.png", (_data) => {
-        //     cc.Mgr.UIMgr.hideLoading();
-        //
-        //     cc.Mgr.game.updateMissionProgressById(MissionType.InviteCount);
-        //     cc.Mgr.game.updateAchieveProgressByType(AchieveType.Invite);
-        //     cc.Mgr.UIMgr.InGameUI.checkMissionAchieveTip();
-        //
-        //     self.getReward = true;
-        //
-        //     let data = {}
-        //     data.elapsed = cc.Mgr.Utils.getDate9(true)
-        //     data.stage = cc.Mgr.game.level
-        //     data.feature = "invite friends"
-        //     cc.Mgr.analytics.logEvent("share_message", JSON.stringify(data));
-        //
-        //     self.closeUI();
-        // });
     },
 
     showUI:function () {
@@ -93,6 +89,90 @@ var shareUI = cc.Class({
         this.content.setScale(.5)
         cc.tween(this.blurBg).to(0.05, {opacity:255}).call().start();
         cc.tween(this.content).to(0.15, {opacity:255, scale: 1}).start();
+
+        if (this.shareListData && this.shareListData.length > 0) {
+            this._scrollViewComponent.setBaseInfo(this.shareListData.length, 5, 15, 75, this.setShareList.bind(this));
+
+            this._scrollViewComponent.clear();
+            this._scrollViewComponent.scrollTo(0);
+
+            this.noItemsNode.active = false;
+
+            this.claimAllBtn.active = this.checkHasRewards();
+
+            this.allPlayersCountLabel.string = this.shareListData.length;
+        } else {
+            this.noItemsNode.active = true;
+            this.allPlayersCountLabel.string = "0";
+        }
+
+        this.setInvitedByData();
+    },
+
+    checkHasRewards () {
+        if (this.shareListData && this.shareListData.length > 0) {
+            for (let i = 0; i < this.shareListData.length; i++) {
+                let shareData = this.shareListData[i];
+                if (shareData.invitation_reward_claimed == false) return true;
+            }
+        }
+
+        return false;
+    },
+
+    setInvitedByData () {
+        if (cc.Mgr.Utils.invitedByData == null) {
+            this.invitedByNode.active = false;
+            return;
+        }
+
+        this.invitedByNode.active = true;
+
+        cc.assetManager.loadRemote(cc.Mgr.Utils.invitedByData.avatar_url, (err, texture) => {
+            if (err == null) {
+                var spriteFrame = new cc.SpriteFrame(texture);
+                this.playerHead.spriteFrame = spriteFrame;
+                this.playerHead.node.width = this.playerHead.node.height = 60;
+            }
+        });
+
+        this.playerName.string = "YOU ARE INVITED BY " + cc.Mgr.Utils.invitedByData.username;
+        this.claimBtn.active = !cc.Mgr.Utils.invitedByData.invitation_reward_claimed;
+        this.claimedNode.active = cc.Mgr.Utils.invitedByData.invitation_reward_claimed;
+    },
+
+    onClickClaimOne () {
+        if (this.limitClick.clickTime() == false) {
+            return;
+        }
+
+        let url = cc.Mgr.Config.isDebug ? "https://tg-api-service-test.lunamou.com/invitation-reward/claim-invitation-reward/" + cc.Mgr.Utils.invitedByData.id :
+            "https://tg-api-service.lunamou.com/invitation-reward/claim-invitation-reward/" + cc.Mgr.Utils.invitedByData.id;
+        cc.Mgr.http.httpGets(url, (error, response) => {
+            if (error == true) {
+
+                return;
+            }
+
+            cc.Mgr.Utils.invitedByData = JSON.parse(response);
+
+            this.setInvitedByData();
+        });
+    },
+
+    setShareList (_index, _updateIdx, _curShowIdxListLen) {
+        if (_updateIdx == undefined)_updateIdx = -1;
+
+        let result;
+        if (this.shareListData.length <= 5) {
+            result = this.shareListData;
+        } else {
+            let idx = (_updateIdx == -1) ? _index * 5 : _updateIdx * 5;
+            let endIdx = (_updateIdx == -1) ? idx + 5 : idx + _curShowIdxListLen * 5;
+            result = this.shareListData.slice(idx, endIdx);
+        }
+
+        this._scrollViewComponent.updateShowList(result, 'ShareItem', this);
     },
 
     doTween:function(){
