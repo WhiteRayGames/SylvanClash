@@ -1,9 +1,4 @@
 var DataType = require("DataType");
-const achieveLevelList = [4, 7, 11, 15, 19, 23, 27, 31, 35, 39, 43, 47, 51, 55, 59, 63, 67];
-const achieveIdList = ["CgkIooHd4-wCEAIQAQ", "CgkIooHd4-wCEAIQAg", "CgkIooHd4-wCEAIQAw", "CgkIooHd4-wCEAIQBA", "CgkIooHd4-wCEAIQBQ", "CgkIooHd4-wCEAIQBg", "CgkIooHd4-wCEAIQBw", "CgkIooHd4-wCEAIQCA", "CgkIooHd4-wCEAIQCQ" ,"CgkIooHd4-wCEAIQCg", "CgkIooHd4-wCEAIQCw", "CgkIooHd4-wCEAIQDA", "CgkIooHd4-wCEAIQDQ", "CgkIooHd4-wCEAIQDg", "CgkIooHd4-wCEAIQDw", "CgkIooHd4-wCEAIQEA", "CgkIooHd4-wCEAIQEQ"];
-const achieveIdList_20 = ["CgkIooHd4-wCEAIQFA", "CgkIooHd4-wCEAIQFQ", "CgkIooHd4-wCEAIQFg", "CgkIooHd4-wCEAIQFw", "CgkIooHd4-wCEAIQGA", "CgkIooHd4-wCEAIQGQ", "CgkIooHd4-wCEAIQGg", "CgkIooHd4-wCEAIQGw", "CgkIooHd4-wCEAIQHA", "CgkIooHd4-wCEAIQHQ", "CgkIooHd4-wCEAIQHg", "CgkIooHd4-wCEAIQHw", "CgkIooHd4-wCEAIQIA", "CgkIooHd4-wCEAIQIQ", "CgkIooHd4-wCEAIQIg", "CgkIooHd4-wCEAIQIw", "CgkIooHd4-wCEAIQJA"];
-const achieveIdList_50 = ["CgkIooHd4-wCEAIQJQ", "CgkIooHd4-wCEAIQJg", "CgkIooHd4-wCEAIQJw", "CgkIooHd4-wCEAIQKA", "CgkIooHd4-wCEAIQKQ", "CgkIooHd4-wCEAIQKg", "CgkIooHd4-wCEAIQKw", "CgkIooHd4-wCEAIQLA", "CgkIooHd4-wCEAIQLQ", "CgkIooHd4-wCEAIQLg", "CgkIooHd4-wCEAIQLw", "CgkIooHd4-wCEAIQMA", "CgkIooHd4-wCEAIQMQ", "CgkIooHd4-wCEAIQMg", "CgkIooHd4-wCEAIQMw", "CgkIooHd4-wCEAIQNA", "CgkIooHd4-wCEAIQNQ"];
-const achieveIdList_100 = ["CgkIooHd4-wCEAIQNg", "CgkIooHd4-wCEAIQNw", "CgkIooHd4-wCEAIQOA", "CgkIooHd4-wCEAIQOQ", "CgkIooHd4-wCEAIQOg", "CgkIooHd4-wCEAIQOw", "CgkIooHd4-wCEAIQPA", "CgkIooHd4-wCEAIQPQ", "CgkIooHd4-wCEAIQPg", "CgkIooHd4-wCEAIQPw", "CgkIooHd4-wCEAIQQA", "CgkIooHd4-wCEAIQQQ", "CgkIooHd4-wCEAIQQg", "CgkIooHd4-wCEAIQQw", "CgkIooHd4-wCEAIQRA", "CgkIooHd4-wCEAIQRQ", "CgkIooHd4-wCEAIQRg"];
 var Utils = cc.Class({
     extends: cc.Component,
 
@@ -463,20 +458,6 @@ var Utils = cc.Class({
         },
 
         uploadAchievment: function (_id, _level, _count) {
-            let index = achieveLevelList.indexOf(_level);
-            if (index < 0) return;
-            let currentAchieveIdList;
-            if (_count === 5) {
-                currentAchieveIdList = achieveIdList;
-            } else if (_count === 20) {
-                currentAchieveIdList = achieveIdList_20;
-            } else if (_count === 50) {
-                currentAchieveIdList = achieveIdList_50;
-            } else if (_count === 100) {
-                currentAchieveIdList = achieveIdList_100;
-            }
-            let androidID = currentAchieveIdList[index];
-            let iosID = _count === 5 ? _id : _id + "_" + _count;
 
         },
 
