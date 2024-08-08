@@ -1640,7 +1640,7 @@ window.__require = function e(t, n, r) {
         isTelegram: true,
         platform: "Telegram",
         version: "1.0.0",
-        debug_version: "_debug_29",
+        debug_version: "_debug_30",
         zOffsetY: 142,
         zBossLine: 100,
         allPlantCount: 75,
@@ -17658,9 +17658,10 @@ window.__require = function e(t, n, r) {
         } else {
           this.noItemsNode.active = true;
           this.allPlayersCountLabel.string = "0";
+          this.claimAllBtn.active = false;
         }
         this.setInvitedByData();
-        this.getGemsLabel.string = cc.Mgr.Utils.getCurrentShareReward();
+        this.getGemsLabel.string = cc.Mgr.Utils.getCurrentShareReward() + " Gems";
       },
       checkHasRewards: function checkHasRewards() {
         if (this.shareListData && this.shareListData.length > 0) for (var i = 0; i < this.shareListData.length; i++) {

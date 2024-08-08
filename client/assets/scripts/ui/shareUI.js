@@ -106,11 +106,12 @@ var shareUI = cc.Class({
         } else {
             this.noItemsNode.active = true;
             this.allPlayersCountLabel.string = "0";
+            this.claimAllBtn.active = false;
         }
 
         this.setInvitedByData();
 
-        this.getGemsLabel.string = cc.Mgr.Utils.getCurrentShareReward();
+        this.getGemsLabel.string = cc.Mgr.Utils.getCurrentShareReward() + " Gems";
     },
 
     checkHasRewards () {
