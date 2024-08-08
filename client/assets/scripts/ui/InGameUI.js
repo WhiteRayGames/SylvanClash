@@ -978,7 +978,8 @@ var InGameUI = cc.Class({
         // } else {
         //     cc.Mgr.UIMgr.openRankingUI();
         // }
-        cc.Mgr.UIMgr.openRankingUI();
+        // cc.Mgr.UIMgr.openRankingUI();
+        cc.Mgr.UIMgr.openShareUI();
     },
 
     openTurnTableUI:function(){

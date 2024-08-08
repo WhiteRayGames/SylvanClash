@@ -1640,7 +1640,7 @@ window.__require = function e(t, n, r) {
         isTelegram: true,
         platform: "Telegram",
         version: "1.0.0",
-        debug_version: "_debug_25",
+        debug_version: "_debug_26",
         zOffsetY: 142,
         zBossLine: 100,
         allPlantCount: 75,
@@ -6313,7 +6313,7 @@ window.__require = function e(t, n, r) {
         cc.Mgr.UIMgr.openSetting();
       },
       onClickRank: function onClickRank() {
-        cc.Mgr.UIMgr.openRankingUI();
+        cc.Mgr.UIMgr.openShareUI();
       },
       openTurnTableUI: function openTurnTableUI() {
         cc.Mgr.UIMgr.openTurnTableUI();
@@ -10852,11 +10852,6 @@ window.__require = function e(t, n, r) {
     cc._RF.push(module, "8fde9BkXa9PRJVejPBOOoTq", "Utils");
     "use strict";
     var DataType = require("DataType");
-    var achieveLevelList = [ 4, 7, 11, 15, 19, 23, 27, 31, 35, 39, 43, 47, 51, 55, 59, 63, 67 ];
-    var achieveIdList = [ "CgkIooHd4-wCEAIQAQ", "CgkIooHd4-wCEAIQAg", "CgkIooHd4-wCEAIQAw", "CgkIooHd4-wCEAIQBA", "CgkIooHd4-wCEAIQBQ", "CgkIooHd4-wCEAIQBg", "CgkIooHd4-wCEAIQBw", "CgkIooHd4-wCEAIQCA", "CgkIooHd4-wCEAIQCQ", "CgkIooHd4-wCEAIQCg", "CgkIooHd4-wCEAIQCw", "CgkIooHd4-wCEAIQDA", "CgkIooHd4-wCEAIQDQ", "CgkIooHd4-wCEAIQDg", "CgkIooHd4-wCEAIQDw", "CgkIooHd4-wCEAIQEA", "CgkIooHd4-wCEAIQEQ" ];
-    var achieveIdList_20 = [ "CgkIooHd4-wCEAIQFA", "CgkIooHd4-wCEAIQFQ", "CgkIooHd4-wCEAIQFg", "CgkIooHd4-wCEAIQFw", "CgkIooHd4-wCEAIQGA", "CgkIooHd4-wCEAIQGQ", "CgkIooHd4-wCEAIQGg", "CgkIooHd4-wCEAIQGw", "CgkIooHd4-wCEAIQHA", "CgkIooHd4-wCEAIQHQ", "CgkIooHd4-wCEAIQHg", "CgkIooHd4-wCEAIQHw", "CgkIooHd4-wCEAIQIA", "CgkIooHd4-wCEAIQIQ", "CgkIooHd4-wCEAIQIg", "CgkIooHd4-wCEAIQIw", "CgkIooHd4-wCEAIQJA" ];
-    var achieveIdList_50 = [ "CgkIooHd4-wCEAIQJQ", "CgkIooHd4-wCEAIQJg", "CgkIooHd4-wCEAIQJw", "CgkIooHd4-wCEAIQKA", "CgkIooHd4-wCEAIQKQ", "CgkIooHd4-wCEAIQKg", "CgkIooHd4-wCEAIQKw", "CgkIooHd4-wCEAIQLA", "CgkIooHd4-wCEAIQLQ", "CgkIooHd4-wCEAIQLg", "CgkIooHd4-wCEAIQLw", "CgkIooHd4-wCEAIQMA", "CgkIooHd4-wCEAIQMQ", "CgkIooHd4-wCEAIQMg", "CgkIooHd4-wCEAIQMw", "CgkIooHd4-wCEAIQNA", "CgkIooHd4-wCEAIQNQ" ];
-    var achieveIdList_100 = [ "CgkIooHd4-wCEAIQNg", "CgkIooHd4-wCEAIQNw", "CgkIooHd4-wCEAIQOA", "CgkIooHd4-wCEAIQOQ", "CgkIooHd4-wCEAIQOg", "CgkIooHd4-wCEAIQOw", "CgkIooHd4-wCEAIQPA", "CgkIooHd4-wCEAIQPQ", "CgkIooHd4-wCEAIQPg", "CgkIooHd4-wCEAIQPw", "CgkIooHd4-wCEAIQQA", "CgkIooHd4-wCEAIQQQ", "CgkIooHd4-wCEAIQQg", "CgkIooHd4-wCEAIQQw", "CgkIooHd4-wCEAIQRA", "CgkIooHd4-wCEAIQRQ", "CgkIooHd4-wCEAIQRg" ];
     var Utils = cc.Class({
       extends: cc.Component,
       statics: {
@@ -11137,14 +11132,7 @@ window.__require = function e(t, n, r) {
           var date = new Date(east9time);
           return _needTime ? date.toDateString() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() : date.toDateString();
         },
-        uploadAchievment: function uploadAchievment(_id, _level, _count) {
-          var index = achieveLevelList.indexOf(_level);
-          if (index < 0) return;
-          var currentAchieveIdList;
-          5 === _count ? currentAchieveIdList = achieveIdList : 20 === _count ? currentAchieveIdList = achieveIdList_20 : 50 === _count ? currentAchieveIdList = achieveIdList_50 : 100 === _count && (currentAchieveIdList = achieveIdList_100);
-          var androidID = currentAchieveIdList[index];
-          var iosID = 5 === _count ? _id : _id + "_" + _count;
-        },
+        uploadAchievment: function uploadAchievment(_id, _level, _count) {},
         reportScore: function reportScore(_level) {},
         downloadRanking: function downloadRanking() {},
         getBase64Image: function getBase64Image(_url, _callback) {
