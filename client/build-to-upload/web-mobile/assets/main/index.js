@@ -1640,7 +1640,7 @@ window.__require = function e(t, n, r) {
         isTelegram: true,
         platform: "Telegram",
         version: "1.0.0",
-        debug_version: "_debug_31",
+        debug_version: "_debug_33",
         zOffsetY: 142,
         zBossLine: 100,
         allPlantCount: 75,
@@ -5864,11 +5864,11 @@ window.__require = function e(t, n, r) {
           this.pauseBtnNode.removeComponent(cc.Widget);
           this.leftNode.x = -40 - cc.Mgr.game.ratioOffsetX;
           this.leftNode.x < -150 && (this.leftNode.x = -150);
-          this.rightNode.x = 240 + cc.Mgr.game.ratioOffsetX;
+          this.rightNode.x = 270 + cc.Mgr.game.ratioOffsetX;
           this.rightNode.x > 350 && (this.rightNode.x = 350);
           this.doubleCoinNode.x = -245 - cc.Mgr.game.ratioOffsetX;
           this.doubleCoinNode.x < -350 && (this.doubleCoinNode.x = -350);
-          this.coinBonusNode.x = 370 + cc.Mgr.game.ratioOffsetX;
+          this.coinBonusNode.x = 340 + cc.Mgr.game.ratioOffsetX;
           this.coinBonusNode.x > 500 && (this.coinBonusNode.x = 500);
           this.coinsNGemsNode.x = 320 + cc.Mgr.game.ratioOffsetX;
           this.coinsNGemsNode.x > 500 && (this.coinsNGemsNode.x = 500);
@@ -17114,6 +17114,7 @@ window.__require = function e(t, n, r) {
           cc.Mgr.plantMgr.showAttackRange(this.node);
           this.TouchStart(event);
           cc.Mgr.UIMgr.GameInUINode.getComponent("InGameUI").buyButtonNode.active = false;
+          cc.Mgr.UIMgr.GameInUINode.getComponent("InGameUI").showTipBuyTimesNode(false);
           cc.Mgr.GameCenterCtrl.rubbishNode.active = true;
         }, this);
         this.node.on(cc.Node.EventType.TOUCH_MOVE, function(event) {

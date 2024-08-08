@@ -86,6 +86,7 @@ var plant = cc.Class({
       this.TouchStart(event)
 
       cc.Mgr.UIMgr.GameInUINode.getComponent("InGameUI").buyButtonNode.active = false;
+      cc.Mgr.UIMgr.GameInUINode.getComponent("InGameUI").showTipBuyTimesNode(false);
       cc.Mgr.GameCenterCtrl.rubbishNode.active = true;
     }, this)
 
