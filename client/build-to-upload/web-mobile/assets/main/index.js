@@ -1640,7 +1640,7 @@ window.__require = function e(t, n, r) {
         isTelegram: true,
         platform: "Telegram",
         version: "1.0.0",
-        debug_version: "_debug_30",
+        debug_version: "_debug_31",
         zOffsetY: 142,
         zBossLine: 100,
         allPlantCount: 75,
@@ -5871,7 +5871,7 @@ window.__require = function e(t, n, r) {
           this.coinBonusNode.x = 370 + cc.Mgr.game.ratioOffsetX;
           this.coinBonusNode.x > 500 && (this.coinBonusNode.x = 500);
           this.coinsNGemsNode.x = 350 + cc.Mgr.game.ratioOffsetX;
-          this.coinsNGemsNode.x > 500 && (this.coinsNGemsNode.x = 500);
+          this.coinsNGemsNode.x > 450 && (this.coinsNGemsNode.x = 450);
           this.pauseBtnNode.x = 370 + cc.Mgr.game.ratioOffsetX;
           this.pauseBtnNode.x > 500 && (this.pauseBtnNode.x = 500);
           this.shopBtn.removeComponent(cc.Widget);

@@ -246,7 +246,7 @@ var InGameUI = cc.Class({
             this.coinBonusNode.x = 370 + cc.Mgr.game.ratioOffsetX;
             if (this.coinBonusNode.x > 500) this.coinBonusNode.x = 500;
             this.coinsNGemsNode.x = 350 + cc.Mgr.game.ratioOffsetX;
-            if (this.coinsNGemsNode.x > 500) this.coinsNGemsNode.x = 500;
+            if (this.coinsNGemsNode.x > 450) this.coinsNGemsNode.x = 450;
             this.pauseBtnNode.x = 370 + cc.Mgr.game.ratioOffsetX;
             if (this.pauseBtnNode.x > 500) this.pauseBtnNode.x = 500;
             this.shopBtn.removeComponent(cc.Widget);
