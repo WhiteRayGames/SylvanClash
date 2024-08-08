@@ -245,12 +245,12 @@ var InGameUI = cc.Class({
             if (this.doubleCoinNode.x < -350) this.doubleCoinNode.x = -350;
             this.coinBonusNode.x = 370 + cc.Mgr.game.ratioOffsetX;
             if (this.coinBonusNode.x > 500) this.coinBonusNode.x = 500;
-            this.coinsNGemsNode.x = 350 + cc.Mgr.game.ratioOffsetX;
-            if (this.coinsNGemsNode.x > 450) this.coinsNGemsNode.x = 450;
+            this.coinsNGemsNode.x = 320 + cc.Mgr.game.ratioOffsetX;
+            if (this.coinsNGemsNode.x > 500) this.coinsNGemsNode.x = 500;
             this.pauseBtnNode.x = 370 + cc.Mgr.game.ratioOffsetX;
             if (this.pauseBtnNode.x > 500) this.pauseBtnNode.x = 500;
             this.shopBtn.removeComponent(cc.Widget);
-            this.shopBtn.x = cc.view.getVisibleSizeInPixel().width;
+            this.shopBtn.x = cc.view.getVisibleSizeInPixel().width + 30;
             if (this.shopBtn.x >= 425) this.shopBtn.x = 425;
 
             // this.buffBtn.x = -223 - cc.Mgr.game.ratioOffsetX;

@@ -5870,12 +5870,12 @@ window.__require = function e(t, n, r) {
           this.doubleCoinNode.x < -350 && (this.doubleCoinNode.x = -350);
           this.coinBonusNode.x = 370 + cc.Mgr.game.ratioOffsetX;
           this.coinBonusNode.x > 500 && (this.coinBonusNode.x = 500);
-          this.coinsNGemsNode.x = 350 + cc.Mgr.game.ratioOffsetX;
-          this.coinsNGemsNode.x > 450 && (this.coinsNGemsNode.x = 450);
+          this.coinsNGemsNode.x = 320 + cc.Mgr.game.ratioOffsetX;
+          this.coinsNGemsNode.x > 500 && (this.coinsNGemsNode.x = 500);
           this.pauseBtnNode.x = 370 + cc.Mgr.game.ratioOffsetX;
           this.pauseBtnNode.x > 500 && (this.pauseBtnNode.x = 500);
           this.shopBtn.removeComponent(cc.Widget);
-          this.shopBtn.x = cc.view.getVisibleSizeInPixel().width;
+          this.shopBtn.x = cc.view.getVisibleSizeInPixel().width + 30;
           this.shopBtn.x >= 425 && (this.shopBtn.x = 425);
         }
         true === cc.Mgr.GameCenterCtrl.isIphoneX && (this.topNode.getComponent(cc.Widget).top -= 30);
