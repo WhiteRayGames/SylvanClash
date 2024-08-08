@@ -67,7 +67,7 @@ cc.Class({
                 return;
             }
 
-            this.data = JSON.parse(response);
+            this.data.invitation_reward_claimed = true;
 
             this.setContent(this.data);
         });

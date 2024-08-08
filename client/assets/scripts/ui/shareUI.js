@@ -39,6 +39,7 @@ var shareUI = cc.Class({
         invitedByNode: cc.Node,
 
         claimAllBtn: cc.Node,
+        claimedAllNode: cc.Node,
 
         allPlayersCountLabel: cc.Label
     },
@@ -99,6 +100,7 @@ var shareUI = cc.Class({
             this.noItemsNode.active = false;
 
             this.claimAllBtn.active = this.checkHasRewards();
+            this.claimedAllNode.active = !this.checkHasRewards();
 
             this.allPlayersCountLabel.string = this.shareListData.length;
         } else {
@@ -115,6 +117,10 @@ var shareUI = cc.Class({
                 let shareData = this.shareListData[i];
                 if (shareData.invitation_reward_claimed == false) return true;
             }
+        }
+
+        if (cc.Mgr.Utils.invitedByData) {
+            if (cc.Mgr.Utils.invitedByData.invitation_reward_claimed == false) return true;
         }
 
         return false;
@@ -154,9 +160,71 @@ var shareUI = cc.Class({
                 return;
             }
 
-            cc.Mgr.Utils.invitedByData = JSON.parse(response);
+            let data = JSON.parse(response);
+            let playerData = this.getPlayerData(data.id);
+            if (playerData != null) {
+                playerData.data.invitation_reward_claimed = true;
 
-            this.setInvitedByData();
+                this._scrollViewComponent.refreshAtCurPosition();
+                this.claimAllBtn.active = this.checkHasRewards();
+                this.claimedAllNode.active = !this.checkHasRewards();
+                this.claimBtn.active = !cc.Mgr.Utils.invitedByData.invitation_reward_claimed;
+                this.claimedNode.active = cc.Mgr.Utils.invitedByData.invitation_reward_claimed;
+            }
+        });
+    },
+
+    getPlayerData (_rewardId) {
+        if (this.shareListData && this.shareListData.length > 0) {
+            for (let i = 0; i < this.shareListData.length; i++) {
+                let shareData = this.shareListData[i];
+                if (shareData.id == _rewardId) {
+                    return {data: shareData, isInList: true};
+                }
+            }
+        }
+
+        if (cc.Mgr.Utils.invitedByData && cc.Mgr.Utils.invitedByData.id == _rewardId) {
+            return {data: cc.Mgr.Utils.invitedByData, isInList: false};
+        }
+
+        return null;
+    },
+
+    updateShareListData () {
+        if (this.shareListData && this.shareListData.length > 0) {
+            for (let i = 0; i < this.shareListData.length; i++) {
+                let shareData = this.shareListData[i];
+                shareData.invitation_reward_claimed = true;
+            }
+        }
+
+        this._scrollViewComponent.refreshAtCurPosition();
+        this.claimAllBtn.active = this.checkHasRewards();
+        this.claimedAllNode.active = !this.checkHasRewards();
+
+        if (cc.Mgr.Utils.invitedByData) {
+            cc.Mgr.Utils.invitedByData.invitation_reward_claimed = true;
+
+            this.claimBtn.active = !cc.Mgr.Utils.invitedByData.invitation_reward_claimed;
+            this.claimedNode.active = cc.Mgr.Utils.invitedByData.invitation_reward_claimed;
+        }
+    },
+
+    onClickClaimAll () {
+        if (this.limitClick.clickTime() == false) {
+            return;
+        }
+
+        let url = cc.Mgr.Config.isDebug ? "https://tg-api-service-test.lunamou.com/invitation-reward/claim-all-invitation-rewards/" + window.Telegram.WebApp.initDataUnsafe.user.id :
+            "https://tg-api-service.lunamou.com/invitation-reward/claim-all-invitation-rewards/" + window.Telegram.WebApp.initDataUnsafe.user.id;
+        cc.Mgr.http.httpGets(url, (error, response) => {
+            if (error == true) {
+
+                return;
+            }
+
+            this.updateShareListData();
         });
     },
 
