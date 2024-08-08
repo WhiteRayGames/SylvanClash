@@ -59,13 +59,23 @@ cc.Class({
             return;
         }
 
-        let url = cc.Mgr.Config.isDebug ? "https://tg-api-service-test.lunamou.com/invitation-reward/claim-invitation-reward/" + this.data.id :
-            "https://tg-api-service.lunamou.com/invitation-reward/claim-invitation-reward/" + this.data.id;
-        cc.Mgr.http.httpGets(url, (error, response) => {
+        const requestBody = JSON.stringify({
+            reward_id: this.data.id
+        });
+
+        let url = cc.Mgr.Config.isDebug ? "https://tg-api-service-test.lunamou.com/invitation-reward/claim" :
+            "https://tg-api-service.lunamou.com/invitation-reward/claim";
+        cc.Mgr.http.httpPost(url, requestBody, (error, response) => {
             if (error == true) {
 
                 return;
             }
+
+            let gems = cc.Utils.getCurrentShareReward();
+            cc.Mgr.game.gems += gems;
+            cc.Mgr.game.gem_gained_total += gems;
+            cc.Mgr.UIMgr.InGameUI.RefreshAssetData(false, "gem");
+            cc.Mgr.UIMgr.showGemsEffect();
 
             this.data.invitation_reward_claimed = true;
 

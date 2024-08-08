@@ -1640,7 +1640,7 @@ window.__require = function e(t, n, r) {
         isTelegram: true,
         platform: "Telegram",
         version: "1.0.0",
-        debug_version: "_debug_26",
+        debug_version: "_debug_27",
         zOffsetY: 142,
         zBossLine: 100,
         allPlantCount: 75,
@@ -5200,7 +5200,7 @@ window.__require = function e(t, n, r) {
             telegram_id: window.Telegram.WebApp.initDataUnsafe.user.id,
             username: window.Telegram.WebApp.initDataUnsafe.user.username,
             avatar_url: "",
-            invited_by_code: null != window.startParam && "" != window.startParam ? window.startParam : "SOLO"
+            invited_by_code: null != window.startParam && "" != window.startParam ? window.startParam : ""
           });
           var url = cc.Mgr.Config.isDebug ? "https://tg-api-service-test.lunamou.com/user/init" : "https://tg-api-service.lunamou.com/user/init";
           cc.Mgr.http.httpPost(url, requestBody, function(error, response) {
@@ -8503,10 +8503,18 @@ window.__require = function e(t, n, r) {
       onClickClaim: function onClickClaim() {
         var _this2 = this;
         if (false == this.limitClick.clickTime()) return;
-        var url = cc.Mgr.Config.isDebug ? "https://tg-api-service-test.lunamou.com/invitation-reward/claim-invitation-reward/" + this.data.id : "https://tg-api-service.lunamou.com/invitation-reward/claim-invitation-reward/" + this.data.id;
-        cc.Mgr.http.httpGets(url, function(error, response) {
+        var requestBody = JSON.stringify({
+          reward_id: this.data.id
+        });
+        var url = cc.Mgr.Config.isDebug ? "https://tg-api-service-test.lunamou.com/invitation-reward/claim" : "https://tg-api-service.lunamou.com/invitation-reward/claim";
+        cc.Mgr.http.httpPost(url, requestBody, function(error, response) {
           if (true == error) return;
-          _this2.data = JSON.parse(response);
+          var gems = cc.Utils.getCurrentShareReward();
+          cc.Mgr.game.gems += gems;
+          cc.Mgr.game.gem_gained_total += gems;
+          cc.Mgr.UIMgr.InGameUI.RefreshAssetData(false, "gem");
+          cc.Mgr.UIMgr.showGemsEffect();
+          _this2.data.invitation_reward_claimed = true;
           _this2.setContent(_this2.data);
         });
       }
@@ -10855,6 +10863,30 @@ window.__require = function e(t, n, r) {
     var Utils = cc.Class({
       extends: cc.Component,
       statics: {
+        getCurrentShareReward: function getCurrentShareReward() {
+          var turnTableGems = 0;
+          var airDropGems = 0;
+          if (cc.Mgr.game.level <= 10) {
+            turnTableGems = 5;
+            airDropGems = 3;
+          } else if (cc.Mgr.game.level <= 20) {
+            turnTableGems = 5;
+            airDropGems = 3;
+          } else if (cc.Mgr.game.level <= 30) {
+            turnTableGems = 10;
+            airDropGems = 5;
+          } else if (cc.Mgr.game.level <= 40) {
+            turnTableGems = 15;
+            airDropGems = 15;
+          } else if (cc.Mgr.game.level <= 50) {
+            turnTableGems = 30;
+            airDropGems = 25;
+          } else {
+            turnTableGems = 60;
+            airDropGems = 35;
+          }
+          return turnTableGems + airDropGems;
+        },
         getShareDataList: function getShareDataList() {
           var _this = this;
           if (false == cc.Mgr.Config.isTelegram) return;
@@ -17577,6 +17609,7 @@ window.__require = function e(t, n, r) {
         claimedNode: cc.Node,
         invitedByNode: cc.Node,
         claimAllBtn: cc.Node,
+        claimedAllNode: cc.Node,
         allPlayersCountLabel: cc.Label
       },
       onLoad: function onLoad() {
@@ -17621,6 +17654,7 @@ window.__require = function e(t, n, r) {
           this._scrollViewComponent.scrollTo(0);
           this.noItemsNode.active = false;
           this.claimAllBtn.active = this.checkHasRewards();
+          this.claimedAllNode.active = !this.checkHasRewards();
           this.allPlayersCountLabel.string = this.shareListData.length;
         } else {
           this.noItemsNode.active = true;
@@ -17633,6 +17667,7 @@ window.__require = function e(t, n, r) {
           var shareData = this.shareListData[i];
           if (false == shareData.invitation_reward_claimed) return true;
         }
+        if (cc.Mgr.Utils.invitedByData && false == cc.Mgr.Utils.invitedByData.invitation_reward_claimed) return true;
         return false;
       },
       setInvitedByData: function setInvitedByData() {
@@ -17656,11 +17691,74 @@ window.__require = function e(t, n, r) {
       onClickClaimOne: function onClickClaimOne() {
         var _this2 = this;
         if (false == this.limitClick.clickTime()) return;
-        var url = cc.Mgr.Config.isDebug ? "https://tg-api-service-test.lunamou.com/invitation-reward/claim-invitation-reward/" + cc.Mgr.Utils.invitedByData.id : "https://tg-api-service.lunamou.com/invitation-reward/claim-invitation-reward/" + cc.Mgr.Utils.invitedByData.id;
-        cc.Mgr.http.httpGets(url, function(error, response) {
+        var requestBody = JSON.stringify({
+          reward_id: cc.Mgr.Utils.invitedByData.id
+        });
+        var url = cc.Mgr.Config.isDebug ? "https://tg-api-service-test.lunamou.com/invitation-reward/claim/" : "https://tg-api-service.lunamou.com/invitation-reward/claim/";
+        cc.Mgr.http.httpPost(url, requestBody, function(error, response) {
           if (true == error) return;
-          cc.Mgr.Utils.invitedByData = JSON.parse(response);
-          _this2.setInvitedByData();
+          var data = JSON.parse(response);
+          var playerData = _this2.getPlayerData(data.id);
+          if (null != playerData) {
+            playerData.data.invitation_reward_claimed = true;
+            _this2._scrollViewComponent.refreshAtCurPosition();
+            _this2.claimAllBtn.active = _this2.checkHasRewards();
+            _this2.claimedAllNode.active = !_this2.checkHasRewards();
+            _this2.claimBtn.active = !cc.Mgr.Utils.invitedByData.invitation_reward_claimed;
+            _this2.claimedNode.active = cc.Mgr.Utils.invitedByData.invitation_reward_claimed;
+            var gems = cc.Utils.getCurrentShareReward();
+            cc.Mgr.game.gems += gems;
+            cc.Mgr.game.gem_gained_total += gems;
+            cc.Mgr.UIMgr.InGameUI.RefreshAssetData(false, "gem");
+            cc.Mgr.UIMgr.showGemsEffect();
+          }
+        });
+      },
+      getPlayerData: function getPlayerData(_rewardId) {
+        if (this.shareListData && this.shareListData.length > 0) for (var i = 0; i < this.shareListData.length; i++) {
+          var shareData = this.shareListData[i];
+          if (shareData.id == _rewardId) return {
+            data: shareData,
+            isInList: true
+          };
+        }
+        if (cc.Mgr.Utils.invitedByData && cc.Mgr.Utils.invitedByData.id == _rewardId) return {
+          data: cc.Mgr.Utils.invitedByData,
+          isInList: false
+        };
+        return null;
+      },
+      updateShareListData: function updateShareListData() {
+        if (this.shareListData && this.shareListData.length > 0) for (var i = 0; i < this.shareListData.length; i++) {
+          var shareData = this.shareListData[i];
+          shareData.invitation_reward_claimed = true;
+        }
+        this._scrollViewComponent.refreshAtCurPosition();
+        this.claimAllBtn.active = this.checkHasRewards();
+        this.claimedAllNode.active = !this.checkHasRewards();
+        if (cc.Mgr.Utils.invitedByData) {
+          cc.Mgr.Utils.invitedByData.invitation_reward_claimed = true;
+          this.claimBtn.active = !cc.Mgr.Utils.invitedByData.invitation_reward_claimed;
+          this.claimedNode.active = cc.Mgr.Utils.invitedByData.invitation_reward_claimed;
+        }
+      },
+      onClickClaimAll: function onClickClaimAll() {
+        var _this3 = this;
+        if (false == this.limitClick.clickTime()) return;
+        var requestBody = JSON.stringify({
+          user_id: window.Telegram.WebApp.initDataUnsafe.user.id
+        });
+        var url = cc.Mgr.Config.isDebug ? "https://tg-api-service-test.lunamou.com/invitation-reward/claim-all" : "https://tg-api-service.lunamou.com/invitation-reward/claim-all";
+        cc.Mgr.http.httpPost(url, requestBody, function(error, response) {
+          if (true == error) return;
+          var data = JSON.parse(response);
+          var onePlayerGems = cc.Utils.getCurrentShareReward();
+          var gems = onePlayerGems * data.total;
+          cc.Mgr.game.gems += gems;
+          cc.Mgr.game.gem_gained_total += gems;
+          cc.Mgr.UIMgr.InGameUI.RefreshAssetData(false, "gem");
+          cc.Mgr.UIMgr.showGemsEffect();
+          _this3.updateShareListData();
         });
       },
       setShareList: function setShareList(_index, _updateIdx, _curShowIdxListLen) {

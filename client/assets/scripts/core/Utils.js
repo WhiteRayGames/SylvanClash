@@ -3,6 +3,32 @@ var Utils = cc.Class({
     extends: cc.Component,
 
     statics: {
+        getCurrentShareReward: function() {
+            let turnTableGems = 0;
+            let airDropGems = 0;
+            if (cc.Mgr.game.level <= 10) {
+                turnTableGems = 5;
+                airDropGems = 3;
+            } else if (cc.Mgr.game.level <= 20) {
+                turnTableGems = 5;
+                airDropGems = 3;
+            } else if (cc.Mgr.game.level <= 30) {
+                turnTableGems = 10;
+                airDropGems = 5;
+            } else if (cc.Mgr.game.level <= 40) {
+                turnTableGems = 15;
+                airDropGems = 15;
+            } else if (cc.Mgr.game.level <= 50) {
+                turnTableGems = 30;
+                airDropGems = 25;
+            } else {
+                turnTableGems = 60;
+                airDropGems = 35;
+            }
+
+            return turnTableGems + airDropGems;
+        },
+
         getShareDataList: function () {
             if (cc.Mgr.Config.isTelegram == false) return;
             let startIndex = 0;

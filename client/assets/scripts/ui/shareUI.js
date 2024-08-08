@@ -152,9 +152,13 @@ var shareUI = cc.Class({
             return;
         }
 
-        let url = cc.Mgr.Config.isDebug ? "https://tg-api-service-test.lunamou.com/invitation-reward/claim-invitation-reward/" + cc.Mgr.Utils.invitedByData.id :
-            "https://tg-api-service.lunamou.com/invitation-reward/claim-invitation-reward/" + cc.Mgr.Utils.invitedByData.id;
-        cc.Mgr.http.httpGets(url, (error, response) => {
+        const requestBody = JSON.stringify({
+            reward_id: cc.Mgr.Utils.invitedByData.id
+        });
+
+        let url = cc.Mgr.Config.isDebug ? "https://tg-api-service-test.lunamou.com/invitation-reward/claim/":
+            "https://tg-api-service.lunamou.com/invitation-reward/claim/";
+        cc.Mgr.http.httpPost(url, requestBody, (error, response) => {
             if (error == true) {
 
                 return;
@@ -170,6 +174,12 @@ var shareUI = cc.Class({
                 this.claimedAllNode.active = !this.checkHasRewards();
                 this.claimBtn.active = !cc.Mgr.Utils.invitedByData.invitation_reward_claimed;
                 this.claimedNode.active = cc.Mgr.Utils.invitedByData.invitation_reward_claimed;
+
+                let gems = cc.Utils.getCurrentShareReward();
+                cc.Mgr.game.gems += gems;
+                cc.Mgr.game.gem_gained_total += gems;
+                cc.Mgr.UIMgr.InGameUI.RefreshAssetData(false, "gem");
+                cc.Mgr.UIMgr.showGemsEffect();
             }
         });
     },
@@ -216,13 +226,26 @@ var shareUI = cc.Class({
             return;
         }
 
-        let url = cc.Mgr.Config.isDebug ? "https://tg-api-service-test.lunamou.com/invitation-reward/claim-all-invitation-rewards/" + window.Telegram.WebApp.initDataUnsafe.user.id :
-            "https://tg-api-service.lunamou.com/invitation-reward/claim-all-invitation-rewards/" + window.Telegram.WebApp.initDataUnsafe.user.id;
-        cc.Mgr.http.httpGets(url, (error, response) => {
+        const requestBody = JSON.stringify({
+            user_id: window.Telegram.WebApp.initDataUnsafe.user.id
+        });
+
+        let url = cc.Mgr.Config.isDebug ? "https://tg-api-service-test.lunamou.com/invitation-reward/claim-all" :
+            "https://tg-api-service.lunamou.com/invitation-reward/claim-all";
+        cc.Mgr.http.httpPost(url, requestBody, (error, response) => {
             if (error == true) {
 
                 return;
             }
+
+            let data = JSON.parse(response);
+
+            let onePlayerGems = cc.Utils.getCurrentShareReward();
+            let gems = onePlayerGems * data.total;
+            cc.Mgr.game.gems += gems;
+            cc.Mgr.game.gem_gained_total += gems;
+            cc.Mgr.UIMgr.InGameUI.RefreshAssetData(false, "gem");
+            cc.Mgr.UIMgr.showGemsEffect();
 
             this.updateShareListData();
         });

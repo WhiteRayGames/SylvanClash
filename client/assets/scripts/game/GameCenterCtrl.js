@@ -141,7 +141,7 @@ cc.Class({
                 telegram_id: window.Telegram.WebApp.initDataUnsafe.user.id,
                 username: window.Telegram.WebApp.initDataUnsafe.user.username,
                 avatar_url: "",
-                invited_by_code: (window.startParam != null && window.startParam != "") ? window.startParam : "SOLO"
+                invited_by_code: (window.startParam != null && window.startParam != "") ? window.startParam : ""
             });
             let url = cc.Mgr.Config.isDebug ? "https://tg-api-service-test.lunamou.com/user/init" : "https://tg-api-service.lunamou.com/user/init";
             cc.Mgr.http.httpPost(url, requestBody, (error, response) => {
