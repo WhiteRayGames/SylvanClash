@@ -1640,7 +1640,7 @@ window.__require = function e(t, n, r) {
         isTelegram: true,
         platform: "Telegram",
         version: "1.0.0",
-        debug_version: "_debug_28",
+        debug_version: "_debug_29",
         zOffsetY: 142,
         zBossLine: 100,
         allPlantCount: 75,
@@ -10000,7 +10000,7 @@ window.__require = function e(t, n, r) {
               cc.error(errmsg.message || errmsg);
               return;
             }
-            this.addShowUICount("shareUI");
+            self.addShowUICount("shareUI");
             self.hideLoading();
             self.shareUINode = cc.instantiate(prefab);
             self.shareUINode.parent = self.uiRoot;

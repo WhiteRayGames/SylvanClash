@@ -11,7 +11,7 @@ var Config = cc.Class({
 
     version: "1.0.0",
 
-    debug_version: "_debug_28",
+    debug_version: "_debug_29",
 
     zOffsetY: 142,
 

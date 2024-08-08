@@ -955,7 +955,7 @@ var UIMgr = cc.Class({
                     cc.error(errmsg.message || errmsg);
                     return;
                 }
-                this.addShowUICount("shareUI");
+                self.addShowUICount("shareUI");
                 self.hideLoading();
                 self.shareUINode = cc.instantiate(prefab);
                 self.shareUINode.parent = self.uiRoot;
