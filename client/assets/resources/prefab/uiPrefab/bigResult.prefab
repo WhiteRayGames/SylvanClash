@@ -290,7 +290,7 @@
       "__id__": 6
     },
     "_children": [],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 8
@@ -550,7 +550,7 @@
     "defaultAnimation": "victory",
     "_preCacheMode": 0,
     "_cacheMode": 0,
-    "loop": false,
+    "loop": true,
     "premultipliedAlpha": true,
     "timeScale": 1,
     "_accTime": 0,
@@ -561,7 +561,7 @@
     "_animationName": "victory",
     "_animationQueue": [],
     "_headAniInfo": null,
-    "_playTimes": 1,
+    "_playTimes": 0,
     "_isAniComplete": true,
     "_N$skeletonData": {
       "__uuid__": "93e58052-abd6-4d9c-9294-1ebf40297989"
@@ -2664,7 +2664,7 @@
         "__id__": 110
       }
     ],
-    "_active": false,
+    "_active": true,
     "_components": [],
     "_prefab": {
       "__id__": 159
