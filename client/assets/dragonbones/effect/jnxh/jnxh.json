@@ -1,0 +1,55 @@
+{
+"skeleton": {
+	"hash": "x5juZvppdiyx3PzkiQnFc/W3cdE",
+	"spine": "3.8.99",
+	"x": -53,
+	"y": -53,
+	"width": 106,
+	"height": 106,
+	"images": "",
+	"audio": "E:/下游戏/SPINE/自动循环"
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "zhuan", "parent": "root" }
+],
+"slots": [
+	{ "name": "Image/20240808-174010", "bone": "root" },
+	{ "name": "Image/zhuan_00000", "bone": "zhuan" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"Image/zhuan_00000": {
+				"Image/zhuan_00000": { "width": 186, "height": 188 }
+			}
+		}
+	}
+],
+"animations": {
+	"jnxh": {
+		"slots": {
+			"Image/zhuan_00000": {
+				"attachment": [
+					{ "name": "Image/zhuan_00000" }
+				]
+			}
+		},
+		"bones": {
+			"zhuan": {
+				"rotate": [
+					{},
+					{ "time": 0.1333, "angle": -90 },
+					{ "time": 0.3, "angle": 180 },
+					{ "time": 0.4667, "angle": 90 },
+					{ "time": 0.6 }
+				],
+				"scale": [
+					{ "x": 1.22, "y": 1.22 }
+				]
+			}
+		}
+	}
+}
+}

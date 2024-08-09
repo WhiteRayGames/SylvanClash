@@ -1,0 +1,13 @@
+
+jnxh.png
+size: 169,169
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Image/zhuan_00000
+  rotate: false
+  xy: 2, 2
+  size: 165, 165
+  orig: 186, 188
+  offset: 10, 11
+  index: -1

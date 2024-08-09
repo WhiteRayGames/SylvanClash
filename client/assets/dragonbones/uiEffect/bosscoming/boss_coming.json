@@ -1,0 +1,66 @@
+{
+"skeleton": {
+	"hash": "lpdpqw2OGYZhC8iID+Mpg+XZ5DM",
+	"spine": "3.8.99",
+	"x": -320,
+	"y": -78,
+	"width": 640,
+	"height": 156,
+	"images": "",
+	"audio": "E:/下游戏/SPINE/新建文件夹 (2)/新建文件夹"
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "zong", "parent": "root" },
+	{ "name": "1", "parent": "zong" },
+	{ "name": "2", "parent": "zong" }
+],
+"slots": [
+	{ "name": "image/20240808-150843", "bone": "1", "attachment": "image/20240808-150843" },
+	{ "name": "image/20240808-150833", "bone": "2", "attachment": "image/20240808-150833" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"image/20240808-150833": {
+				"image/20240808-150833": { "width": 474, "height": 70 }
+			},
+			"image/20240808-150843": {
+				"image/20240808-150843": { "width": 640, "height": 156 }
+			}
+		}
+	}
+],
+"animations": {
+	"boss_coming": {
+		"slots": {
+			"image/20240808-150833": {
+				"color": [
+					{ "time": 0.0667, "color": "ffffff00" },
+					{ "time": 0.2333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.5667, "color": "ffffffff" }
+				],
+				"attachment": [
+					{ "name": null },
+					{ "time": 0.0667, "name": "image/20240808-150833" }
+				]
+			}
+		},
+		"bones": {
+			"1": {
+				"translate": [
+					{ "x": 457.87, "curve": 0.25, "c3": 0.873, "c4": 0.57 },
+					{ "time": 0.3 }
+				]
+			},
+			"2": {
+				"translate": [
+					{ "time": 0.0667, "x": -508.82, "curve": 0.649, "c3": 0.822, "c4": 0.57 },
+					{ "time": 0.2667 }
+				]
+			}
+		}
+	}
+}
+}

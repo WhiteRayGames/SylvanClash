@@ -5,7 +5,7 @@ var Config = cc.Class({
   statics: {
     isDebug: true,
 
-    isTelegram: true,
+    isTelegram: false,
 
     platform: "Telegram", // Telegram Local
 

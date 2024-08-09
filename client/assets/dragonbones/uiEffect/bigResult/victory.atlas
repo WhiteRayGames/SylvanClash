@@ -1,0 +1,20 @@
+
+victory.png
+size: 285,76
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+image/img_crown
+  rotate: true
+  xy: 239, 2
+  size: 72, 44
+  orig: 72, 44
+  offset: 0, 0
+  index: -1
+image/img_victory
+  rotate: false
+  xy: 2, 6
+  size: 235, 68
+  orig: 235, 68
+  offset: 0, 0
+  index: -1

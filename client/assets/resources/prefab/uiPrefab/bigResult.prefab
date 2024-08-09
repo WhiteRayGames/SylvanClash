@@ -470,7 +470,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Ip",
+    "_name": "victory",
     "_objFlags": 0,
     "_parent": {
       "__id__": 10
@@ -496,7 +496,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 470,
-      "height": 136
+      "height": 226.95
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -533,7 +533,7 @@
     "_id": ""
   },
   {
-    "__type__": "cc.Sprite",
+    "__type__": "sp.Skeleton",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -542,26 +542,36 @@
     "_enabled": true,
     "_materials": [
       {
-        "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
+        "__uuid__": "7afd064b-113f-480e-b793-8817d19f63c3"
       }
     ],
-    "_srcBlendFactor": 770,
-    "_dstBlendFactor": 771,
-    "_spriteFrame": {
-      "__uuid__": "afb21ade-a148-40fa-bc80-09188975aba8"
+    "paused": false,
+    "defaultSkin": "default",
+    "defaultAnimation": "victory",
+    "_preCacheMode": 0,
+    "_cacheMode": 0,
+    "loop": false,
+    "premultipliedAlpha": true,
+    "timeScale": 1,
+    "_accTime": 0,
+    "_playCount": 0,
+    "_frameCache": null,
+    "_curFrame": null,
+    "_skeletonCache": null,
+    "_animationName": "victory",
+    "_animationQueue": [],
+    "_headAniInfo": null,
+    "_playTimes": 1,
+    "_isAniComplete": true,
+    "_N$skeletonData": {
+      "__uuid__": "93e58052-abd6-4d9c-9294-1ebf40297989"
     },
-    "_type": 0,
-    "_sizeMode": 1,
-    "_fillType": 0,
-    "_fillCenter": {
-      "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 0
-    },
-    "_fillStart": 0,
-    "_fillRange": 0,
-    "_isTrimmedMode": true,
-    "_atlas": null,
+    "_N$_defaultCacheMode": 0,
+    "_N$debugSlots": false,
+    "_N$debugBones": false,
+    "_N$debugMesh": false,
+    "_N$useTint": false,
+    "_N$enableBatch": false,
     "_id": ""
   },
   {
@@ -572,7 +582,7 @@
     "asset": {
       "__uuid__": "a7cf60bf-c98c-4713-b844-d833ddca2fe6"
     },
-    "fileId": "57iqZguQhI+a/r7RoeaGU/",
+    "fileId": "6dWmS8RxBOXq2T1HI+0yjP",
     "sync": false
   },
   {

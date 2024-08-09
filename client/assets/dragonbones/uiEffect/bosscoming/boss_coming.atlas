@@ -1,0 +1,20 @@
+
+boss_coming.png
+size: 324,119
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+image/20240808-150833
+  rotate: false
+  xy: 2, 2
+  size: 237, 35
+  orig: 237, 35
+  offset: 0, 0
+  index: -1
+image/20240808-150843
+  rotate: false
+  xy: 2, 39
+  size: 320, 78
+  orig: 320, 78
+  offset: 0, 0
+  index: -1

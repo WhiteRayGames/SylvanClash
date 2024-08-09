@@ -184,8 +184,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 623,
-      "height": 95
+      "width": 575,
+      "height": 92
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -251,7 +251,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 600,
+      "width": 500,
       "height": 32
     },
     "_anchorPoint": {
@@ -264,7 +264,7 @@
       "ctor": "Float64Array",
       "array": [
         0,
-        -13.327,
+        0,
         0,
         0,
         0,
@@ -303,7 +303,6 @@
     ],
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_useOriginalSize": false,
     "_string": "xxxx",
     "_N$string": "xxxx",
     "_fontSize": 32,
@@ -366,7 +365,7 @@
       "__uuid__": "aa051e95-4fd8-45eb-bc92-086c80abefb3"
     },
     "_type": 0,
-    "_sizeMode": 2,
+    "_sizeMode": 1,
     "_fillType": 0,
     "_fillCenter": {
       "__type__": "cc.Vec2",
@@ -682,7 +681,6 @@
     ],
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_useOriginalSize": false,
     "_string": "xxxx",
     "_N$string": "xxxx",
     "_fontSize": 32,
@@ -1638,7 +1636,6 @@
     ],
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_useOriginalSize": false,
     "_string": "移动植物来抵御僵尸",
     "_N$string": "移动植物来抵御僵尸",
     "_fontSize": 32,
@@ -2021,7 +2018,6 @@
     ],
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_useOriginalSize": false,
     "_string": "获取你的奖励",
     "_N$string": "获取你的奖励",
     "_fontSize": 32,
@@ -2546,7 +2542,7 @@
     "asset": {
       "__uuid__": "1b45d1f8-3833-46ef-b40a-f3ddddde84c5"
     },
-    "fileId": "acJ8rD1GxIPbMb3FNbR/WT",
+    "fileId": "",
     "sync": false
   }
 ]
